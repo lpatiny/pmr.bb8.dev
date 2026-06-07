@@ -9,31 +9,39 @@ import { SyncStatus } from './pages/home/components/SyncStatus.tsx';
 import { TrainList } from './pages/home/components/TrainList.tsx';
 import { todayInBrussels } from './pages/home/dates.ts';
 import type { WarmOptions } from './pages/home/offline.ts';
-import { warmOfflineCache } from './pages/home/offline.ts';
+import { FRESH_FOR_MS, warmOfflineCache } from './pages/home/offline.ts';
+import { loadStoredDay, storeDay, storedDayAge } from './pages/home/storage.ts';
 import { PAGE_SIZE, anchorIndex } from './pages/home/timetable.ts';
 
 const DEFAULT_FROM = '8891702'; // Ostende
 const DEFAULT_TO = '8891009'; // Bruges
-
-/** Don't re-fetch the day on focus more often than this (it is heavy). */
-const REFRESH_THROTTLE_MS = 60_000;
+const INITIAL_DATE = todayInBrussels();
+const INITIAL_STORED = loadStoredDay(DEFAULT_FROM, DEFAULT_TO, INITIAL_DATE);
 
 export function App() {
   const [stations, setStations] = useState<Station[]>([]);
   const [from, setFrom] = useState(DEFAULT_FROM);
   const [to, setTo] = useState(DEFAULT_TO);
-  const [date, setDate] = useState(todayInBrussels());
+  const [date, setDate] = useState(INITIAL_DATE);
   const [hour, setHour] = useState('');
 
-  const [dayTrains, setDayTrains] = useState<AccessibleTrain[]>([]);
+  // Hydrate instantly from localStorage so the timetable shows at once, even
+  // offline, before the (slow) network refresh completes.
+  const [dayTrains, setDayTrains] = useState<AccessibleTrain[]>(
+    INITIAL_STORED ?? [],
+  );
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>(
-    'loading',
+    INITIAL_STORED ? 'ready' : 'loading',
   );
   const [reloadToken, setReloadToken] = useState(0);
   const [sync, setSync] = useState<SyncState>('syncing');
   const [counts, setCounts] = useState<{
     today: number;
     tomorrow: number;
+  } | null>(null);
+  const [progress, setProgress] = useState<{
+    done: number;
+    total: number;
   } | null>(null);
 
   // How many "earlier"/"later" steps the user paged from the anchor. Reset
@@ -42,7 +50,6 @@ export function App() {
   const [windowKey, setWindowKey] = useState('');
 
   const lastSyncKey = useRef('');
-  const lastLoadAt = useRef(0);
 
   useEffect(() => {
     fetchStations()
@@ -55,18 +62,28 @@ export function App() {
     let cancelled = false;
 
     async function loadThenSync() {
-      // 1) Show the whole selected day first — from the network, or instantly
-      // from the service-worker cache when offline.
+      // 1) When the stored day is still fresh, use it as-is (even online) — no
+      // network. Otherwise refresh it and persist; the view already shows the
+      // stored copy, so a failure offline just keeps it instead of erroring.
+      const stored = loadStoredDay(from, to, date);
+      const age = storedDayAge(from, to, date);
       let preloaded: WarmOptions['preloaded'];
-      try {
-        const trains = await fetchDayTrains({ from, to, date });
+
+      if (stored && age !== null && age < FRESH_FOR_MS) {
         if (cancelled) return;
-        lastLoadAt.current = Date.now();
-        setDayTrains(trains);
+        setDayTrains(stored);
         setStatus('ready');
-        preloaded = { from, to, date, trains };
-      } catch {
-        if (!cancelled) setStatus('error');
+      } else {
+        try {
+          const trains = await fetchDayTrains({ from, to, date });
+          if (cancelled) return;
+          storeDay(from, to, date, trains);
+          setDayTrains(trains);
+          setStatus('ready');
+          preloaded = { from, to, date, trains };
+        } catch {
+          if (!cancelled && !stored) setStatus('error');
+        }
       }
 
       // 2) Then warm today + tomorrow (both directions) for offline paging —
@@ -77,8 +94,15 @@ export function App() {
       lastSyncKey.current = key;
 
       setSync('syncing');
-      const outcome = await warmOfflineCache(from, to, { preloaded });
+      setProgress(null);
+      const outcome = await warmOfflineCache(from, to, {
+        preloaded,
+        onProgress: (done, total) => {
+          if (!cancelled) setProgress({ done, total });
+        },
+      });
       if (cancelled) return;
+      setProgress(null);
       setSync(outcome.ok ? 'synced' : 'offline');
       if (outcome.ok) {
         setCounts({ today: outcome.today, tomorrow: outcome.tomorrow });
@@ -92,40 +116,45 @@ export function App() {
   }, [from, to, date, reloadToken]);
 
   useEffect(() => {
-    // Refresh on focus / reconnection so a home-screen app reopens up to date,
-    // throttled so a quick app switch does not re-fetch the whole day.
-    function maybeRefresh() {
-      if (Date.now() - lastLoadAt.current > REFRESH_THROTTLE_MS) {
-        setReloadToken((token) => token + 1);
-      }
-    }
-    function onReconnect() {
+    // Refresh on focus / reconnection so a home-screen app reopens up to date.
+    // The load effect only hits the network when the stored day is stale, so
+    // this is cheap when everything is still fresh.
+    function refresh() {
       setReloadToken((token) => token + 1);
     }
     function onVisible() {
-      if (document.visibilityState === 'visible') maybeRefresh();
+      if (document.visibilityState === 'visible') refresh();
     }
     function onOffline() {
       setSync('offline');
     }
-    window.addEventListener('online', onReconnect);
+    window.addEventListener('online', refresh);
     window.addEventListener('offline', onOffline);
-    window.addEventListener('focus', maybeRefresh);
+    window.addEventListener('focus', refresh);
     document.addEventListener('visibilitychange', onVisible);
     return () => {
-      window.removeEventListener('online', onReconnect);
+      window.removeEventListener('online', refresh);
       window.removeEventListener('offline', onOffline);
-      window.removeEventListener('focus', maybeRefresh);
+      window.removeEventListener('focus', refresh);
       document.removeEventListener('visibilitychange', onVisible);
     };
   }, []);
 
   function selectTrip(next: { from?: string; to?: string; date?: string }) {
-    setStatus('loading');
-    setDayTrains([]);
-    if (next.from !== undefined) setFrom(next.from);
-    if (next.to !== undefined) setTo(next.to);
-    if (next.date !== undefined) setDate(next.date);
+    const nextFrom = next.from ?? from;
+    const nextTo = next.to ?? to;
+    const nextDate = next.date ?? date;
+
+    // Show the stored timetable for the new selection at once (or a loading
+    // state when nothing is stored yet); the effect then refreshes it.
+    const stored =
+      nextFrom === nextTo ? null : loadStoredDay(nextFrom, nextTo, nextDate);
+    setDayTrains(stored ?? []);
+    setStatus(stored ? 'ready' : 'loading');
+
+    setFrom(nextFrom);
+    setTo(nextTo);
+    setDate(nextDate);
   }
 
   // Reset the visible window when the loaded day or the anchor inputs change.
@@ -147,7 +176,9 @@ export function App() {
     <main className="app">
       <h1 className="app-title">Trains accessibles (PMR)</h1>
 
-      {from !== to && <SyncStatus state={sync} counts={counts} />}
+      {from !== to && (
+        <SyncStatus state={sync} counts={counts} progress={progress} />
+      )}
 
       <InstallHint />
 

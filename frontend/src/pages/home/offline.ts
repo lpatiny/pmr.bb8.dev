@@ -2,6 +2,13 @@ import type { AccessibleTrain } from '../../api.ts';
 import { fetchDayTrains, fetchStations } from '../../api.ts';
 
 import { todayInBrussels, tomorrowInBrussels } from './dates.ts';
+import { loadStoredDay, storeDay, storedDayAge } from './storage.ts';
+
+/**
+ * How long a stored day timetable stays "fresh": within this window it is read
+ * straight from localStorage instead of the network, even when online.
+ */
+export const FRESH_FOR_MS = 10 * 60 * 1000;
 
 /** Outcome of a {@link warmOfflineCache} run. */
 export interface SyncResult {
@@ -25,6 +32,11 @@ export interface WarmOptions {
     date: string;
     trains: AccessibleTrain[];
   };
+  /**
+   * Called as each of the today/tomorrow timetables finishes (success or
+   * failure), so the UI can show progress during the slow first sync.
+   */
+  onProgress?: (done: number, total: number) => void;
 }
 
 /**
@@ -50,23 +62,49 @@ export async function warmOfflineCache(
     return { ok: false, today: 0, tomorrow: 0 };
   }
 
-  const { preloaded } = options;
+  const { preloaded, onProgress } = options;
   const today = todayInBrussels();
   const tomorrow = tomorrowInBrussels();
+
+  const total = 4;
+  let done = 0;
 
   const load = (
     fromId: string,
     toId: string,
     date: string,
   ): Promise<AccessibleTrain[]> => {
-    if (
+    const reused =
       preloaded?.from === fromId &&
       preloaded.to === toId &&
       preloaded.date === date
-    ) {
-      return Promise.resolve(preloaded.trains);
+        ? preloaded.trains
+        : null;
+
+    const age = storedDayAge(fromId, toId, date);
+    const stored = age !== null && age < FRESH_FOR_MS;
+
+    let source: Promise<AccessibleTrain[]>;
+    if (reused) {
+      // The on-screen day was just refreshed: persist and keep it.
+      storeDay(fromId, toId, date, reused);
+      source = Promise.resolve(reused);
+    } else if (stored) {
+      // Still fresh in localStorage: use it as-is, no network, no re-store.
+      source = Promise.resolve(loadStoredDay(fromId, toId, date) ?? []);
+    } else {
+      source = fetchDayTrains({ from: fromId, to: toId, date }).then(
+        (trains) => {
+          storeDay(fromId, toId, date, trains);
+          return trains;
+        },
+      );
     }
-    return fetchDayTrains({ from: fromId, to: toId, date });
+
+    return source.finally(() => {
+      done += 1;
+      onProgress?.(done, total);
+    });
   };
 
   const results = await Promise.allSettled([
