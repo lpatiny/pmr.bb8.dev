@@ -2,7 +2,7 @@
 # cp .env.example .env   # uncomment: COMPOSE_FILE=compose.traefik.yaml
 # docker compose up -d
 services:
-  oostende-bruges:
+  pmr.bb8.dev:
     image: ghcr.io/lpatiny/pmr.bb8.dev:latest
     build: .
     env_file: .env
@@ -11,10 +11,10 @@ services:
       - traefik
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.oostende-bruges.rule=Host(`pmr.bb8.dev`)'
-      - 'traefik.http.routers.oostende-bruges.entrypoints=websecure'
-      - 'traefik.http.routers.oostende-bruges.tls.certresolver=letsencrypt'
-      - 'traefik.http.services.oostende-bruges.loadbalancer.server.port=${PORT:-3000}'
+      - 'traefik.http.routers.pmr-bb8-dev.rule=Host(`pmr.bb8.dev`)'
+      - 'traefik.http.routers.pmr-bb8-dev.entrypoints=websecure'
+      - 'traefik.http.routers.pmr-bb8-dev.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.pmr-bb8-dev.loadbalancer.server.port=${PORT:-3000}'
     init: true
     read_only: true
     security_opt:

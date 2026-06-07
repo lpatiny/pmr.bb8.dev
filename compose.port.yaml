@@ -1,5 +1,5 @@
 services:
-  oostende-bruges:
+  pmr.bb8.dev:
     image: ghcr.io/lpatiny/pmr.bb8.dev:latest
     build: .
     env_file: .env

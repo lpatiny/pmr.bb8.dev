@@ -1,4 +1,4 @@
-# oostende-bruges
+# pmr.bb8.dev
 
 Application web très simple, en français, qui affiche **uniquement les trains
 accessibles aux personnes à mobilité réduite (PMR) et aux vélos** entre

@@ -1,5 +1,5 @@
 {
-  "name": "oostende-bruges-backend",
+  "name": "pmr.bb8.dev-backend",
   "version": "0.0.0",
   "description": "Fastify proxy that returns only PMR/bike-accessible trains between Oostende and Bruges",
   "type": "module",
