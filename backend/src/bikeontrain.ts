@@ -48,6 +48,9 @@ const DEFAULT_LIMIT = 10;
 /** Safety cap on upstream requests for a single call. */
 const MAX_PAGES = 12;
 
+/** Higher page cap for a whole-day fetch (bounded by the day's end anyway). */
+const DAY_MAX_PAGES = 24;
+
 /** How far back to look when collecting earlier trains, in milliseconds. */
 const LOOKBACK_MS = 6 * 60 * 60 * 1000;
 
@@ -120,26 +123,57 @@ export async function getAccessibleTrains(
 }
 
 /**
+ * Fetch every accessible direct train for a whole day, from midnight to
+ * midnight (Belgian local time). Used to pre-load a full timetable that the
+ * client can page through offline, without further requests.
+ * @param from - The origin station.
+ * @param to - The destination station.
+ * @param date - The travel date in `YYYY-MM-DD` (Belgian local time).
+ * @returns Every green (PMR/bike-accessible) direct train of that day.
+ */
+export async function getDayTrains(
+  from: Station,
+  to: Station,
+  date: string,
+): Promise<AccessibleTrain[]> {
+  const trains = await collectForward(
+    from,
+    to,
+    { date, hour: '00', minute: '00' },
+    { untilDate: date, maxPages: DAY_MAX_PAGES },
+  );
+  return trains.filter(
+    (train) => toSearchWindow(train.departureTimestamp).date === date,
+  );
+}
+
+/**
  * Page forward from a window, accumulating accessible trains until the limit
  * is reached, the upper bound is passed, or the window stops advancing.
  * @param from - The origin station.
  * @param to - The destination station.
  * @param startWindow - The first window (undefined means "now").
- * @param bounds - Optional `limit` of trains and `until` timestamp upper bound.
+ * @param bounds - Optional `limit` of trains, `until` timestamp upper bound,
+ *   `untilDate` (stop once the window passes this `YYYY-MM-DD`) and `maxPages`.
  * @returns The collected trains, sorted by departure time.
  */
 async function collectForward(
   from: Station,
   to: Station,
   startWindow: SearchWindow | undefined,
-  bounds: { limit?: number; until?: number },
+  bounds: {
+    limit?: number;
+    until?: number;
+    untilDate?: string;
+    maxPages?: number;
+  },
 ): Promise<AccessibleTrain[]> {
-  const { limit, until } = bounds;
+  const { limit, until, untilDate, maxPages = MAX_PAGES } = bounds;
   const collected = new Map<string, AccessibleTrain>();
   let window = startWindow;
   let previousLastTimestamp = Number.NEGATIVE_INFINITY;
 
-  for (let page = 0; page < MAX_PAGES; page++) {
+  for (let page = 0; page < maxPages; page++) {
     if (limit !== undefined && collected.size >= limit) break;
 
     // eslint-disable-next-line no-await-in-loop -- sequential pagination of a remote API
@@ -152,6 +186,13 @@ async function collectForward(
     // Stop once the window stops advancing, otherwise we would loop forever.
     if (lastTimestamp === null || lastTimestamp <= previousLastTimestamp) break;
     if (until !== undefined && lastTimestamp >= until) break;
+    // Stop once we have paged into the day after the requested one.
+    if (
+      untilDate !== undefined &&
+      toSearchWindow(lastTimestamp).date > untilDate
+    ) {
+      break;
+    }
     previousLastTimestamp = lastTimestamp;
     window = toSearchWindow(lastTimestamp + 60_000);
   }

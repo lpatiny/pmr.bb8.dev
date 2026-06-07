@@ -54,6 +54,48 @@ test('GET /api/v1/trains rejects an unknown station', async () => {
   await app.close();
 });
 
+test('GET /api/v1/trains?full=true returns the whole requested day', async () => {
+  const fetchMock = vi.fn<(url: string | URL | Request) => Promise<Response>>(
+    () => Promise.resolve(new Response(fixture, { status: 200 })),
+  );
+  vi.stubGlobal('fetch', fetchMock);
+
+  const app = await buildApp();
+  const response = await app.inject({
+    method: 'GET',
+    url: '/api/v1/trains?from=8891702&to=8891009&date=2026-06-07&full=true',
+  });
+
+  expect(response.statusCode).toBe(200);
+  const body = response.json();
+  expect(body.date).toBe('2026-06-07');
+  expect(
+    body.trains.map((train: { trainNumber: string }) => train.trainNumber),
+  ).toStrictEqual(['1808', '508', '1809']);
+
+  // The whole-day search must start at midnight, not "now".
+  const url = fetchMock.mock.calls[0]?.[0] as string;
+  expect(url).toContain('date=2026-06-07');
+  expect(url).toContain('hour=00');
+
+  await app.close();
+});
+
+test('GET /api/v1/trains rejects full without a date', async () => {
+  const app = await buildApp();
+  const response = await app.inject({
+    method: 'GET',
+    url: '/api/v1/trains?from=8891702&to=8891009&full=true',
+  });
+
+  expect(response.statusCode).toBe(400);
+  expect(response.json()).toStrictEqual({
+    error: 'Le paramètre « full » requiert une date.',
+  });
+
+  await app.close();
+});
+
 test('GET /api/v1/trains rejects identical from and to', async () => {
   const app = await buildApp();
   const response = await app.inject({

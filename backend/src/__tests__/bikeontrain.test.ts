@@ -3,7 +3,11 @@ import { join } from 'node:path';
 
 import { afterEach, expect, test, vi } from 'vitest';
 
-import { getAccessibleTrains, parseAccessibleTrains } from '../bikeontrain.ts';
+import {
+  getAccessibleTrains,
+  getDayTrains,
+  parseAccessibleTrains,
+} from '../bikeontrain.ts';
 
 const raw = JSON.parse(
   readFileSync(join(import.meta.dirname, 'data/oostende-bruges.json'), 'utf8'),
@@ -188,4 +192,33 @@ test('after mode starts the search after the given timestamp', async () => {
   const url = fetchMock.mock.calls[0]?.[0] as string;
   expect(url).toContain('arriveBy=false');
   expect(url).toContain('date=');
+});
+
+// A UTC timestamp on 2026-06-07. Europe/Brussels is UTC+2 in June, so a UTC
+// hour h maps to local h+2.
+function june7Utc(hour: number, minute = 0) {
+  return Date.UTC(2026, 5, 7, hour, minute);
+}
+
+test('getDayTrains collects a full day and stops at the next midnight', async () => {
+  const pages = [
+    greenPage([1, 2], [june7Utc(6, 0), june7Utc(6, 30)]), // 08:00 / 08:30 local
+    greenPage([3, 4], [june7Utc(20, 0), june7Utc(20, 30)]), // 22:00 / 22:30
+    greenPage([5, 6], [june7Utc(22, 30), june7Utc(23, 0)]), // next day local
+  ];
+  let page = 0;
+  const fetchMock = vi.fn(() =>
+    Promise.resolve(pages[Math.min(page++, pages.length - 1)]),
+  );
+  vi.stubGlobal('fetch', fetchMock);
+
+  const trains = await getDayTrains(FROM, TO, '2026-06-07');
+
+  // Trains 5 and 6 fall on 2026-06-08 and must be dropped.
+  expect(trains.map((train) => train.trainNumber)).toStrictEqual([
+    '1',
+    '2',
+    '3',
+    '4',
+  ]);
 });

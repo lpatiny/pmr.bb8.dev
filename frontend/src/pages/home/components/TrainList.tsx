@@ -5,7 +5,8 @@ import { TrainCard } from './TrainCard.tsx';
 interface TrainListProps {
   status: 'loading' | 'ready' | 'error';
   trains: AccessibleTrain[];
-  extending: boolean;
+  canEarlier: boolean;
+  canLater: boolean;
   onRetry: () => void;
   onEarlier: () => void;
   onLater: () => void;
@@ -13,11 +14,12 @@ interface TrainListProps {
 
 /**
  * Render the list of accessible trains, with loading / error / empty states
- * and "earlier" / "later" buttons to extend the list.
- * @param props - The status, the trains, the busy flag and the handlers.
+ * and "earlier" / "later" buttons that page through the loaded day (no network).
+ * @param props - The status, the visible trains, the paging flags and handlers.
  */
 export function TrainList(props: TrainListProps) {
-  const { status, trains, extending, onRetry, onEarlier, onLater } = props;
+  const { status, trains, canEarlier, canLater, onRetry, onEarlier, onLater } =
+    props;
 
   if (status === 'loading') {
     return <p className="state-message">Recherche des trains…</p>;
@@ -44,14 +46,11 @@ export function TrainList(props: TrainListProps) {
 
   return (
     <div>
-      <button
-        type="button"
-        className="more-button"
-        onClick={onEarlier}
-        disabled={extending}
-      >
-        ↑ Trains plus tôt
-      </button>
+      {canEarlier && (
+        <button type="button" className="more-button" onClick={onEarlier}>
+          ↑ Trains plus tôt
+        </button>
+      )}
 
       <ul className="train-list">
         {trains.map((train) => (
@@ -62,14 +61,11 @@ export function TrainList(props: TrainListProps) {
         ))}
       </ul>
 
-      <button
-        type="button"
-        className="more-button"
-        onClick={onLater}
-        disabled={extending}
-      >
-        ↓ Trains plus tard
-      </button>
+      {canLater && (
+        <button type="button" className="more-button" onClick={onLater}>
+          ↓ Trains plus tard
+        </button>
+      )}
     </div>
   );
 }

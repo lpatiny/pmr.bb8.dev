@@ -1,6 +1,6 @@
 import { Type } from '@sinclair/typebox';
 
-import { getAccessibleTrains } from '../bikeontrain.ts';
+import { getAccessibleTrains, getDayTrains } from '../bikeontrain.ts';
 import { getStation } from '../stations.ts';
 import type { FastifyTyped } from '../types.ts';
 
@@ -50,6 +50,12 @@ export default async function trainRoutes(fastify: FastifyTyped) {
               description: 'Return trains departing before this timestamp (ms)',
             }),
           ),
+          full: Type.Optional(
+            Type.Boolean({
+              description:
+                'Return the whole day (requires date); for offline caching',
+            }),
+          ),
         }),
         response: {
           200: Type.Object({
@@ -64,7 +70,7 @@ export default async function trainRoutes(fastify: FastifyTyped) {
       },
     },
     async (request, reply) => {
-      const { from, to, date, hour, after, before } = request.query;
+      const { from, to, date, hour, after, before, full } = request.query;
 
       const fromStation = getStation(from);
       const toStation = getStation(to);
@@ -76,16 +82,24 @@ export default async function trainRoutes(fastify: FastifyTyped) {
           .code(400)
           .send({ error: 'Choisissez deux gares différentes.' });
       }
+      if (full && !date) {
+        return reply
+          .code(400)
+          .send({ error: 'Le paramètre « full » requiert une date.' });
+      }
 
       try {
-        const trains = await getAccessibleTrains({
-          from: fromStation,
-          to: toStation,
-          date,
-          hour,
-          after,
-          before,
-        });
+        const trains =
+          full && date
+            ? await getDayTrains(fromStation, toStation, date)
+            : await getAccessibleTrains({
+                from: fromStation,
+                to: toStation,
+                date,
+                hour,
+                after,
+                before,
+              });
         return { from, to, date: date ?? null, trains };
       } catch (error) {
         request.log.error(error);

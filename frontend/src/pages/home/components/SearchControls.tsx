@@ -49,6 +49,9 @@ export function SearchControls(props: SearchControlsProps) {
   const [showCustom, setShowCustom] = useState(false);
   const customActive = showCustom || (!isToday && !isTomorrow);
 
+  const [showHourGrid, setShowHourGrid] = useState(false);
+  const hourGridActive = showHourGrid || hour !== '';
+
   return (
     <div className="controls">
       <div className="controls-stations">
@@ -120,22 +123,40 @@ export function SearchControls(props: SearchControlsProps) {
       </div>
 
       <div className="field">
-        <label className="field-label" htmlFor="hour">
-          Heure de départ
-        </label>
-        <select
-          id="hour"
-          className="field-input"
-          value={hour}
-          onChange={(event) => onHourChange(event.target.value)}
-        >
-          <option value="">Dès maintenant</option>
-          {HOURS.map((value) => (
-            <option key={value} value={value}>
-              {value} h
-            </option>
-          ))}
-        </select>
+        <span className="field-label">Heure de départ</span>
+        <div className="choice-row choice-row-2">
+          <button
+            type="button"
+            className={`choice ${!hourGridActive ? 'choice-active' : ''}`}
+            onClick={() => {
+              setShowHourGrid(false);
+              onHourChange('');
+            }}
+          >
+            Dès que possible
+          </button>
+          <button
+            type="button"
+            className={`choice ${hourGridActive ? 'choice-active' : ''}`}
+            onClick={() => setShowHourGrid(true)}
+          >
+            Choisir l’heure
+          </button>
+        </div>
+        {hourGridActive ? (
+          <div className="hour-grid">
+            {HOURS.map((value) => (
+              <button
+                key={value}
+                type="button"
+                className={`choice ${hour === value ? 'choice-active' : ''}`}
+                onClick={() => onHourChange(value)}
+              >
+                {value} h
+              </button>
+            ))}
+          </div>
+        ) : null}
       </div>
     </div>
   );

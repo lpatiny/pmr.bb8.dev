@@ -34,35 +34,32 @@ export async function fetchStations(): Promise<Station[]> {
   return (await response.json()) as Station[];
 }
 
-/** Parameters for {@link fetchAccessibleTrains}. */
-export interface AccessibleTrainsQuery {
+/** Parameters for {@link fetchDayTrains}. */
+export interface DayTrainsQuery {
   /** Origin station id. */
   from: string;
   /** Destination station id. */
   to: string;
   /** Travel date `YYYY-MM-DD`. */
-  date?: string;
-  /** Departure hour `00`–`23`; empty means "from now". */
-  hour?: string;
-  /** Return trains departing after this timestamp (ms) — for "later". */
-  after?: number;
-  /** Return trains departing before this timestamp (ms) — for "earlier". */
-  before?: number;
+  date: string;
 }
 
 /**
- * Fetch accessible trains between two stations for the given search window.
- * @param params - The origin, destination and optional date/hour/after/before.
- * @returns The accessible direct trains, soonest first.
+ * Fetch every accessible direct train for a whole day between two stations.
+ * The full day is returned so the client can page through it offline without
+ * any further request.
+ * @param params - The origin, destination and travel date.
+ * @returns Every accessible direct train of that day, soonest first.
  */
-export async function fetchAccessibleTrains(
-  params: AccessibleTrainsQuery,
+export async function fetchDayTrains(
+  params: DayTrainsQuery,
 ): Promise<AccessibleTrain[]> {
-  const query = new URLSearchParams({ from: params.from, to: params.to });
-  if (params.date) query.set('date', params.date);
-  if (params.hour) query.set('hour', params.hour);
-  if (params.after !== undefined) query.set('after', String(params.after));
-  if (params.before !== undefined) query.set('before', String(params.before));
+  const query = new URLSearchParams({
+    from: params.from,
+    to: params.to,
+    date: params.date,
+    full: 'true',
+  });
 
   const response = await fetch(`/api/v1/trains?${query.toString()}`);
   if (!response.ok) {

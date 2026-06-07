@@ -48,6 +48,7 @@ body {
 /* ── Sync status ─────────────────────────────────────────────── */
 .sync-status {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
@@ -61,6 +62,10 @@ body {
   height: 0.85rem;
   border-radius: 50%;
   background: var(--muted);
+}
+
+.sync-counts {
+  font-size: 0.95rem;
 }
 
 .sync-synced .sync-dot {
@@ -192,6 +197,23 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
+}
+
+.choice-row-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.hour-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.hour-grid .choice {
+  min-height: 3rem;
+  font-size: 1.1rem;
+  padding: 0;
 }
 
 .choice {
