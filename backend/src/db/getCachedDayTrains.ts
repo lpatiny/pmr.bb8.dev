@@ -8,6 +8,13 @@ import type { DB, DayTrainsRow } from './getDB.ts';
 /** Default freshness window for a today/future day, in ms (10 minutes). */
 const DEFAULT_TTL_MS = 10 * 60 * 1000;
 
+/**
+ * Freshness window for an empty result, in ms (30 seconds). An empty list is
+ * usually a transient upstream blip rather than a real "no trains today", so it
+ * is kept only briefly — even for past days — and the next request retries.
+ */
+const EMPTY_TTL_MS = 30 * 1000;
+
 /** Fetches a whole day of accessible trains from the upstream service. */
 export type DayTrainsFetcher = (
   from: Station,
@@ -65,7 +72,9 @@ export async function getCachedDayTrains(
     force = false,
   } = options;
 
-  const cached = force ? null : readFresh(db, from.id, to.id, date, ttlMs, now());
+  const cached = force
+    ? null
+    : readFresh(db, from.id, to.id, date, ttlMs, now());
   if (cached) return cached;
 
   const key = `${from.id}|${to.id}|${date}`;
@@ -104,8 +113,12 @@ function readFresh(
     | DayTrainsRow
     | undefined;
   if (!row) return null;
+  const trains = JSON.parse(row.trains) as AccessibleTrain[];
+  if (trains.length === 0) {
+    return now - row.fetchedAt < EMPTY_TTL_MS ? trains : null;
+  }
   if (!isFresh(date, row.fetchedAt, ttlMs, now)) return null;
-  return JSON.parse(row.trains) as AccessibleTrain[];
+  return trains;
 }
 
 /**

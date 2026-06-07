@@ -95,11 +95,13 @@ export function storeDay(
 /**
  * Whether a stored day timetable was refreshed today (Belgian time). The app
  * syncs once per day: a same-day entry is used as-is, even online; an older one
- * is considered stale and refreshed.
+ * is considered stale and refreshed. An empty day is never considered fresh —
+ * it is usually a transient upstream blip, so the next load retries it instead
+ * of showing zero trains all day.
  * @param from - Origin station id.
  * @param to - Destination station id.
  * @param date - Travel date `YYYY-MM-DD`.
- * @returns `true` when stored and last refreshed today.
+ * @returns `true` when stored non-empty and last refreshed today.
  */
 export function isStoredDayFresh(
   from: string,
@@ -107,7 +109,8 @@ export function isStoredDayFresh(
   date: string,
 ): boolean {
   const entry = readStore()[keyFor(from, to, date)];
-  return entry ? dateInBrussels(entry.savedAt) === todayInBrussels() : false;
+  if (!entry || entry.trains.length === 0) return false;
+  return dateInBrussels(entry.savedAt) === todayInBrussels();
 }
 
 function keyFor(from: string, to: string, date: string): string {

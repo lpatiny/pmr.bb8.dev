@@ -22,7 +22,9 @@ export function TrainCard(props: TrainCardProps) {
   const departureDelayed = !train.isCancelled && train.departureDelay > 0;
   const arrivalDelayed = !train.isCancelled && train.arrivalDelay > 0;
   const realDeparture = departureDelayed
-    ? timeInBrussels(train.departureTimestamp + train.departureDelay * MINUTE_MS)
+    ? timeInBrussels(
+        train.departureTimestamp + train.departureDelay * MINUTE_MS,
+      )
     : train.departureTime;
   const realArrival = arrivalDelayed
     ? timeInBrussels(
@@ -32,7 +34,9 @@ export function TrainCard(props: TrainCardProps) {
     : train.arrivalTime;
 
   return (
-    <li className={`train-card ${train.isCancelled ? 'train-card-cancelled' : ''}`}>
+    <li
+      className={`train-card ${train.isCancelled ? 'train-card-cancelled' : ''}`}
+    >
       <div className="train-times">
         <div className="train-time">
           {departureDelayed ? (

@@ -31,6 +31,12 @@ export interface WarmOptions {
    * show the sync progressing.
    */
   onProgress?: (done: number, total: number) => void;
+  /**
+   * Bypass the once-a-day freshness gate and pull every combo live (used by the
+   * manual refresh action, so tomorrow and the reverse direction refresh too).
+   * @default false
+   */
+  force?: boolean;
 }
 
 /**
@@ -57,7 +63,7 @@ export async function warmOfflineCache(
     return { ok: false, today: 0, tomorrow: 0 };
   }
 
-  const { preloaded, onProgress } = options;
+  const { preloaded, onProgress, force = false } = options;
   const today = todayInBrussels();
   const tomorrow = tomorrowInBrussels();
 
@@ -79,7 +85,7 @@ export async function warmOfflineCache(
   for (const combo of combos) {
     try {
       // eslint-disable-next-line no-await-in-loop -- sequential so the progress steps are visible
-      trainsByCombo.push(await loadDay(combo, preloaded));
+      trainsByCombo.push(await loadDay(combo, preloaded, force));
     } catch {
       ok = false;
       trainsByCombo.push([]);
@@ -102,11 +108,13 @@ export async function warmOfflineCache(
  * a same-day localStorage entry, then the network.
  * @param combo - The direction and date to load.
  * @param preloaded - The combo already loaded by the live view, if any.
+ * @param force - When `true`, skip the localStorage gate and fetch live.
  * @returns The day's trains.
  */
 async function loadDay(
   combo: { from: string; to: string; date: string },
   preloaded: WarmOptions['preloaded'],
+  force: boolean,
 ): Promise<AccessibleTrain[]> {
   const { from, to, date } = combo;
 
@@ -119,7 +127,7 @@ async function loadDay(
     return preloaded.trains;
   }
 
-  if (isStoredDayFresh(from, to, date)) {
+  if (!force && isStoredDayFresh(from, to, date)) {
     return loadStoredDay(from, to, date) ?? [];
   }
 
@@ -130,7 +138,7 @@ async function loadDay(
     throw new Error('offline');
   }
 
-  const trains = await fetchDayTrains({ from, to, date });
+  const trains = await fetchDayTrains({ from, to, date, force });
   storeDay(from, to, date, trains);
   return trains;
 }

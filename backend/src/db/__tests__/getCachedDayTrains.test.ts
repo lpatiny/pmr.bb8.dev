@@ -108,6 +108,47 @@ test('never expires a day in the past', async () => {
   db.close();
 });
 
+test('re-fetches an empty result after the short empty TTL, not the full TTL', async () => {
+  const db = await getTempDB();
+  let current = Date.UTC(2026, 5, 7, 10, 0, 0);
+  const today = toSearchWindow(current).date;
+  let calls = 0;
+  const fetcher = vi.fn(async () => {
+    calls += 1;
+    return calls === 1 ? [] : [train(`call-${calls}`)];
+  });
+  const options = { ttlMs: 600_000, fetcher, now: () => current };
+
+  const first = await getCachedDayTrains(db, from, to, today, options);
+  // Still inside the full TTL but past the 30s empty window: must retry.
+  current += 31_000;
+  const second = await getCachedDayTrains(db, from, to, today, options);
+
+  expect(first).toStrictEqual([]);
+  expect(fetcher).toHaveBeenCalledTimes(2);
+  expect(second[0]?.trainNumber).toBe('call-2');
+  db.close();
+});
+
+test('does not keep an empty result for a past day forever', async () => {
+  const db = await getTempDB();
+  let current = Date.UTC(2026, 5, 7, 10, 0, 0);
+  let calls = 0;
+  const fetcher = vi.fn(async () => {
+    calls += 1;
+    return calls === 1 ? [] : [train(`call-${calls}`)];
+  });
+  const options = { ttlMs: 60_000, fetcher, now: () => current };
+
+  await getCachedDayTrains(db, from, to, '2026-06-01', options);
+  current += 31_000;
+  const second = await getCachedDayTrains(db, from, to, '2026-06-01', options);
+
+  expect(fetcher).toHaveBeenCalledTimes(2);
+  expect(second[0]?.trainNumber).toBe('call-2');
+  db.close();
+});
+
 test('coalesces concurrent misses into a single upstream fetch', async () => {
   const db = await getTempDB();
   const current = Date.UTC(2026, 5, 7, 10, 0, 0);

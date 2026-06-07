@@ -117,6 +117,7 @@ export function App() {
       setProgress(null);
       const outcome = await warmOfflineCache(from, to, {
         preloaded,
+        force,
         onProgress: (done, total) => {
           if (!cancelled) setProgress({ done, total });
         },
