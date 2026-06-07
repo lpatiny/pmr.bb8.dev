@@ -83,12 +83,25 @@ export interface AccessibleTrainsOptions {
 export async function getAccessibleTrains(
   options: AccessibleTrainsOptions,
 ): Promise<AccessibleTrain[]> {
-  const { from, to, date, hour, after, before, limit = DEFAULT_LIMIT } = options;
+  const {
+    from,
+    to,
+    date,
+    hour,
+    after,
+    before,
+    limit = DEFAULT_LIMIT,
+  } = options;
 
   if (before !== undefined) {
-    const trains = await collectForward(from, to, toSearchWindow(before - LOOKBACK_MS), {
-      until: before,
-    });
+    const trains = await collectForward(
+      from,
+      to,
+      toSearchWindow(before - LOOKBACK_MS),
+      {
+        until: before,
+      },
+    );
     return trains
       .filter((train) => train.departureTimestamp < before)
       .slice(-limit);
@@ -202,7 +215,11 @@ function initialWindow(date?: string, hour?: string): SearchWindow | undefined {
 
   if (!date) {
     if (paddedHour === undefined) return undefined;
-    return { date: toSearchWindow(Date.now()).date, hour: paddedHour, minute: '00' };
+    return {
+      date: toSearchWindow(Date.now()).date,
+      hour: paddedHour,
+      minute: '00',
+    };
   }
 
   const today = toSearchWindow(Date.now()).date;

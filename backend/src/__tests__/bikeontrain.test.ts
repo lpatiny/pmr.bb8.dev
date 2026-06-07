@@ -177,9 +177,7 @@ test('after mode starts the search after the given timestamp', async () => {
   const after = 1_700_000_000_000;
   const fetchMock = vi.fn<(url: string | URL | Request) => Promise<Response>>(
     () =>
-      Promise.resolve(
-        greenPage([7, 8], [after + 600_000, after + 1_200_000]),
-      ),
+      Promise.resolve(greenPage([7, 8], [after + 600_000, after + 1_200_000])),
   );
   vi.stubGlobal('fetch', fetchMock);
 

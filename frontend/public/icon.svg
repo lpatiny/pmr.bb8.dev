@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Accessible aux personnes à mobilité réduite">
+  <rect width="512" height="512" rx="104" fill="#2e7d32" />
+  <!-- International Symbol of Access (wheelchair), kept inside the maskable safe zone -->
+  <circle cx="232" cy="120" r="42" fill="#ffffff" />
+  <g fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
+    <!-- torso + thigh + shin (the seated figure) -->
+    <path d="M232 178 L232 296 L330 296 L356 392" />
+    <!-- arm reaching to the wheel -->
+    <path d="M232 214 L322 206" />
+  </g>
+  <!-- wheel -->
+  <circle cx="252" cy="316" r="112" fill="none" stroke="#ffffff" stroke-width="26" />
+</svg>

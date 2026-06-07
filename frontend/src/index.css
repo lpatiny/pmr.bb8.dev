@@ -45,6 +45,92 @@ body {
   margin-bottom: 1.25rem;
 }
 
+/* ── Sync status ─────────────────────────────────────────────── */
+.sync-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: -0.75rem 0 1.25rem;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.sync-dot {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.sync-synced .sync-dot {
+  background: var(--green);
+}
+
+.sync-offline .sync-dot {
+  background: #9aa0a6;
+}
+
+.sync-syncing .sync-dot {
+  background: #e0a000;
+  animation: sync-pulse 1s ease-in-out infinite;
+}
+
+@keyframes sync-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* ── Install hint ────────────────────────────────────────────── */
+.install-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.85rem 1rem;
+  background: #e6f4ea;
+  border: 2px solid var(--green);
+  border-radius: 14px;
+  color: var(--green-dark);
+}
+
+.install-text {
+  flex: 1;
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.install-button {
+  flex: 1;
+  min-height: 3.25rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--green);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.install-close {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--green-dark);
+  background: transparent;
+  border: 2px solid var(--green);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 /* ── Search controls ─────────────────────────────────────────── */
 .controls {
   background: var(--card);

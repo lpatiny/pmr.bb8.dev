@@ -2,9 +2,13 @@ import { useEffect, useState } from 'react';
 
 import type { AccessibleTrain, Station } from './api.ts';
 import { fetchAccessibleTrains, fetchStations } from './api.ts';
+import { InstallHint } from './pages/home/components/InstallHint.tsx';
 import { SearchControls } from './pages/home/components/SearchControls.tsx';
+import type { SyncState } from './pages/home/components/SyncStatus.tsx';
+import { SyncStatus } from './pages/home/components/SyncStatus.tsx';
 import { TrainList } from './pages/home/components/TrainList.tsx';
 import { todayInBrussels } from './pages/home/dates.ts';
+import { warmOfflineCache } from './pages/home/offline.ts';
 
 const DEFAULT_FROM = '8891702'; // Ostende
 const DEFAULT_TO = '8891009'; // Bruges
@@ -35,12 +39,55 @@ export function App() {
   );
   const [extending, setExtending] = useState(false);
   const [reloadToken, setReloadToken] = useState(0);
+  const [sync, setSync] = useState<SyncState>('syncing');
 
   useEffect(() => {
     fetchStations()
       .then(setStations)
       .catch(() => setStations([]));
   }, []);
+
+  useEffect(() => {
+    // Cache both directions for today and tomorrow so the timetable stays
+    // consultable offline. Re-warm (and refresh the visible list) on mount, on
+    // reconnection, and every time the app regains focus — so an app pinned to
+    // the home screen always shows up-to-date times when reopened.
+    let cancelled = false;
+
+    function syncData() {
+      if (from === to) return;
+      setSync('syncing');
+      void warmOfflineCache(from, to).then((result) => {
+        if (!cancelled) setSync(result.ok ? 'synced' : 'offline');
+      });
+    }
+    function refresh() {
+      syncData();
+      setReloadToken((token) => token + 1);
+    }
+    syncData();
+
+    function onFocus() {
+      refresh();
+    }
+    function onVisible() {
+      if (document.visibilityState === 'visible') refresh();
+    }
+    function onOffline() {
+      setSync('offline');
+    }
+    window.addEventListener('online', onFocus);
+    window.addEventListener('offline', onOffline);
+    window.addEventListener('focus', onFocus);
+    document.addEventListener('visibilitychange', onVisible);
+    return () => {
+      cancelled = true;
+      window.removeEventListener('online', onFocus);
+      window.removeEventListener('offline', onOffline);
+      window.removeEventListener('focus', onFocus);
+      document.removeEventListener('visibilitychange', onVisible);
+    };
+  }, [from, to]);
 
   useEffect(() => {
     if (from === to) return;
@@ -97,6 +144,10 @@ export function App() {
   return (
     <main className="app">
       <h1 className="app-title">Trains accessibles (PMR)</h1>
+
+      {from !== to && <SyncStatus state={sync} />}
+
+      <InstallHint />
 
       <SearchControls
         stations={stations}

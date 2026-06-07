@@ -28,23 +28,38 @@ Déployée sur **https://pmr.bb8.dev**.
 Le backend sert également le frontend compilé via `@fastify/static` — un seul
 processus Node, pas de nginx.
 
+### Hors ligne (PWA)
+
+Le frontend est une **application web progressive (PWA)** installable sur
+l'écran d'accueil (iOS : _Partager → « Sur l'écran d'accueil »_ ; Android :
+bouton « Installer »). Un _service worker_ met en cache l'application et les
+horaires :
+
+- au démarrage, à chaque retour de focus et au retour de la connexion, les
+  trains des **deux sens**, pour **aujourd'hui et demain**, sont préchargés ;
+- en ligne, les horaires sont toujours rafraîchis depuis le réseau
+  (_network-first_) ; hors ligne, la dernière réponse en cache est affichée ;
+- l'`index.html` et le _service worker_ sont servis en `no-cache`, et les
+  fichiers `assets/*` (au nom empreinté) en `immutable` : une nouvelle version
+  déployée est donc reprise automatiquement, sans cache figé.
+
 ### Points d'accès
 
-| Méthode | Chemin              | Description                                     |
-| ------- | ------------------- | ----------------------------------------------- |
-| `GET`   | `/api/health`       | Vérification de l'état du service               |
-| `GET`   | `/api/v1/stations`  | Liste complète des gares (id, nom, coordonnées) |
-| `GET`   | `/api/v1/trains`    | Trains accessibles (voir paramètres ci-dessous) |
-| `GET`   | `/docs`             | Documentation Swagger de l'API                  |
+| Méthode | Chemin             | Description                                     |
+| ------- | ------------------ | ----------------------------------------------- |
+| `GET`   | `/api/health`      | Vérification de l'état du service               |
+| `GET`   | `/api/v1/stations` | Liste complète des gares (id, nom, coordonnées) |
+| `GET`   | `/api/v1/trains`   | Trains accessibles (voir paramètres ci-dessous) |
+| `GET`   | `/docs`            | Documentation Swagger de l'API                  |
 
 Paramètres de `GET /api/v1/trains` :
 
-| Paramètre | Requis | Description                                                |
-| --------- | ------ | --------------------------------------------------------- |
-| `from`    | oui    | Id de la gare de départ                                   |
-| `to`      | oui    | Id de la gare d'arrivée                                   |
-| `date`    | non    | Date de voyage `YYYY-MM-DD` (défaut : aujourd'hui)        |
-| `hour`    | non    | Heure de départ `00`–`23` (défaut : maintenant / minuit) |
+| Paramètre | Requis | Description                                                   |
+| --------- | ------ | ------------------------------------------------------------- |
+| `from`    | oui    | Id de la gare de départ                                       |
+| `to`      | oui    | Id de la gare d'arrivée                                       |
+| `date`    | non    | Date de voyage `YYYY-MM-DD` (défaut : aujourd'hui)            |
+| `hour`    | non    | Heure de départ `00`–`23` (défaut : maintenant / minuit)      |
 | `after`   | non    | Trains partant après ce timestamp (ms) — bouton « plus tard » |
 | `before`  | non    | Trains partant avant ce timestamp (ms) — bouton « plus tôt »  |
 
