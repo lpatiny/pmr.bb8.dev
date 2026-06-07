@@ -31,6 +31,8 @@ export const nl: typeof fr = {
     accessible: '♿ Toegankelijk',
     bikeSpaces: '🚲 {{spaces}} plaatsen',
     duration: '{{minutes}} min',
+    cancelled: '⛔ Afgeschaft',
+    delayed: '+{{minutes}} min',
   },
   list: {
     loading: 'Treinen zoeken…',
@@ -45,6 +47,7 @@ export const nl: typeof fr = {
     synced: 'Dienstregeling up-to-date',
     offline: 'Offline',
     counts: '{{today}} vandaag / {{tomorrow}} morgen',
+    refresh: 'Dienstregeling vernieuwen',
   },
   install: {
     button: 'App installeren',

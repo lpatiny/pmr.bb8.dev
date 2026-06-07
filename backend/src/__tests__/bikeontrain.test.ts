@@ -40,7 +40,90 @@ test('maps every field of the first accessible train', () => {
     bikeSpaces: 14,
     hasPrmSection: true,
     hasPrmToilets: true,
+    isCancelled: false,
+    departureDelay: 0,
+    arrivalDelay: 0,
+    realTime: true,
   });
+});
+
+test('keeps cancelled green trains and flags them', () => {
+  const page = {
+    hacon: {
+      itineraries: [
+        {
+          itineraryScore: 4,
+          isCancelled: true,
+          duration: 780,
+          legs: [
+            {
+              transitLeg: true,
+              route: 'IC',
+              tripShortName: '999',
+              headsign: 'Test',
+              startTime: 1_700_000_000_000,
+              realTime: true,
+              from: { departureHr: '08:00', platformCode: '1' },
+              to: { arrivalHr: '08:13', platformCode: '2' },
+              accessibilityData: {
+                trainAccessibility: {
+                  space: 10,
+                  hasPrmSection: true,
+                  hasPrmToilets: true,
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+  };
+
+  const [train] = parseAccessibleTrains(page);
+
+  expect(train?.trainNumber).toBe('999');
+  expect(train?.isCancelled).toBe(true);
+});
+
+test('reports real-time delays in minutes (rounded from seconds)', () => {
+  const page = {
+    hacon: {
+      itineraries: [
+        {
+          itineraryScore: 4,
+          isCancelled: false,
+          duration: 780,
+          legs: [
+            {
+              transitLeg: true,
+              route: 'IC',
+              tripShortName: '777',
+              headsign: 'Test',
+              startTime: 1_700_000_000_000,
+              realTime: true,
+              departureDelay: 300, // 5 min
+              arrivalDelay: 150, // 2.5 min → 3
+              from: { departureHr: '08:00', platformCode: '1' },
+              to: { arrivalHr: '08:13', platformCode: '2' },
+              accessibilityData: {
+                trainAccessibility: {
+                  space: 10,
+                  hasPrmSection: true,
+                  hasPrmToilets: true,
+                },
+              },
+            },
+          ],
+        },
+      ],
+    },
+  };
+
+  const [train] = parseAccessibleTrains(page);
+
+  expect(train?.departureDelay).toBe(5);
+  expect(train?.arrivalDelay).toBe(3);
+  expect(train?.realTime).toBe(true);
 });
 
 test('every returned train is fully accessible', () => {

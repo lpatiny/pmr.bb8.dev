@@ -29,6 +29,8 @@ export const fr = {
     accessible: '♿ Accessible',
     bikeSpaces: '🚲 {{spaces}} places',
     duration: '{{minutes}} min',
+    cancelled: '⛔ Supprimé',
+    delayed: '+{{minutes}} min',
   },
   list: {
     loading: 'Recherche des trains…',
@@ -43,6 +45,7 @@ export const fr = {
     synced: 'Horaires à jour',
     offline: 'Hors ligne',
     counts: '{{today}} aujourd’hui / {{tomorrow}} demain',
+    refresh: 'Actualiser les horaires',
   },
   install: {
     button: 'Installer l’application',

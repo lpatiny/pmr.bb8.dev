@@ -19,7 +19,7 @@ interface SyncStatusProps {
  * @param props - The sync state, the today/tomorrow counts and the progress.
  */
 export function SyncStatus(props: SyncStatusProps) {
-  const { state, counts, progress } = props;
+  const { state, counts, progress, onRefresh } = props;
   const { t } = useTranslation();
   const showBar = state === 'syncing' && progress !== null;
 
@@ -43,6 +43,16 @@ export function SyncStatus(props: SyncStatusProps) {
             })}
           </span>
         )}
+        <button
+          type="button"
+          className="sync-refresh"
+          onClick={onRefresh}
+          disabled={state === 'syncing'}
+          aria-label={t('sync.refresh')}
+          title={t('sync.refresh')}
+        >
+          ↻
+        </button>
       </span>
       {showBar && (
         <span className="sync-bar">

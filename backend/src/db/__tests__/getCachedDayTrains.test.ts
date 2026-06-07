@@ -23,6 +23,10 @@ function train(trainNumber: string): AccessibleTrain {
     bikeSpaces: 8,
     hasPrmSection: true,
     hasPrmToilets: true,
+    isCancelled: false,
+    departureDelay: 0,
+    arrivalDelay: 0,
+    realTime: true,
   };
 }
 
@@ -64,6 +68,28 @@ test('re-fetches a today entry once the TTL expires', async () => {
 
   expect(fetcher).toHaveBeenCalledTimes(2);
   expect(second[0]?.trainNumber).toBe('call-2');
+  db.close();
+});
+
+test('force bypasses a fresh entry, re-fetches and updates the stored day', async () => {
+  const db = await getTempDB();
+  const current = Date.UTC(2026, 5, 7, 10, 0, 0);
+  const today = toSearchWindow(current).date;
+  const fetcher = countingFetcher();
+  const options = { ttlMs: 60_000, fetcher, now: () => current };
+
+  const first = await getCachedDayTrains(db, from, to, today, options);
+  const forced = await getCachedDayTrains(db, from, to, today, {
+    ...options,
+    force: true,
+  });
+  // A subsequent normal read must serve the refreshed entry from the cache.
+  const cached = await getCachedDayTrains(db, from, to, today, options);
+
+  expect(fetcher).toHaveBeenCalledTimes(2);
+  expect(first[0]?.trainNumber).toBe('call-1');
+  expect(forced[0]?.trainNumber).toBe('call-2');
+  expect(cached[0]?.trainNumber).toBe('call-2');
   db.close();
 });
 

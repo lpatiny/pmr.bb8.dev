@@ -14,6 +14,8 @@
   --bg: #f0f2f5;
   --card: #ffffff;
   --border: #d4dadf;
+  --danger: #c0303a;
+  --danger-bg: #fbe6e7;
 }
 
 html {
@@ -106,6 +108,37 @@ body {
 
 .sync-counts {
   font-size: 0.95rem;
+}
+
+.sync-refresh {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--green-dark);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.sync-refresh:hover:not(:disabled) {
+  background: #e6f4ea;
+}
+
+.sync-refresh:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.sync-syncing .sync-refresh {
+  animation: sync-spin 1s linear infinite;
+}
+
+@keyframes sync-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .sync-bar {
@@ -403,9 +436,42 @@ body {
   background: #e3f0f8;
 }
 
+.badge-cancelled {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
 .train-duration {
   font-size: 1.15rem;
   color: var(--muted);
+}
+
+/* ── Real-time (delays / cancellations) ──────────────────────── */
+.train-time-scheduled {
+  font-size: 1.1rem;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.train-time-late {
+  color: var(--danger);
+}
+
+.train-time-cancelled {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.train-delay {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--danger);
+  margin-top: 0.15rem;
+}
+
+.train-card-cancelled {
+  border-left-color: var(--danger);
+  background: #fff7f7;
 }
 
 /* ── States ──────────────────────────────────────────────────── */
