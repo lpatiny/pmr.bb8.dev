@@ -1,5 +1,5 @@
 # Traefik deployment — requires an external Docker network named "traefik".
-# cp .env.docker.example .env   # uncomment: COMPOSE_FILE=compose.traefik.yaml
+# cp .env.example .env   # uncomment: COMPOSE_FILE=compose.traefik.yaml
 # docker compose up -d
 services:
   oostende-bruges:

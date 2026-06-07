@@ -53,7 +53,7 @@ npm test           # types + eslint + prettier + tests backend
 Trois modes sont fournis. Choisir un fichier compose dans `.env` :
 
 ```sh
-cp .env.docker.example .env
+cp .env.example .env
 # décommenter une ligne COMPOSE_FILE=… dans .env
 docker compose up -d
 ```

@@ -1,6 +1,6 @@
 # Cloudflare Tunnel deployment — no port published on the host.
 # Recommended for pmr.bb8.dev.
-# cp .env.docker.example .env   # set TUNNEL_TOKEN, uncomment: COMPOSE_FILE=compose.cloudflared.yaml
+# cp .env.example .env   # set TUNNEL_TOKEN, uncomment: COMPOSE_FILE=compose.cloudflared.yaml
 # docker compose up -d
 services:
   oostende-bruges:
