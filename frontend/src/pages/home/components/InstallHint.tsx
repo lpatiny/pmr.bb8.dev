@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 
 const DISMISS_KEY = 'pmr-install-hint-dismissed';
 
@@ -30,6 +31,7 @@ function isIos(): boolean {
  * d'accueil" steps. Hidden once installed or dismissed.
  */
 export function InstallHint() {
+  const { t } = useTranslation();
   const [dismissed, setDismissed] = useState(
     () => localStorage.getItem(DISMISS_KEY) === '1',
   );
@@ -62,20 +64,24 @@ export function InstallHint() {
           className="install-button"
           onClick={() => void installPrompt.prompt()}
         >
-          Installer l’application
+          {t('install.button')}
         </button>
       ) : (
         <p className="install-text">
-          Pour garder l’application sur votre téléphone : appuyez sur{' '}
-          <strong>Partager</strong>
-          <span aria-hidden="true"> ⎋ </span> puis{' '}
-          <strong>« Sur l’écran d’accueil »</strong>.
+          <Trans
+            i18nKey="install.iosHint"
+            components={{
+              1: <strong />,
+              2: <span aria-hidden="true" />,
+              3: <strong />,
+            }}
+          />
         </p>
       )}
       <button
         type="button"
         className="install-close"
-        aria-label="Fermer"
+        aria-label={t('install.close')}
         onClick={dismiss}
       >
         ×

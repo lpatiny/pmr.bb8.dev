@@ -64,7 +64,11 @@ export default defineConfig({
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-trains-v2',
-              networkTimeoutSeconds: 5,
+              // A whole-day fetch pages the SNCB endpoint and can take ~10-15s;
+              // the timeout must stay well above that or the first load aborts
+              // and returns truncated data. Offline still fails fast (network
+              // error) and falls back to the cache.
+              networkTimeoutSeconds: 30,
               expiration: { maxEntries: 50, maxAgeSeconds: 2 * 24 * 60 * 60 },
               cacheableResponse: { statuses: [200] },
             },

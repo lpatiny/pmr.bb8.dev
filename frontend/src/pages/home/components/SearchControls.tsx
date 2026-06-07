@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import type { Station } from '../../../api.ts';
 import { todayInBrussels, tomorrowInBrussels } from '../dates.ts';
@@ -28,6 +29,7 @@ const HOURS = Array.from({ length: 24 }, (_, index) =>
  * @param props - The stations, the current selection and the change handlers.
  */
 export function SearchControls(props: SearchControlsProps) {
+  const { t } = useTranslation();
   const {
     stations,
     from,
@@ -52,12 +54,21 @@ export function SearchControls(props: SearchControlsProps) {
   const [showHourGrid, setShowHourGrid] = useState(false);
   const hourGridActive = showHourGrid || hour !== '';
 
+  const [swapFlash, setSwapFlash] = useState(0);
+  function handleSwap() {
+    onSwap();
+    setSwapFlash((count) => count + 1);
+  }
+
   return (
     <div className="controls">
-      <div className="controls-stations">
+      <div
+        key={swapFlash}
+        className={`controls-stations ${swapFlash ? 'controls-stations-flash' : ''}`}
+      >
         <StationSelect
           id="from"
-          label="De"
+          label={t('search.from')}
           stations={stations}
           value={from}
           onChange={onFromChange}
@@ -65,15 +76,15 @@ export function SearchControls(props: SearchControlsProps) {
         <button
           type="button"
           className="swap-button"
-          onClick={onSwap}
-          aria-label="Inverser les gares"
-          title="Inverser les gares"
+          onClick={handleSwap}
+          aria-label={t('search.swap')}
+          title={t('search.swap')}
         >
           ⇅
         </button>
         <StationSelect
           id="to"
-          label="Vers"
+          label={t('search.to')}
           stations={stations}
           value={to}
           onChange={onToChange}
@@ -81,7 +92,7 @@ export function SearchControls(props: SearchControlsProps) {
       </div>
 
       <div className="field">
-        <span className="field-label">Date</span>
+        <span className="field-label">{t('search.date')}</span>
         <div className="choice-row">
           <button
             type="button"
@@ -91,7 +102,7 @@ export function SearchControls(props: SearchControlsProps) {
               onDateChange(today);
             }}
           >
-            Aujourd’hui
+            {t('search.today')}
           </button>
           <button
             type="button"
@@ -101,14 +112,14 @@ export function SearchControls(props: SearchControlsProps) {
               onDateChange(tomorrow);
             }}
           >
-            Demain
+            {t('search.tomorrow')}
           </button>
           <button
             type="button"
             className={`choice ${customActive ? 'choice-active' : ''}`}
             onClick={() => setShowCustom(true)}
           >
-            Autre date
+            {t('search.otherDate')}
           </button>
         </div>
         {customActive ? (
@@ -123,7 +134,7 @@ export function SearchControls(props: SearchControlsProps) {
       </div>
 
       <div className="field">
-        <span className="field-label">Heure de départ</span>
+        <span className="field-label">{t('search.departureTime')}</span>
         <div className="choice-row choice-row-2">
           <button
             type="button"
@@ -133,14 +144,14 @@ export function SearchControls(props: SearchControlsProps) {
               onHourChange('');
             }}
           >
-            Dès que possible
+            {t('search.asSoon')}
           </button>
           <button
             type="button"
             className={`choice ${hourGridActive ? 'choice-active' : ''}`}
             onClick={() => setShowHourGrid(true)}
           >
-            Choisir l’heure
+            {t('search.chooseTime')}
           </button>
         </div>
         {hourGridActive ? (
@@ -152,7 +163,7 @@ export function SearchControls(props: SearchControlsProps) {
                 className={`choice ${hour === value ? 'choice-active' : ''}`}
                 onClick={() => onHourChange(value)}
               >
-                {value} h
+                {t('search.hour', { value })}
               </button>
             ))}
           </div>

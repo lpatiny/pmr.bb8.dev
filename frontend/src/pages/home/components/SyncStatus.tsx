@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 /** The synchronisation state of the offline timetable data. */
 export type SyncState = 'syncing' | 'synced' | 'offline';
 
@@ -6,12 +8,6 @@ interface SyncStatusProps {
   counts: { today: number; tomorrow: number } | null;
   progress: { done: number; total: number } | null;
 }
-
-const LABELS: Record<SyncState, string> = {
-  syncing: 'Mise à jour…',
-  synced: 'Horaires à jour',
-  offline: 'Hors ligne',
-};
 
 /**
  * A small dot + label showing whether today's and tomorrow's timetables have
@@ -22,13 +18,14 @@ const LABELS: Record<SyncState, string> = {
  */
 export function SyncStatus(props: SyncStatusProps) {
   const { state, counts, progress } = props;
+  const { t } = useTranslation();
   const showBar = state === 'syncing' && progress !== null;
 
   return (
     <div className={`sync-status sync-${state}`} aria-live="polite">
       <span className="sync-row">
         <span className="sync-dot" aria-hidden="true" />
-        {LABELS[state]}
+        {t(`sync.${state}`)}
         {showBar && (
           <span className="sync-counts">
             {' '}
@@ -38,7 +35,10 @@ export function SyncStatus(props: SyncStatusProps) {
         {state === 'synced' && counts && (
           <span className="sync-counts">
             {' · '}
-            {counts.today} aujourd’hui / {counts.tomorrow} demain
+            {t('sync.counts', {
+              today: counts.today,
+              tomorrow: counts.tomorrow,
+            })}
           </span>
         )}
       </span>

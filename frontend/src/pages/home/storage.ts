@@ -3,6 +3,44 @@ import type { AccessibleTrain } from '../../api.ts';
 import { dateInBrussels, todayInBrussels } from './dates.ts';
 
 const STORAGE_KEY = 'pmr-timetables-v2';
+const LAST_TRIP_KEY = 'pmr-last-trip-v1';
+
+interface LastTrip {
+  from: string;
+  to: string;
+}
+
+/**
+ * Read the last origin/destination the user selected, so the app reopens on the
+ * same trip instead of always defaulting to Ostende → Bruges.
+ * @returns The stored trip, or `null` when nothing is stored.
+ */
+export function loadLastTrip(): LastTrip | null {
+  try {
+    const raw = localStorage.getItem(LAST_TRIP_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as Partial<LastTrip>;
+    if (typeof parsed.from === 'string' && typeof parsed.to === 'string') {
+      return { from: parsed.from, to: parsed.to };
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Persist the last origin/destination the user selected.
+ * @param from - Origin station id.
+ * @param to - Destination station id.
+ */
+export function saveLastTrip(from: string, to: string): void {
+  try {
+    localStorage.setItem(LAST_TRIP_KEY, JSON.stringify({ from, to }));
+  } catch {
+    // Ignore quota errors or private-mode restrictions: this is best-effort.
+  }
+}
 
 interface StoredDay {
   date: string;

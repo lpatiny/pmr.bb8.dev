@@ -1,6 +1,7 @@
 node_modules/
 compose.yaml
 coverage/
+data/
 dist/
 *.log
 .env

@@ -1,6 +1,8 @@
 import { Type } from '@sinclair/typebox';
 
-import { getAccessibleTrains, getDayTrains } from '../bikeontrain.ts';
+import { getAccessibleTrains } from '../bikeontrain.ts';
+import { getCachedDayTrains } from '../db/getCachedDayTrains.ts';
+import { getDB } from '../db/getDB.ts';
 import { getStation } from '../stations.ts';
 import type { FastifyTyped } from '../types.ts';
 
@@ -91,7 +93,12 @@ export default async function trainRoutes(fastify: FastifyTyped) {
       try {
         const trains =
           full && date
-            ? await getDayTrains(fromStation, toStation, date)
+            ? await getCachedDayTrains(
+                await getDB(),
+                fromStation,
+                toStation,
+                date,
+              )
             : await getAccessibleTrains({
                 from: fromStation,
                 to: toStation,

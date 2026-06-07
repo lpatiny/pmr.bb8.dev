@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import type { AccessibleTrain, Station } from './api.ts';
 import { fetchDayTrains, fetchStations } from './api.ts';
+import { LanguageToggle } from './components/shared/LanguageToggle.tsx';
 import { InstallHint } from './pages/home/components/InstallHint.tsx';
 import { SearchControls } from './pages/home/components/SearchControls.tsx';
 import type { SyncState } from './pages/home/components/SyncStatus.tsx';
@@ -12,20 +14,26 @@ import type { WarmOptions } from './pages/home/offline.ts';
 import { warmOfflineCache } from './pages/home/offline.ts';
 import {
   isStoredDayFresh,
+  loadLastTrip,
   loadStoredDay,
+  saveLastTrip,
   storeDay,
 } from './pages/home/storage.ts';
 import { PAGE_SIZE, anchorIndex } from './pages/home/timetable.ts';
 
 const DEFAULT_FROM = '8891702'; // Ostende
 const DEFAULT_TO = '8891009'; // Bruges
+const LAST_TRIP = loadLastTrip();
+const INITIAL_FROM = LAST_TRIP?.from ?? DEFAULT_FROM;
+const INITIAL_TO = LAST_TRIP?.to ?? DEFAULT_TO;
 const INITIAL_DATE = todayInBrussels();
-const INITIAL_STORED = loadStoredDay(DEFAULT_FROM, DEFAULT_TO, INITIAL_DATE);
+const INITIAL_STORED = loadStoredDay(INITIAL_FROM, INITIAL_TO, INITIAL_DATE);
 
 export function App() {
+  const { t, i18n } = useTranslation();
   const [stations, setStations] = useState<Station[]>([]);
-  const [from, setFrom] = useState(DEFAULT_FROM);
-  const [to, setTo] = useState(DEFAULT_TO);
+  const [from, setFrom] = useState(INITIAL_FROM);
+  const [to, setTo] = useState(INITIAL_TO);
   const [date, setDate] = useState(INITIAL_DATE);
   const [hour, setHour] = useState('');
 
@@ -60,6 +68,10 @@ export function App() {
       .then(setStations)
       .catch(() => setStations([]));
   }, []);
+
+  useEffect(() => {
+    document.title = t('app.documentTitle');
+  }, [t, i18n.language]);
 
   useEffect(() => {
     if (from === to) return;
@@ -158,6 +170,8 @@ export function App() {
     setFrom(nextFrom);
     setTo(nextTo);
     setDate(nextDate);
+
+    if (nextFrom !== nextTo) saveLastTrip(nextFrom, nextTo);
   }
 
   // Reset the visible window when the loaded day or the anchor inputs change.
@@ -177,7 +191,10 @@ export function App() {
 
   return (
     <main className="app">
-      <h1 className="app-title">Trains accessibles (PMR)</h1>
+      <header className="app-header">
+        <h1 className="app-title">{t('app.title')}</h1>
+        <LanguageToggle />
+      </header>
 
       {from !== to && (
         <SyncStatus state={sync} counts={counts} progress={progress} />
@@ -199,7 +216,7 @@ export function App() {
       />
 
       {from === to ? (
-        <p className="state-message">Choisissez deux gares différentes.</p>
+        <p className="state-message">{t('app.sameStation')}</p>
       ) : (
         <TrainList
           status={status}

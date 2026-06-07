@@ -28,6 +28,28 @@ Déployée sur **https://pmr.bb8.dev**.
 Le backend sert également le frontend compilé via `@fastify/static` — un seul
 processus Node, pas de nginx.
 
+### Cache partagé (SQLite)
+
+Le frontend ne demande au backend que des **horaires « journée complète »**
+(`full=true`) — identiques pour tous les clients qui consultent la même
+combinaison gare de départ / gare d'arrivée / date. Le backend met ces réponses
+en cache dans une base **SQLite** (`node:sqlite` + migrations Postgrator),
+stockée dans le dossier monté `data/sqlite/db.sqlite`. Le schéma est défini par
+les migrations de `backend/src/db/migrations/` et toutes les requêtes préparées
+sont centralisées dans la classe `DB` (`backend/src/db/getDB.ts`).
+
+- Quand de **nombreux ordinateurs** demandent la même donnée, le point d'accès
+  SNCB n'est interrogé qu'**une seule fois par fenêtre de fraîcheur** ; les
+  autres réponses proviennent du cache.
+- Les **journées passées** ne changent plus : elles sont conservées
+  indéfiniment. **Aujourd'hui et le futur** expirent après `CACHE_TTL_MS`
+  (10 minutes par défaut).
+- Les requêtes simultanées identiques sont **fusionnées** en un seul appel
+  amont (protection contre l'afflux soudain).
+
+Le cache nécessite un volume inscriptible : les fichiers `compose.*.yaml`
+montent `./data:/app/data` (la racine du conteneur reste en lecture seule).
+
 ### Hors ligne (PWA)
 
 Le frontend est une **application web progressive (PWA)** installable sur
@@ -96,10 +118,12 @@ docker compose up -d
 
 ## Variables d'environnement
 
-| Variable       | Description                                           | Défaut |
-| -------------- | ----------------------------------------------------- | ------ |
-| `PORT`         | Port d'écoute du service                              | `3000` |
-| `TUNNEL_TOKEN` | Jeton Cloudflare Tunnel (mode cloudflared uniquement) | —      |
+| Variable        | Description                                            | Défaut                  |
+| --------------- | ------------------------------------------------------ | ----------------------- |
+| `PORT`          | Port d'écoute du service                               | `3000`                  |
+| `TUNNEL_TOKEN`  | Jeton Cloudflare Tunnel (mode cloudflared uniquement)  | —                       |
+| `CACHE_TTL_MS`  | Durée de fraîcheur du cache (aujourd'hui/futur), en ms | `600000`                |
+| `CACHE_DB_PATH` | Chemin du fichier SQLite du cache                      | `data/sqlite/db.sqlite` |
 
 ## Journal des modifications
 

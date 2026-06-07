@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import type { AccessibleTrain } from '../../../api.ts';
 
 interface TrainCardProps {
@@ -10,6 +12,7 @@ interface TrainCardProps {
  */
 export function TrainCard(props: TrainCardProps) {
   const { train } = props;
+  const { t } = useTranslation();
 
   return (
     <li className="train-card">
@@ -18,27 +21,28 @@ export function TrainCard(props: TrainCardProps) {
           <span className="train-time-value">{train.departureTime}</span>
           {train.departurePlatform ? (
             <span className="train-platform">
-              Voie {train.departurePlatform}
+              {t('train.platform', { platform: train.departurePlatform })}
             </span>
           ) : null}
         </div>
         <span className="train-arrow" aria-hidden="true">
           →
         </span>
-        <div className="train-time">
+        <div className="train-time train-time-arrival">
           <span className="train-time-value">{train.arrivalTime}</span>
-          {train.arrivalPlatform ? (
-            <span className="train-platform">Voie {train.arrivalPlatform}</span>
-          ) : null}
         </div>
       </div>
 
       <div className="train-badges">
-        <span className="badge badge-accessible">♿ Accessible</span>
+        <span className="badge badge-accessible">{t('train.accessible')}</span>
         {train.bikeSpaces ? (
-          <span className="badge badge-bike">🚲 {train.bikeSpaces} places</span>
+          <span className="badge badge-bike">
+            {t('train.bikeSpaces', { spaces: train.bikeSpaces })}
+          </span>
         ) : null}
-        <span className="train-duration">{train.durationMinutes} min</span>
+        <span className="train-duration">
+          {t('train.duration', { minutes: train.durationMinutes })}
+        </span>
       </div>
     </li>
   );

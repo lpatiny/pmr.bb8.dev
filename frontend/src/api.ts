@@ -1,3 +1,5 @@
+import i18n from './i18n/i18n.ts';
+
 /** A railway station offered in the selectors. */
 export interface Station {
   id: string;
@@ -29,7 +31,7 @@ export interface AccessibleTrain {
 export async function fetchStations(): Promise<Station[]> {
   const response = await fetch('/api/v1/stations');
   if (!response.ok) {
-    throw new Error('Impossible de charger la liste des gares.');
+    throw new Error(i18n.t('errors.stations'));
   }
   return (await response.json()) as Station[];
 }
@@ -63,7 +65,7 @@ export async function fetchDayTrains(
 
   const response = await fetch(`/api/v1/trains?${query.toString()}`);
   if (!response.ok) {
-    throw new Error('Le service est momentanément indisponible.');
+    throw new Error(i18n.t('errors.service'));
   }
   const body = (await response.json()) as { trains: AccessibleTrain[] };
   return body.trains;

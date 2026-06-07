@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import type { AccessibleTrain } from '../../../api.ts';
 
 import { TrainCard } from './TrainCard.tsx';
@@ -20,35 +22,32 @@ interface TrainListProps {
 export function TrainList(props: TrainListProps) {
   const { status, trains, canEarlier, canLater, onRetry, onEarlier, onLater } =
     props;
+  const { t } = useTranslation();
 
   if (status === 'loading') {
-    return <p className="state-message">Recherche des trains…</p>;
+    return <p className="state-message">{t('list.loading')}</p>;
   }
 
   if (status === 'error') {
     return (
       <div className="state-message">
-        <p>Le service est momentanément indisponible.</p>
+        <p>{t('list.unavailable')}</p>
         <button type="button" className="retry-button" onClick={onRetry}>
-          Réessayer
+          {t('list.retry')}
         </button>
       </div>
     );
   }
 
   if (trains.length === 0) {
-    return (
-      <p className="state-message">
-        Aucun train accessible n’est prévu pour le moment.
-      </p>
-    );
+    return <p className="state-message">{t('list.empty')}</p>;
   }
 
   return (
     <div>
       {canEarlier && (
         <button type="button" className="more-button" onClick={onEarlier}>
-          ↑ Trains plus tôt
+          {t('list.earlier')}
         </button>
       )}
 
@@ -63,7 +62,7 @@ export function TrainList(props: TrainListProps) {
 
       {canLater && (
         <button type="button" className="more-button" onClick={onLater}>
-          ↓ Trains plus tard
+          {t('list.later')}
         </button>
       )}
     </div>
