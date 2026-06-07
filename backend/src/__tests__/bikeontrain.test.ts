@@ -148,3 +148,46 @@ test('stops paging when the window stops advancing', async () => {
 
   expect(trains.map((train) => train.trainNumber)).toStrictEqual(['42', '43']);
 });
+
+test('before mode returns the latest accessible trains before a timestamp', async () => {
+  const hour = 3_600_000;
+  const start = 1_700_000_000_000;
+  let page = 0;
+
+  // One train per page, each an hour later than the previous.
+  const fetchMock = vi.fn(() => {
+    const departure = start + page * hour;
+    page += 1;
+    return Promise.resolve(greenPage([page], [departure]));
+  });
+  vi.stubGlobal('fetch', fetchMock);
+
+  const before = start + hour * 2 + 600_000; // after the +2h train, before the +3h one
+  const trains = await getAccessibleTrains({ from: FROM, to: TO, before });
+
+  expect(trains.every((train) => train.departureTimestamp < before)).toBe(true);
+  expect(trains.map((train) => train.departureTimestamp)).toStrictEqual([
+    start,
+    start + hour,
+    start + hour * 2,
+  ]);
+});
+
+test('after mode starts the search after the given timestamp', async () => {
+  const after = 1_700_000_000_000;
+  const fetchMock = vi.fn<(url: string | URL | Request) => Promise<Response>>(
+    () =>
+      Promise.resolve(
+        greenPage([7, 8], [after + 600_000, after + 1_200_000]),
+      ),
+  );
+  vi.stubGlobal('fetch', fetchMock);
+
+  const trains = await getAccessibleTrains({ from: FROM, to: TO, after });
+
+  expect(trains.every((train) => train.departureTimestamp > after)).toBe(true);
+  // The first upstream request must carry a date/hour window (not "now").
+  const url = fetchMock.mock.calls[0]?.[0] as string;
+  expect(url).toContain('arriveBy=false');
+  expect(url).toContain('date=');
+});

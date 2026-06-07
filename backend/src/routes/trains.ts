@@ -37,6 +37,19 @@ export default async function trainRoutes(fastify: FastifyTyped) {
           date: Type.Optional(
             Type.String({ description: 'Travel date, YYYY-MM-DD' }),
           ),
+          hour: Type.Optional(
+            Type.String({ description: 'Departure hour, 00-23' }),
+          ),
+          after: Type.Optional(
+            Type.Number({
+              description: 'Return trains departing after this timestamp (ms)',
+            }),
+          ),
+          before: Type.Optional(
+            Type.Number({
+              description: 'Return trains departing before this timestamp (ms)',
+            }),
+          ),
         }),
         response: {
           200: Type.Object({
@@ -51,7 +64,7 @@ export default async function trainRoutes(fastify: FastifyTyped) {
       },
     },
     async (request, reply) => {
-      const { from, to, date } = request.query;
+      const { from, to, date, hour, after, before } = request.query;
 
       const fromStation = getStation(from);
       const toStation = getStation(to);
@@ -69,6 +82,9 @@ export default async function trainRoutes(fastify: FastifyTyped) {
           from: fromStation,
           to: toStation,
           date,
+          hour,
+          after,
+          before,
         });
         return { from, to, date: date ?? null, trains };
       } catch (error) {

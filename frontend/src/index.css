@@ -102,6 +102,47 @@ body {
   cursor: pointer;
 }
 
+.choice-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.choice {
+  min-height: 3.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: #ffffff;
+  border: 3px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.choice-active {
+  color: #ffffff;
+  background: var(--green);
+  border-color: var(--green-dark);
+}
+
+.more-button {
+  width: 100%;
+  min-height: 3.5rem;
+  margin: 0.75rem 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  background: #e6f4ea;
+  border: 3px solid var(--green);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.more-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 /* ── Train list ──────────────────────────────────────────────── */
 .train-list {
   list-style: none;

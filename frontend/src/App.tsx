@@ -4,15 +4,22 @@ import type { AccessibleTrain, Station } from './api.ts';
 import { fetchAccessibleTrains, fetchStations } from './api.ts';
 import { SearchControls } from './pages/home/components/SearchControls.tsx';
 import { TrainList } from './pages/home/components/TrainList.tsx';
+import { todayInBrussels } from './pages/home/dates.ts';
 
-const REFRESH_INTERVAL_MS = 60_000;
 const DEFAULT_FROM = '8891702'; // Ostende
 const DEFAULT_TO = '8891009'; // Bruges
 
-function todayInBrussels(): string {
-  return new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Europe/Brussels',
-  }).format(new Date());
+function mergeTrains(
+  a: AccessibleTrain[],
+  b: AccessibleTrain[],
+): AccessibleTrain[] {
+  const byKey = new Map<string, AccessibleTrain>();
+  for (const train of [...a, ...b]) {
+    byKey.set(`${train.trainNumber}-${train.departureTimestamp}`, train);
+  }
+  return [...byKey.values()].toSorted(
+    (x, y) => x.departureTimestamp - y.departureTimestamp,
+  );
 }
 
 export function App() {
@@ -20,11 +27,13 @@ export function App() {
   const [from, setFrom] = useState(DEFAULT_FROM);
   const [to, setTo] = useState(DEFAULT_TO);
   const [date, setDate] = useState(todayInBrussels());
+  const [hour, setHour] = useState('');
 
   const [trains, setTrains] = useState<AccessibleTrain[]>([]);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>(
     'loading',
   );
+  const [extending, setExtending] = useState(false);
   const [reloadToken, setReloadToken] = useState(0);
 
   useEffect(() => {
@@ -34,14 +43,12 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    // The list is hidden while from === to (see the render guard below),
-    // so there is nothing to fetch and no state to update here.
     if (from === to) return;
 
     let cancelled = false;
     async function load() {
       try {
-        const result = await fetchAccessibleTrains({ from, to, date });
+        const result = await fetchAccessibleTrains({ from, to, date, hour });
         if (!cancelled) {
           setTrains(result);
           setStatus('ready');
@@ -52,23 +59,39 @@ export function App() {
     }
 
     void load();
-    const timer = setInterval(() => void load(), REFRESH_INTERVAL_MS);
     return () => {
       cancelled = true;
-      clearInterval(timer);
     };
-  }, [from, to, date, reloadToken]);
+  }, [from, to, date, hour, reloadToken]);
 
-  function update(next: { from?: string; to?: string; date?: string }) {
+  function update(next: {
+    from?: string;
+    to?: string;
+    date?: string;
+    hour?: string;
+  }) {
     setStatus('loading');
     setTrains([]);
     if (next.from !== undefined) setFrom(next.from);
     if (next.to !== undefined) setTo(next.to);
     if (next.date !== undefined) setDate(next.date);
+    if (next.hour !== undefined) setHour(next.hour);
   }
 
-  function swap() {
-    update({ from: to, to: from });
+  async function extend(edge: 'earlier' | 'later') {
+    const anchor = edge === 'earlier' ? trains[0] : trains.at(-1);
+    if (!anchor || extending) return;
+    setExtending(true);
+    try {
+      const more = await fetchAccessibleTrains(
+        edge === 'earlier'
+          ? { from, to, before: anchor.departureTimestamp }
+          : { from, to, after: anchor.departureTimestamp },
+      );
+      setTrains((current) => mergeTrains(current, more));
+    } finally {
+      setExtending(false);
+    }
   }
 
   return (
@@ -80,10 +103,12 @@ export function App() {
         from={from}
         to={to}
         date={date}
+        hour={hour}
         onFromChange={(value) => update({ from: value })}
         onToChange={(value) => update({ to: value })}
         onDateChange={(value) => update({ date: value })}
-        onSwap={swap}
+        onHourChange={(value) => update({ hour: value })}
+        onSwap={() => update({ from: to, to: from })}
       />
 
       {from === to ? (
@@ -92,10 +117,13 @@ export function App() {
         <TrainList
           status={status}
           trains={trains}
+          extending={extending}
           onRetry={() => {
             setStatus('loading');
             setReloadToken((token) => token + 1);
           }}
+          onEarlier={() => void extend('earlier')}
+          onLater={() => void extend('later')}
         />
       )}
     </main>

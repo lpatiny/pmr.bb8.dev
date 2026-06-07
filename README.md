@@ -30,12 +30,23 @@ processus Node, pas de nginx.
 
 ### Points d'accès
 
-| Méthode | Chemin                           | Description                         |
-| ------- | -------------------------------- | ----------------------------------- |
-| `GET`   | `/api/health`                    | Vérification de l'état du service   |
-| `GET`   | `/api/v1/trains/oostende-bruges` | Trains accessibles Ostende → Bruges |
-| `GET`   | `/api/v1/trains/bruges-oostende` | Trains accessibles Bruges → Ostende |
-| `GET`   | `/docs`                          | Documentation Swagger de l'API      |
+| Méthode | Chemin              | Description                                     |
+| ------- | ------------------- | ----------------------------------------------- |
+| `GET`   | `/api/health`       | Vérification de l'état du service               |
+| `GET`   | `/api/v1/stations`  | Liste complète des gares (id, nom, coordonnées) |
+| `GET`   | `/api/v1/trains`    | Trains accessibles (voir paramètres ci-dessous) |
+| `GET`   | `/docs`             | Documentation Swagger de l'API                  |
+
+Paramètres de `GET /api/v1/trains` :
+
+| Paramètre | Requis | Description                                                |
+| --------- | ------ | --------------------------------------------------------- |
+| `from`    | oui    | Id de la gare de départ                                   |
+| `to`      | oui    | Id de la gare d'arrivée                                   |
+| `date`    | non    | Date de voyage `YYYY-MM-DD` (défaut : aujourd'hui)        |
+| `hour`    | non    | Heure de départ `00`–`23` (défaut : maintenant / minuit) |
+| `after`   | non    | Trains partant après ce timestamp (ms) — bouton « plus tard » |
+| `before`  | non    | Trains partant avant ce timestamp (ms) — bouton « plus tôt »  |
 
 ## Développement local
 

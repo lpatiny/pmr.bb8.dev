@@ -34,17 +34,36 @@ export async function fetchStations(): Promise<Station[]> {
   return (await response.json()) as Station[];
 }
 
+/** Parameters for {@link fetchAccessibleTrains}. */
+export interface AccessibleTrainsQuery {
+  /** Origin station id. */
+  from: string;
+  /** Destination station id. */
+  to: string;
+  /** Travel date `YYYY-MM-DD`. */
+  date?: string;
+  /** Departure hour `00`–`23`; empty means "from now". */
+  hour?: string;
+  /** Return trains departing after this timestamp (ms) — for "later". */
+  after?: number;
+  /** Return trains departing before this timestamp (ms) — for "earlier". */
+  before?: number;
+}
+
 /**
- * Fetch the upcoming accessible trains between two stations on a given date.
- * @param params - The origin id, destination id and travel date (YYYY-MM-DD).
+ * Fetch accessible trains between two stations for the given search window.
+ * @param params - The origin, destination and optional date/hour/after/before.
  * @returns The accessible direct trains, soonest first.
  */
-export async function fetchAccessibleTrains(params: {
-  from: string;
-  to: string;
-  date: string;
-}): Promise<AccessibleTrain[]> {
-  const query = new URLSearchParams(params);
+export async function fetchAccessibleTrains(
+  params: AccessibleTrainsQuery,
+): Promise<AccessibleTrain[]> {
+  const query = new URLSearchParams({ from: params.from, to: params.to });
+  if (params.date) query.set('date', params.date);
+  if (params.hour) query.set('hour', params.hour);
+  if (params.after !== undefined) query.set('after', String(params.after));
+  if (params.before !== undefined) query.set('before', String(params.before));
+
   const response = await fetch(`/api/v1/trains?${query.toString()}`);
   if (!response.ok) {
     throw new Error('Le service est momentanément indisponible.');

@@ -1,3 +1,9 @@
+import type { RawResponse, SearchWindow } from './bikeontrainClient.ts';
+import {
+  fetchSearch,
+  latestDepartureTimestamp,
+  toSearchWindow,
+} from './bikeontrainClient.ts';
 import type { Station } from './stations.ts';
 
 /**
@@ -39,19 +45,11 @@ const GREEN_SCORE = 4;
 /** How many accessible trains to return by default. */
 const DEFAULT_LIMIT = 10;
 
-/** Safety cap on upstream requests while paginating to reach the limit. */
-const MAX_PAGES = 8;
+/** Safety cap on upstream requests for a single call. */
+const MAX_PAGES = 12;
 
-const SEARCH_BASE = 'https://bikeontrain.belgiantrain.be/fr/search';
-// Remix data-loader route id; returns the search results as JSON.
-const DATA_ROUTE = 'routes/($locale).search._index';
-
-/** A point in time, in Belgian local time, used to page through results. */
-interface SearchWindow {
-  date: string;
-  hour: string;
-  minute: string;
-}
+/** How far back to look when collecting earlier trains, in milliseconds. */
+const LOOKBACK_MS = 6 * 60 * 60 * 1000;
 
 /** Options for {@link getAccessibleTrains}. */
 export interface AccessibleTrainsOptions {
@@ -61,34 +59,78 @@ export interface AccessibleTrainsOptions {
   to: Station;
   /**
    * The travel date in `YYYY-MM-DD` (Belgian local time). When omitted or set
-   * to today, the search starts from the current time.
+   * to today (with no `hour`), the search starts from the current time.
    */
   date?: string;
+  /** The departure hour `00`–`23`. When omitted, starts at midnight (or now). */
+  hour?: string;
+  /** Return trains departing strictly after this timestamp (for "later"). */
+  after?: number;
+  /** Return the latest trains departing strictly before this timestamp. */
+  before?: number;
   /** Maximum number of trains to return. Defaults to `10`. */
   limit?: number;
 }
 
 /**
- * Fetch the upcoming accessible direct trains between two stations. The SNCB
- * endpoint only returns about one hour of results per request, so this pages
- * forward in time (each page starting just after the previous page's last
- * departure) until `limit` accessible trains are collected.
- * @param options - The origin, destination, optional date and limit.
+ * Fetch accessible direct trains between two stations. The SNCB endpoint only
+ * returns about one hour of results per request, so this pages forward in time
+ * until enough trains are collected. Use `after` / `before` to extend an
+ * existing list with later / earlier trains.
+ * @param options - The origin, destination and search window.
  * @returns The green (PMR/bike-accessible) direct trains, soonest first.
  */
 export async function getAccessibleTrains(
   options: AccessibleTrainsOptions,
 ): Promise<AccessibleTrain[]> {
-  const { from, to, date, limit = DEFAULT_LIMIT } = options;
+  const { from, to, date, hour, after, before, limit = DEFAULT_LIMIT } = options;
 
+  if (before !== undefined) {
+    const trains = await collectForward(from, to, toSearchWindow(before - LOOKBACK_MS), {
+      until: before,
+    });
+    return trains
+      .filter((train) => train.departureTimestamp < before)
+      .slice(-limit);
+  }
+
+  const start =
+    after !== undefined
+      ? toSearchWindow(after + 60_000)
+      : initialWindow(date, hour);
+  const trains = await collectForward(from, to, start, { limit });
+  return (
+    after !== undefined
+      ? trains.filter((train) => train.departureTimestamp > after)
+      : trains
+  ).slice(0, limit);
+}
+
+/**
+ * Page forward from a window, accumulating accessible trains until the limit
+ * is reached, the upper bound is passed, or the window stops advancing.
+ * @param from - The origin station.
+ * @param to - The destination station.
+ * @param startWindow - The first window (undefined means "now").
+ * @param bounds - Optional `limit` of trains and `until` timestamp upper bound.
+ * @returns The collected trains, sorted by departure time.
+ */
+async function collectForward(
+  from: Station,
+  to: Station,
+  startWindow: SearchWindow | undefined,
+  bounds: { limit?: number; until?: number },
+): Promise<AccessibleTrain[]> {
+  const { limit, until } = bounds;
   const collected = new Map<string, AccessibleTrain>();
-  let window = initialWindow(date);
+  let window = startWindow;
   let previousLastTimestamp = Number.NEGATIVE_INFINITY;
 
-  for (let page = 0; page < MAX_PAGES && collected.size < limit; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
+    if (limit !== undefined && collected.size >= limit) break;
+
     // eslint-disable-next-line no-await-in-loop -- sequential pagination of a remote API
     const raw = await fetchSearch(from, to, window);
-
     for (const train of parseAccessibleTrains(raw)) {
       collected.set(`${train.trainNumber}-${train.departureTimestamp}`, train);
     }
@@ -96,13 +138,14 @@ export async function getAccessibleTrains(
     const lastTimestamp = latestDepartureTimestamp(raw);
     // Stop once the window stops advancing, otherwise we would loop forever.
     if (lastTimestamp === null || lastTimestamp <= previousLastTimestamp) break;
+    if (until !== undefined && lastTimestamp >= until) break;
     previousLastTimestamp = lastTimestamp;
     window = toSearchWindow(lastTimestamp + 60_000);
   }
 
-  return [...collected.values()]
-    .toSorted((a, b) => a.departureTimestamp - b.departureTimestamp)
-    .slice(0, limit);
+  return [...collected.values()].toSorted(
+    (a, b) => a.departureTimestamp - b.departureTimestamp,
+  );
 }
 
 /**
@@ -147,135 +190,22 @@ export function parseAccessibleTrains(raw: unknown): AccessibleTrain[] {
 }
 
 /**
- * Fetch a single page of search results from the BikeOnTrain Remix loader.
- * @param from - The origin station.
- * @param to - The destination station.
- * @param window - The point in time to search from; omitted means "now".
- * @returns The parsed JSON body of the response.
- */
-async function fetchSearch(
-  from: Station,
-  to: Station,
-  window?: SearchWindow,
-): Promise<unknown> {
-  const params = new URLSearchParams({
-    fromName: from.name,
-    fromPlace: from.place,
-    fromId: from.id,
-    toName: to.name,
-    toPlace: to.place,
-    toId: to.id,
-  });
-  if (window) {
-    params.set('arriveBy', 'false');
-    params.set('date', window.date);
-    params.set('hour', window.hour);
-    params.set('minute', window.minute);
-  }
-  const url = `${SEARCH_BASE}?${params.toString()}&_data=${encodeURIComponent(DATA_ROUTE)}`;
-
-  const response = await fetch(url, {
-    headers: { accept: 'application/json' },
-  });
-  if (!response.ok) {
-    throw new Error(
-      `BikeOnTrain request failed with status ${response.status}`,
-    );
-  }
-  return response.json();
-}
-
-/**
- * Find the latest departure timestamp in a page, across all itineraries
- * (not only the accessible ones), used to advance the search window.
- * @param raw - The parsed JSON body of a search response.
- * @returns The latest departure timestamp, or `null` when the page is empty.
- */
-function latestDepartureTimestamp(raw: unknown): number | null {
-  const itineraries = (raw as RawResponse | null)?.hacon?.itineraries ?? [];
-  let latest: number | null = null;
-  for (const itinerary of itineraries) {
-    for (const leg of itinerary.legs) {
-      if (leg.transitLeg && (latest === null || leg.startTime > latest)) {
-        latest = leg.startTime;
-      }
-    }
-  }
-  return latest;
-}
-
-const BRUSSELS_PARTS = new Intl.DateTimeFormat('en-CA', {
-  timeZone: 'Europe/Brussels',
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-  hour: '2-digit',
-  minute: '2-digit',
-  hour12: false,
-});
-
-/**
- * Convert a timestamp into a Belgian-local search window (date / hour / minute).
- * @param timestamp - Milliseconds since the epoch.
- * @returns The corresponding date, hour and minute in Europe/Brussels.
- */
-function toSearchWindow(timestamp: number): SearchWindow {
-  const parts = BRUSSELS_PARTS.formatToParts(new Date(timestamp));
-  const get = (type: string) =>
-    parts.find((part) => part.type === type)?.value ?? '';
-  return {
-    date: `${get('year')}-${get('month')}-${get('day')}`,
-    hour: get('hour') === '24' ? '00' : get('hour'),
-    minute: get('minute'),
-  };
-}
-
-/**
- * Build the first search window for a requested travel date. Today (or no date)
- * starts from the current time; any other date starts at midnight.
+ * Build the first search window for a requested travel date and hour. Today
+ * with no hour starts from the current time; otherwise it starts at the given
+ * hour (or midnight).
  * @param date - The requested date in `YYYY-MM-DD`, or undefined.
+ * @param hour - The requested hour `00`–`23`, or undefined.
  * @returns The initial window, or undefined to start from "now".
  */
-function initialWindow(date?: string): SearchWindow | undefined {
-  if (!date) return undefined;
+function initialWindow(date?: string, hour?: string): SearchWindow | undefined {
+  const paddedHour = hour ? hour.padStart(2, '0') : undefined;
+
+  if (!date) {
+    if (paddedHour === undefined) return undefined;
+    return { date: toSearchWindow(Date.now()).date, hour: paddedHour, minute: '00' };
+  }
+
   const today = toSearchWindow(Date.now()).date;
-  if (date === today) return undefined;
-  return { date, hour: '00', minute: '00' };
-}
-
-interface RawResponse {
-  hacon?: {
-    itineraries?: RawItinerary[];
-  };
-}
-
-interface RawItinerary {
-  itineraryScore: number;
-  isCancelled: boolean;
-  duration: number;
-  legs: RawLeg[];
-}
-
-interface RawLeg {
-  transitLeg: boolean;
-  route?: string;
-  routeShortName?: string;
-  tripShortName?: string;
-  headsign?: string;
-  startTime: number;
-  from: RawStop;
-  to: RawStop;
-  accessibilityData?: {
-    trainAccessibility?: {
-      space?: number;
-      hasPrmSection?: boolean;
-      hasPrmToilets?: boolean;
-    };
-  };
-}
-
-interface RawStop {
-  platformCode?: string;
-  departureHr?: string;
-  arrivalHr?: string;
+  if (date === today && paddedHour === undefined) return undefined;
+  return { date, hour: paddedHour ?? '00', minute: '00' };
 }
