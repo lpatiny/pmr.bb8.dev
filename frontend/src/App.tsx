@@ -9,8 +9,12 @@ import { SyncStatus } from './pages/home/components/SyncStatus.tsx';
 import { TrainList } from './pages/home/components/TrainList.tsx';
 import { todayInBrussels } from './pages/home/dates.ts';
 import type { WarmOptions } from './pages/home/offline.ts';
-import { FRESH_FOR_MS, warmOfflineCache } from './pages/home/offline.ts';
-import { loadStoredDay, storeDay, storedDayAge } from './pages/home/storage.ts';
+import { warmOfflineCache } from './pages/home/offline.ts';
+import {
+  isStoredDayFresh,
+  loadStoredDay,
+  storeDay,
+} from './pages/home/storage.ts';
 import { PAGE_SIZE, anchorIndex } from './pages/home/timetable.ts';
 
 const DEFAULT_FROM = '8891702'; // Ostende
@@ -62,14 +66,13 @@ export function App() {
     let cancelled = false;
 
     async function loadThenSync() {
-      // 1) When the stored day is still fresh, use it as-is (even online) — no
-      // network. Otherwise refresh it and persist; the view already shows the
-      // stored copy, so a failure offline just keeps it instead of erroring.
+      // 1) When the stored day was already refreshed today, use it as-is (even
+      // online) — no network. Otherwise refresh it and persist; the view already
+      // shows the stored copy, so a failure offline just keeps it.
       const stored = loadStoredDay(from, to, date);
-      const age = storedDayAge(from, to, date);
       let preloaded: WarmOptions['preloaded'];
 
-      if (stored && age !== null && age < FRESH_FOR_MS) {
+      if (stored && isStoredDayFresh(from, to, date)) {
         if (cancelled) return;
         setDayTrains(stored);
         setStatus('ready');

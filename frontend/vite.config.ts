@@ -63,7 +63,7 @@ export default defineConfig({
             urlPattern: /\/api\/v1\/trains/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'api-trains',
+              cacheName: 'api-trains-v2',
               networkTimeoutSeconds: 5,
               expiration: { maxEntries: 50, maxAgeSeconds: 2 * 24 * 60 * 60 },
               cacheableResponse: { statuses: [200] },

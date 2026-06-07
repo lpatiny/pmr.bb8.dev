@@ -1,8 +1,8 @@
 import type { AccessibleTrain } from '../../api.ts';
 
-import { todayInBrussels } from './dates.ts';
+import { dateInBrussels, todayInBrussels } from './dates.ts';
 
-const STORAGE_KEY = 'pmr-timetables-v1';
+const STORAGE_KEY = 'pmr-timetables-v2';
 
 interface StoredDay {
   date: string;
@@ -55,20 +55,21 @@ export function storeDay(
 }
 
 /**
- * Age of a stored day timetable, used to decide whether it is still fresh
- * enough to use without going to the network.
+ * Whether a stored day timetable was refreshed today (Belgian time). The app
+ * syncs once per day: a same-day entry is used as-is, even online; an older one
+ * is considered stale and refreshed.
  * @param from - Origin station id.
  * @param to - Destination station id.
  * @param date - Travel date `YYYY-MM-DD`.
- * @returns Milliseconds since it was stored, or `null` when nothing is stored.
+ * @returns `true` when stored and last refreshed today.
  */
-export function storedDayAge(
+export function isStoredDayFresh(
   from: string,
   to: string,
   date: string,
-): number | null {
+): boolean {
   const entry = readStore()[keyFor(from, to, date)];
-  return entry ? Date.now() - entry.savedAt : null;
+  return entry ? dateInBrussels(entry.savedAt) === todayInBrussels() : false;
 }
 
 function keyFor(from: string, to: string, date: string): string {

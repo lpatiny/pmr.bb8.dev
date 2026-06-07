@@ -2,17 +2,11 @@ import type { AccessibleTrain } from '../../api.ts';
 import { fetchDayTrains, fetchStations } from '../../api.ts';
 
 import { todayInBrussels, tomorrowInBrussels } from './dates.ts';
-import { loadStoredDay, storeDay, storedDayAge } from './storage.ts';
-
-/**
- * How long a stored day timetable stays "fresh": within this window it is read
- * straight from localStorage instead of the network, even when online.
- */
-export const FRESH_FOR_MS = 10 * 60 * 1000;
+import { isStoredDayFresh, loadStoredDay, storeDay } from './storage.ts';
 
 /** Outcome of a {@link warmOfflineCache} run. */
 export interface SyncResult {
-  /** `true` when every today/tomorrow request was refreshed from the network. */
+  /** `true` when every today/tomorrow timetable is available (fresh or fetched). */
   ok: boolean;
   /** Number of accessible trains today for the requested direction. */
   today: number;
@@ -33,32 +27,33 @@ export interface WarmOptions {
     trains: AccessibleTrain[];
   };
   /**
-   * Called as each of the today/tomorrow timetables finishes (success or
-   * failure), so the UI can show progress during the slow first sync.
+   * Called as each of the today/tomorrow timetables finishes, so the UI can
+   * show the sync progressing.
    */
   onProgress?: (done: number, total: number) => void;
 }
 
 /**
- * Pre-fetch the full-day timetables needed to consult and page through the
- * schedule offline: today and tomorrow, for both travel directions, plus the
- * station list. The service worker caches every response, so the data stays
- * available — and pageable — without a connection.
+ * Make sure the full-day timetables needed to consult and page through the
+ * schedule offline are available: today and tomorrow, for both directions, plus
+ * the station list. Days already refreshed today are read from localStorage
+ * (no network, even online); only stale or missing days are fetched. The day
+ * timetables are loaded one after another so the progress is visible.
  *
  * Never throws: a warm-up is best-effort. The returned {@link SyncResult}
- * reports whether the refresh reached the network and how many trains run today
- * and tomorrow for the requested direction.
+ * reports whether every day is available and how many trains run today and
+ * tomorrow for the requested direction.
  * @param from - The currently selected origin station id.
  * @param to - The currently selected destination station id.
- * @param options - Optional already-loaded combo to reuse.
- * @returns Whether all requests succeeded and the today/tomorrow counts.
+ * @param options - Optional already-loaded combo to reuse, and a progress hook.
+ * @returns Whether all days are available and the today/tomorrow counts.
  */
 export async function warmOfflineCache(
   from: string,
   to: string,
   options: WarmOptions = {},
 ): Promise<SyncResult> {
-  if (from === to || !navigator.onLine) {
+  if (from === to) {
     return { ok: false, today: 0, tomorrow: 0 };
   }
 
@@ -66,61 +61,76 @@ export async function warmOfflineCache(
   const today = todayInBrussels();
   const tomorrow = tomorrowInBrussels();
 
-  const total = 4;
+  const combos = [
+    { from, to, date: today },
+    { from, to, date: tomorrow },
+    { from: to, to: from, date: today },
+    { from: to, to: from, date: tomorrow },
+  ];
+
+  const stationsPromise = fetchStations().then(
+    () => true,
+    () => false,
+  );
+
+  let ok = true;
   let done = 0;
-
-  const load = (
-    fromId: string,
-    toId: string,
-    date: string,
-  ): Promise<AccessibleTrain[]> => {
-    const reused =
-      preloaded?.from === fromId &&
-      preloaded.to === toId &&
-      preloaded.date === date
-        ? preloaded.trains
-        : null;
-
-    const age = storedDayAge(fromId, toId, date);
-    const stored = age !== null && age < FRESH_FOR_MS;
-
-    let source: Promise<AccessibleTrain[]>;
-    if (reused) {
-      // The on-screen day was just refreshed: persist and keep it.
-      storeDay(fromId, toId, date, reused);
-      source = Promise.resolve(reused);
-    } else if (stored) {
-      // Still fresh in localStorage: use it as-is, no network, no re-store.
-      source = Promise.resolve(loadStoredDay(fromId, toId, date) ?? []);
-    } else {
-      source = fetchDayTrains({ from: fromId, to: toId, date }).then(
-        (trains) => {
-          storeDay(fromId, toId, date, trains);
-          return trains;
-        },
-      );
+  const trainsByCombo: AccessibleTrain[][] = [];
+  for (const combo of combos) {
+    try {
+      // eslint-disable-next-line no-await-in-loop -- sequential so the progress steps are visible
+      trainsByCombo.push(await loadDay(combo, preloaded));
+    } catch {
+      ok = false;
+      trainsByCombo.push([]);
     }
+    done += 1;
+    onProgress?.(done, combos.length);
+  }
 
-    return source.finally(() => {
-      done += 1;
-      onProgress?.(done, total);
-    });
-  };
-
-  const results = await Promise.allSettled([
-    load(from, to, today),
-    load(from, to, tomorrow),
-    load(to, from, today),
-    load(to, from, tomorrow),
-    fetchStations(),
-  ]);
-
-  const count = (result: (typeof results)[number]): number =>
-    result.status === 'fulfilled' ? result.value.length : 0;
+  ok = (await stationsPromise) && ok;
 
   return {
-    ok: results.every((result) => result.status === 'fulfilled'),
-    today: count(results[0]),
-    tomorrow: count(results[1]),
+    ok,
+    today: trainsByCombo[0]?.length ?? 0,
+    tomorrow: trainsByCombo[1]?.length ?? 0,
   };
+}
+
+/**
+ * Resolve a single day's timetable, preferring (in order) the on-screen view,
+ * a same-day localStorage entry, then the network.
+ * @param combo - The direction and date to load.
+ * @param preloaded - The combo already loaded by the live view, if any.
+ * @returns The day's trains.
+ */
+async function loadDay(
+  combo: { from: string; to: string; date: string },
+  preloaded: WarmOptions['preloaded'],
+): Promise<AccessibleTrain[]> {
+  const { from, to, date } = combo;
+
+  if (
+    preloaded?.from === from &&
+    preloaded.to === to &&
+    preloaded.date === date
+  ) {
+    storeDay(from, to, date, preloaded.trains);
+    return preloaded.trains;
+  }
+
+  if (isStoredDayFresh(from, to, date)) {
+    return loadStoredDay(from, to, date) ?? [];
+  }
+
+  if (!navigator.onLine) {
+    // Offline and stale: fall back to whatever is stored rather than failing.
+    const stored = loadStoredDay(from, to, date);
+    if (stored) return stored;
+    throw new Error('offline');
+  }
+
+  const trains = await fetchDayTrains({ from, to, date });
+  storeDay(from, to, date, trains);
+  return trains;
 }
