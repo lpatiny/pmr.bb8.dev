@@ -33,5 +33,10 @@ EXPOSE 3000
 ENV NODE_ENV=production
 ENV PORT=3000
 
+# The SNCB BikeOnTrain endpoint serves an incomplete TLS chain (it omits the
+# DigiCert intermediate). Adding that intermediate to Node's CA bundle lets
+# fetch verify the chain. See backend/certs/bikeontrain-intermediate.pem.
+ENV NODE_EXTRA_CA_CERTS=/app/backend/certs/bikeontrain-intermediate.pem
+
 WORKDIR /app/backend
-CMD ["node", "--use-system-ca", "--experimental-strip-types", "src/server.ts"]
+CMD ["node", "--experimental-strip-types", "src/server.ts"]
