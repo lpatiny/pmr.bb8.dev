@@ -115,6 +115,12 @@ interface RawLeg {
   tripShortName?: string;
   headsign?: string;
   startTime: number;
+  /** Departure delay in seconds (real-time), 0 when on time. */
+  departureDelay?: number;
+  /** Arrival delay in seconds (real-time), 0 when on time. */
+  arrivalDelay?: number;
+  /** Whether the leg's times are confirmed by real-time data. */
+  realTime?: boolean;
   from: RawStop;
   to: RawStop;
   accessibilityData?: {

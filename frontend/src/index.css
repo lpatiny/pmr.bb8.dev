@@ -427,3 +427,59 @@ body {
   padding: 0.9rem 1.6rem;
   cursor: pointer;
 }
+
+/* ── Mobile: tighten everything, stack stations full-width ───────── */
+@media (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  .app {
+    padding: 0.75rem 0.75rem 2rem;
+  }
+
+  .app-header {
+    margin-bottom: 0.75rem;
+  }
+
+  .app-title {
+    font-size: 1.8rem;
+  }
+
+  .controls {
+    padding: 0.85rem;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Stack From → swap → To so each input gets the full width and the
+     station names are fully readable. */
+  .controls-stations {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .swap-button {
+    justify-self: center;
+    align-self: center;
+    height: 2.75rem;
+    width: 100%;
+  }
+
+  .field-label {
+    font-size: 1rem;
+  }
+
+  .field-input {
+    font-size: 1.2rem;
+    padding: 0.6rem 0.75rem;
+    border-width: 2px;
+  }
+
+  .choice {
+    min-height: 3rem;
+    font-size: 1.1rem;
+    border-width: 2px;
+  }
+}

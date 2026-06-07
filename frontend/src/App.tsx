@@ -62,6 +62,9 @@ export function App() {
   const [windowKey, setWindowKey] = useState('');
 
   const lastSyncKey = useRef('');
+  // Set by the manual refresh button so the next load bypasses the once-a-day
+  // freshness gate and pulls live delays / cancellations from the network.
+  const forceRef = useRef(false);
 
   useEffect(() => {
     fetchStations()
@@ -81,16 +84,18 @@ export function App() {
       // 1) When the stored day was already refreshed today, use it as-is (even
       // online) — no network. Otherwise refresh it and persist; the view already
       // shows the stored copy, so a failure offline just keeps it.
+      const force = forceRef.current;
+      forceRef.current = false;
       const stored = loadStoredDay(from, to, date);
       let preloaded: WarmOptions['preloaded'];
 
-      if (stored && isStoredDayFresh(from, to, date)) {
+      if (!force && stored && isStoredDayFresh(from, to, date)) {
         if (cancelled) return;
         setDayTrains(stored);
         setStatus('ready');
       } else {
         try {
-          const trains = await fetchDayTrains({ from, to, date });
+          const trains = await fetchDayTrains({ from, to, date, force });
           if (cancelled) return;
           storeDay(from, to, date, trains);
           setDayTrains(trains);
@@ -174,6 +179,15 @@ export function App() {
     if (nextFrom !== nextTo) saveLastTrip(nextFrom, nextTo);
   }
 
+  // Force a live refresh of the current view, bypassing the once-a-day cache,
+  // so delays and cancellations are pulled fresh and the DB is updated.
+  function refreshNow() {
+    if (sync === 'syncing') return;
+    forceRef.current = true;
+    setSync('syncing');
+    setReloadToken((token) => token + 1);
+  }
+
   // Reset the visible window when the loaded day or the anchor inputs change.
   const currentWindowKey = `${from}|${to}|${date}|${hour}|${dayTrains.length}`;
   if (currentWindowKey !== windowKey) {
@@ -197,7 +211,12 @@ export function App() {
       </header>
 
       {from !== to && (
-        <SyncStatus state={sync} counts={counts} progress={progress} />
+        <SyncStatus
+          state={sync}
+          counts={counts}
+          progress={progress}
+          onRefresh={refreshNow}
+        />
       )}
 
       <InstallHint />

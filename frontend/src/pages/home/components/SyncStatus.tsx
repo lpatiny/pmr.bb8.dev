@@ -7,6 +7,8 @@ interface SyncStatusProps {
   state: SyncState;
   counts: { today: number; tomorrow: number } | null;
   progress: { done: number; total: number } | null;
+  /** Force a live refresh of the current view (delays / cancellations). */
+  onRefresh: () => void;
 }
 
 /**

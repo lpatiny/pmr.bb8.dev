@@ -19,6 +19,10 @@ const TrainSchema = Type.Object({
   bikeSpaces: Type.Union([Type.Number(), Type.Null()]),
   hasPrmSection: Type.Boolean(),
   hasPrmToilets: Type.Boolean(),
+  isCancelled: Type.Boolean(),
+  departureDelay: Type.Number(),
+  arrivalDelay: Type.Number(),
+  realTime: Type.Boolean(),
 });
 
 /**
@@ -58,6 +62,12 @@ export default async function trainRoutes(fastify: FastifyTyped) {
                 'Return the whole day (requires date); for offline caching',
             }),
           ),
+          refresh: Type.Optional(
+            Type.Boolean({
+              description:
+                'Bypass the cache and pull live delays/cancellations (with full)',
+            }),
+          ),
         }),
         response: {
           200: Type.Object({
@@ -72,7 +82,8 @@ export default async function trainRoutes(fastify: FastifyTyped) {
       },
     },
     async (request, reply) => {
-      const { from, to, date, hour, after, before, full } = request.query;
+      const { from, to, date, hour, after, before, full, refresh } =
+        request.query;
 
       const fromStation = getStation(from);
       const toStation = getStation(to);
@@ -98,6 +109,7 @@ export default async function trainRoutes(fastify: FastifyTyped) {
                 fromStation,
                 toStation,
                 date,
+                { force: refresh },
               )
             : await getAccessibleTrains({
                 from: fromStation,

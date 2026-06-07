@@ -27,6 +27,13 @@ export interface CachedDayTrainsOptions {
   fetcher?: DayTrainsFetcher;
   /** Returns the current time in ms. Injectable for tests. Defaults to `Date.now`. */
   now?: () => number;
+  /**
+   * Bypass the cache and always re-fetch from the upstream service, refreshing
+   * the stored entry (used by the manual "refresh" action to pull live delays
+   * and cancellations). Concurrent forced misses still share one request.
+   * @default false
+   */
+  force?: boolean;
 }
 
 /** Concurrent misses for the same day share a single upstream request. */
@@ -55,9 +62,10 @@ export async function getCachedDayTrains(
     ttlMs = resolveTtlMs(),
     fetcher = getDayTrains,
     now = Date.now,
+    force = false,
   } = options;
 
-  const cached = readFresh(db, from.id, to.id, date, ttlMs, now());
+  const cached = force ? null : readFresh(db, from.id, to.id, date, ttlMs, now());
   if (cached) return cached;
 
   const key = `${from.id}|${to.id}|${date}`;

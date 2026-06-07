@@ -22,6 +22,10 @@ export interface AccessibleTrain {
   bikeSpaces: number | null;
   hasPrmSection: boolean;
   hasPrmToilets: boolean;
+  isCancelled: boolean;
+  departureDelay: number;
+  arrivalDelay: number;
+  realTime: boolean;
 }
 
 /**
@@ -44,13 +48,19 @@ export interface DayTrainsQuery {
   to: string;
   /** Travel date `YYYY-MM-DD`. */
   date: string;
+  /**
+   * Bypass the server cache and pull live delays/cancellations. Used by the
+   * manual refresh action. Defaults to `false`.
+   * @default false
+   */
+  force?: boolean;
 }
 
 /**
  * Fetch every accessible direct train for a whole day between two stations.
  * The full day is returned so the client can page through it offline without
  * any further request.
- * @param params - The origin, destination and travel date.
+ * @param params - The origin, destination, travel date and refresh flag.
  * @returns Every accessible direct train of that day, soonest first.
  */
 export async function fetchDayTrains(
@@ -62,6 +72,7 @@ export async function fetchDayTrains(
     date: params.date,
     full: 'true',
   });
+  if (params.force) query.set('refresh', 'true');
 
   const response = await fetch(`/api/v1/trains?${query.toString()}`);
   if (!response.ok) {

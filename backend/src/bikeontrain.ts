@@ -34,6 +34,14 @@ export interface AccessibleTrain {
   hasPrmSection: boolean;
   /** Whether the train has accessible (PMR) toilets. */
   hasPrmToilets: boolean;
+  /** Whether the train is cancelled (real-time). */
+  isCancelled: boolean;
+  /** Departure delay in minutes (real-time), `0` when on time. */
+  departureDelay: number;
+  /** Arrival delay in minutes (real-time), `0` when on time. */
+  arrivalDelay: number;
+  /** Whether the departure/arrival times are confirmed by real-time data. */
+  realTime: boolean;
 }
 
 /**
@@ -213,7 +221,8 @@ export function parseAccessibleTrains(raw: unknown): AccessibleTrain[] {
 
   const trains: AccessibleTrain[] = [];
   for (const itinerary of itineraries) {
-    if (itinerary.isCancelled) continue;
+    // Cancelled trains are kept (and flagged) so travellers see them as
+    // suppressed rather than silently missing from the timetable.
     if (itinerary.itineraryScore !== GREEN_SCORE) continue;
 
     const transitLegs = itinerary.legs.filter((leg) => leg.transitLeg);
@@ -237,6 +246,10 @@ export function parseAccessibleTrains(raw: unknown): AccessibleTrain[] {
       bikeSpaces: accessibility?.space ?? null,
       hasPrmSection: accessibility?.hasPrmSection ?? false,
       hasPrmToilets: accessibility?.hasPrmToilets ?? false,
+      isCancelled: itinerary.isCancelled,
+      departureDelay: Math.round((leg.departureDelay ?? 0) / 60),
+      arrivalDelay: Math.round((leg.arrivalDelay ?? 0) / 60),
+      realTime: leg.realTime ?? false,
     });
   }
 
