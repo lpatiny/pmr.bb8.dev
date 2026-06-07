@@ -1,0 +1,37 @@
+# Traefik deployment — requires an external Docker network named "traefik".
+# cp .env.docker.example .env   # uncomment: COMPOSE_FILE=compose.traefik.yaml
+# docker compose up -d
+services:
+  oostende-bruges:
+    image: ghcr.io/lpatiny/pmr.bb8.dev:latest
+    build: .
+    env_file: .env
+    networks:
+      - default
+      - traefik
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.oostende-bruges.rule=Host(`pmr.bb8.dev`)'
+      - 'traefik.http.routers.oostende-bruges.entrypoints=websecure'
+      - 'traefik.http.routers.oostende-bruges.tls.certresolver=letsencrypt'
+      - 'traefik.http.services.oostende-bruges.loadbalancer.server.port=${PORT:-3000}'
+    init: true
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    cpus: 1
+    pids_limit: 256
+    ulimits:
+      core: 0
+    logging:
+      options:
+        max-size: '10m'
+        max-file: '3'
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true
