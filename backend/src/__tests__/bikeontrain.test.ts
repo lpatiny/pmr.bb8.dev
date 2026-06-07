@@ -87,6 +87,19 @@ function greenPage(numbers: number[], startTimes: number[]) {
   return Response.json({ hacon: { itineraries } });
 }
 
+const FROM = {
+  id: '8891702',
+  name: 'Ostende',
+  standardname: 'Oostende',
+  place: '2.92581,51.22821',
+};
+const TO = {
+  id: '8891009',
+  name: 'Bruges',
+  standardname: 'Brugge',
+  place: '3.21673,51.19723',
+};
+
 test('pages forward in time to collect up to 10 accessible trains', async () => {
   const hour = 3_600_000;
   let next = 1_700_000_000_000;
@@ -101,7 +114,7 @@ test('pages forward in time to collect up to 10 accessible trains', async () => 
   });
   vi.stubGlobal('fetch', fetchMock);
 
-  const trains = await getAccessibleTrains('oostende-bruges');
+  const trains = await getAccessibleTrains({ from: FROM, to: TO });
 
   // 2 trains per page → 5 upstream requests to reach the limit of 10.
   expect(trains).toHaveLength(10);
@@ -131,7 +144,7 @@ test('stops paging when the window stops advancing', async () => {
     ),
   );
 
-  const trains = await getAccessibleTrains('bruges-oostende');
+  const trains = await getAccessibleTrains({ from: TO, to: FROM });
 
   expect(trains.map((train) => train.trainNumber)).toStrictEqual(['42', '43']);
 });

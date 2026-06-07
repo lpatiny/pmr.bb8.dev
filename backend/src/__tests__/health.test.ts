@@ -12,12 +12,9 @@ test('GET /api/health returns ok', async () => {
   await app.close();
 });
 
-test('GET /api/v1/trains/:direction rejects an unknown direction', async () => {
+test('GET /api/v1/trains requires from and to', async () => {
   const app = await buildApp();
-  const response = await app.inject({
-    method: 'GET',
-    url: '/api/v1/trains/paris-lyon',
-  });
+  const response = await app.inject({ method: 'GET', url: '/api/v1/trains' });
 
   expect(response.statusCode).toBe(400);
 

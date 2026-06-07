@@ -8,6 +8,7 @@ import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 import Fastify from 'fastify';
 
 import healthRoutes from './routes/health.ts';
+import stationRoutes from './routes/stations.ts';
 import trainRoutes from './routes/trains.ts';
 import type { FastifyTyped } from './types.ts';
 
@@ -32,6 +33,7 @@ export async function buildApp(): Promise<FastifyTyped> {
   await fastify.register(fastifySwaggerUi, { routePrefix: '/docs' });
 
   await fastify.register(healthRoutes);
+  await fastify.register(stationRoutes);
   await fastify.register(trainRoutes);
 
   const frontendDist = join(import.meta.dirname, '../../frontend/dist');

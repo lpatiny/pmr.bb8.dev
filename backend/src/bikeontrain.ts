@@ -1,5 +1,4 @@
-import type { Direction, Station } from './stations.ts';
-import { getStations } from './stations.ts';
+import type { Station } from './stations.ts';
 
 /**
  * A single fully-accessible (PMR / bike) direct train, as returned by the API.
@@ -54,23 +53,36 @@ interface SearchWindow {
   minute: string;
 }
 
+/** Options for {@link getAccessibleTrains}. */
+export interface AccessibleTrainsOptions {
+  /** The origin station. */
+  from: Station;
+  /** The destination station. */
+  to: Station;
+  /**
+   * The travel date in `YYYY-MM-DD` (Belgian local time). When omitted or set
+   * to today, the search starts from the current time.
+   */
+  date?: string;
+  /** Maximum number of trains to return. Defaults to `10`. */
+  limit?: number;
+}
+
 /**
- * Fetch the upcoming accessible direct trains for a direction. The SNCB
+ * Fetch the upcoming accessible direct trains between two stations. The SNCB
  * endpoint only returns about one hour of results per request, so this pages
  * forward in time (each page starting just after the previous page's last
  * departure) until `limit` accessible trains are collected.
- * @param direction - The requested travel direction.
- * @param limit - Maximum number of trains to return. Defaults to `10`.
+ * @param options - The origin, destination, optional date and limit.
  * @returns The green (PMR/bike-accessible) direct trains, soonest first.
  */
 export async function getAccessibleTrains(
-  direction: Direction,
-  limit = DEFAULT_LIMIT,
+  options: AccessibleTrainsOptions,
 ): Promise<AccessibleTrain[]> {
-  const { from, to } = getStations(direction);
+  const { from, to, date, limit = DEFAULT_LIMIT } = options;
 
   const collected = new Map<string, AccessibleTrain>();
-  let window: SearchWindow | undefined;
+  let window = initialWindow(date);
   let previousLastTimestamp = Number.NEGATIVE_INFINITY;
 
   for (let page = 0; page < MAX_PAGES && collected.size < limit; page++) {
@@ -216,6 +228,19 @@ function toSearchWindow(timestamp: number): SearchWindow {
     hour: get('hour') === '24' ? '00' : get('hour'),
     minute: get('minute'),
   };
+}
+
+/**
+ * Build the first search window for a requested travel date. Today (or no date)
+ * starts from the current time; any other date starts at midnight.
+ * @param date - The requested date in `YYYY-MM-DD`, or undefined.
+ * @returns The initial window, or undefined to start from "now".
+ */
+function initialWindow(date?: string): SearchWindow | undefined {
+  if (!date) return undefined;
+  const today = toSearchWindow(Date.now()).date;
+  if (date === today) return undefined;
+  return { date, hour: '00', minute: '00' };
 }
 
 interface RawResponse {

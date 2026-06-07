@@ -1,41 +1,45 @@
-/** A station as expected by the SNCB BikeOnTrain search endpoint. */
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+/** A Belgian railway station, as expected by the SNCB BikeOnTrain endpoint. */
 export interface Station {
-  /** Display name used by the endpoint (French). */
+  /** Numeric SNCB station id, e.g. `8891702`. */
+  id: string;
+  /** Localized (French) display name, e.g. `Ostende`. */
   name: string;
+  /** Default (Dutch/local) name, useful for searching, e.g. `Oostende`. */
+  standardname: string;
   /** `lon,lat` coordinate string used by the endpoint. */
   place: string;
-  /** Numeric SNCB station id. */
-  id: string;
 }
 
-/** The two travel directions supported by the application. */
-export type Direction = 'oostende-bruges' | 'bruges-oostende';
+const allStations: Station[] = JSON.parse(
+  readFileSync(join(import.meta.dirname, 'data/stations.json'), 'utf8'),
+);
 
-/** Every supported direction, used to register routes and validate input. */
-export const DIRECTIONS: Direction[] = ['oostende-bruges', 'bruges-oostende'];
+const stationById = new Map(
+  allStations.map((station) => [station.id, station]),
+);
 
-const OOSTENDE: Station = {
-  name: 'Ostende',
-  place: '2.92581,51.22821',
-  id: '8891702',
-};
+/** Default origin: Ostende. */
+export const DEFAULT_FROM_ID = '8891702';
 
-const BRUGES: Station = {
-  name: 'Bruges',
-  place: '3.21673,51.19723',
-  id: '8891009',
-};
+/** Default destination: Bruges. */
+export const DEFAULT_TO_ID = '8891009';
 
 /**
- * Resolve the origin and destination stations for a travel direction.
- * @param direction - The requested travel direction.
- * @returns The origin (`from`) and destination (`to`) stations.
+ * Get every known station, sorted by their standard name.
+ * @returns The full list of stations.
  */
-export function getStations(direction: Direction): {
-  from: Station;
-  to: Station;
-} {
-  return direction === 'oostende-bruges'
-    ? { from: OOSTENDE, to: BRUGES }
-    : { from: BRUGES, to: OOSTENDE };
+export function getAllStations(): Station[] {
+  return allStations;
+}
+
+/**
+ * Look up a station by its numeric SNCB id.
+ * @param id - The numeric station id.
+ * @returns The station, or `undefined` when the id is unknown.
+ */
+export function getStation(id: string): Station | undefined {
+  return stationById.get(id);
 }

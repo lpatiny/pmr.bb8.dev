@@ -1,0 +1,4286 @@
+[
+  {
+    "id": "8400319",
+    "name": "'s Hertogenbosch",
+    "standardname": "'s Hertogenbosch",
+    "place": "5.294278,51.69042"
+  },
+  {
+    "id": "8015345",
+    "name": "Aix-la-Chapelle Hbf",
+    "standardname": "Aachen Hbf",
+    "place": "6.105275,50.770832"
+  },
+  {
+    "id": "8015199",
+    "name": "Aix-la-Chapelle Ouest",
+    "standardname": "Aachen West",
+    "place": "6.07055,50.78078"
+  },
+  {
+    "id": "8895000",
+    "name": "Alost",
+    "standardname": "Aalst",
+    "place": "4.039653,50.942813"
+  },
+  {
+    "id": "8895125",
+    "name": "Alost Kerrebroek",
+    "standardname": "Aalst-Kerrebroek",
+    "place": "4.024407,50.948377"
+  },
+  {
+    "id": "8891140",
+    "name": "Aalter",
+    "standardname": "Aalter",
+    "place": "3.447848,51.092295"
+  },
+  {
+    "id": "8833209",
+    "name": "Aarschot",
+    "standardname": "Aarschot",
+    "place": "4.824043,50.984406"
+  },
+  {
+    "id": "8892288",
+    "name": "Aarsele",
+    "standardname": "Aarsele",
+    "place": "3.418363,50.98446"
+  },
+  {
+    "id": "8886546",
+    "name": "Acren",
+    "standardname": "Acren",
+    "place": "3.847086,50.733095"
+  },
+  {
+    "id": "8727149",
+    "name": "Aéroport Charles-de-Gaulle TGV",
+    "standardname": "Aéroport Charles-de-Gaulle TGV",
+    "place": "2.571123,49.003955"
+  },
+  {
+    "id": "8778127",
+    "name": "Agde",
+    "standardname": "Agde",
+    "place": "3.4658,43.317498"
+  },
+  {
+    "id": "8774176",
+    "name": "Aime-la-Plagne",
+    "standardname": "Aime-la-Plagne",
+    "place": "6.648394,45.554202"
+  },
+  {
+    "id": "8874583",
+    "name": "Aiseau",
+    "standardname": "Aiseau",
+    "place": "4.584552,50.429529"
+  },
+  {
+    "id": "8731901",
+    "name": "Aix-en-Provence TGV",
+    "standardname": "Aix-en-Provence TGV",
+    "place": "5.433333,43.53333"
+  },
+  {
+    "id": "8774164",
+    "name": "Albertville",
+    "standardname": "Albertville",
+    "place": "6.383617,45.673624"
+  },
+  {
+    "id": "8831039",
+    "name": "Alken",
+    "standardname": "Alken",
+    "place": "5.292866,50.886837"
+  },
+  {
+    "id": "8400081",
+    "name": "Almere Buiten",
+    "standardname": "Almere Buiten",
+    "place": "5.277962,52.394175"
+  },
+  {
+    "id": "8400080",
+    "name": "Almere Centrum",
+    "standardname": "Almere Centrum",
+    "place": "5.217778,52.375"
+  },
+  {
+    "id": "8843331",
+    "name": "Amay",
+    "standardname": "Amay",
+    "place": "5.32049,50.546011"
+  },
+  {
+    "id": "8843323",
+    "name": "Ampsin",
+    "standardname": "Ampsin",
+    "place": "5.289729,50.539215"
+  },
+  {
+    "id": "8400058",
+    "name": "Amsterdam CS",
+    "standardname": "Amsterdam Centraal",
+    "place": "4.916667,52.35"
+  },
+  {
+    "id": "8400061",
+    "name": "Amsterdam Zuid",
+    "standardname": "Amsterdam Zuid",
+    "place": "4.871946,52.338865"
+  },
+  {
+    "id": "8863404",
+    "name": "Andenne",
+    "standardname": "Andenne",
+    "place": "5.094699,50.496759"
+  },
+  {
+    "id": "8811940",
+    "name": "Anderlecht",
+    "standardname": "Anderlecht",
+    "place": "4.2918,50.8179"
+  },
+  {
+    "id": "8842002",
+    "name": "Angleur",
+    "standardname": "Angleur",
+    "place": "5.599695,50.613152"
+  },
+  {
+    "id": "8728685",
+    "name": "Annappes",
+    "standardname": "Annappes",
+    "place": "3.15,50.633333"
+  },
+  {
+    "id": "8841202",
+    "name": "Ans",
+    "standardname": "Ans",
+    "place": "5.509704,50.661208"
+  },
+  {
+    "id": "8863818",
+    "name": "Anseremme",
+    "standardname": "Anseremme",
+    "place": "4.90553,50.238023"
+  },
+  {
+    "id": "8775767",
+    "name": "Antibes",
+    "standardname": "Antibes",
+    "place": "7.1201361,43.586618"
+  },
+  {
+    "id": "8885522",
+    "name": "Antoing",
+    "standardname": "Antoing",
+    "place": "3.451309,50.569626"
+  },
+  {
+    "id": "8821121",
+    "name": "Anvers-Berchem",
+    "standardname": "Antwerpen-Berchem",
+    "place": "4.432221,51.19923"
+  },
+  {
+    "id": "8821006",
+    "name": "Anvers-Central",
+    "standardname": "Antwerpen-Centraal",
+    "place": "4.421101,51.2172"
+  },
+  {
+    "id": "8821030",
+    "name": "Anvers-Dam",
+    "standardname": "Antwerpen-Dam",
+    "place": "4.426238,51.231991"
+  },
+  {
+    "id": "8821048",
+    "name": "Anvers-Haven",
+    "standardname": "Antwerpen-Haven",
+    "place": "4.379086,51.289968"
+  },
+  {
+    "id": "8894839",
+    "name": "Anvers-Linkeroever",
+    "standardname": "Antwerpen-Linkeroever",
+    "place": "4.360044,51.215685"
+  },
+  {
+    "id": "8821063",
+    "name": "Anvers-Luchtbal",
+    "standardname": "Antwerpen-Luchtbal",
+    "place": "4.425029,51.244132"
+  },
+  {
+    "id": "8821089",
+    "name": "Anvers-Noorderdokken",
+    "standardname": "Antwerpen-Noorderdokken",
+    "place": "4.427906,51.261643"
+  },
+  {
+    "id": "8821022",
+    "name": "Anvers-Est",
+    "standardname": "Antwerpen-Oost",
+    "place": "4.436392,51.207357"
+  },
+  {
+    "id": "8821196",
+    "name": "Anvers-Sud",
+    "standardname": "Antwerpen-Zuid",
+    "place": "4.390259,51.197828"
+  },
+  {
+    "id": "8892734",
+    "name": "Anzegem",
+    "standardname": "Anzegem",
+    "place": "3.495014,50.826385"
+  },
+  {
+    "id": "8895745",
+    "name": "Appelterre",
+    "standardname": "Appelterre",
+    "place": "3.972108,50.813063"
+  },
+  {
+    "id": "8814472",
+    "name": "Arcades",
+    "standardname": "Arcaden/Arcades",
+    "place": "4.398333,50.809722"
+  },
+  {
+    "id": "8811759",
+    "name": "Archennes",
+    "standardname": "Archennes",
+    "place": "4.662444,50.754345"
+  },
+  {
+    "id": "8866001",
+    "name": "Arlon",
+    "standardname": "Arlon",
+    "place": "5.809971,49.68053"
+  },
+  {
+    "id": "8734201",
+    "name": "Arras",
+    "standardname": "Arras",
+    "place": "2.78169,50.28683"
+  },
+  {
+    "id": "8728686",
+    "name": "Ascq",
+    "standardname": "Ascq",
+    "place": "3.166666,50.616666"
+  },
+  {
+    "id": "8812070",
+    "name": "Asse",
+    "standardname": "Asse",
+    "place": "4.207985,50.906488"
+  },
+  {
+    "id": "8864931",
+    "name": "Assesse",
+    "standardname": "Assesse",
+    "place": "5.022839,50.368133"
+  },
+  {
+    "id": "8886009",
+    "name": "Ath",
+    "standardname": "Ath",
+    "place": "3.777429,50.626932"
+  },
+  {
+    "id": "8866605",
+    "name": "Athus",
+    "standardname": "Athus",
+    "place": "5.828947,49.563346"
+  },
+  {
+    "id": "8869047",
+    "name": "Athus-Frontiere",
+    "standardname": "Athus-Frontiere",
+    "place": "5.824932,49.551749"
+  },
+  {
+    "id": "8866654",
+    "name": "Aubange",
+    "standardname": "Aubange",
+    "place": "5.79806,49.564093"
+  },
+  {
+    "id": "8869088",
+    "name": "Aubange-Frontiere-Luxembourg",
+    "standardname": "Aubange-Frontiere-Luxembourg",
+    "place": "5.826307,49.549455"
+  },
+  {
+    "id": "8729560",
+    "name": "Aulnoye-Aymeries",
+    "standardname": "Aulnoye-Aymeries",
+    "place": "3.843413,50.19744"
+  },
+  {
+    "id": "8874716",
+    "name": "Auvelais",
+    "standardname": "Auvelais",
+    "place": "4.630532,50.449197"
+  },
+  {
+    "id": "8731896",
+    "name": "Avignon TGV",
+    "standardname": "Avignon TGV",
+    "place": "4.816667,43.95"
+  },
+  {
+    "id": "8864352",
+    "name": "Aye",
+    "standardname": "Aye",
+    "place": "5.301091,50.224135"
+  },
+  {
+    "id": "8842754",
+    "name": "Aywaille",
+    "standardname": "Aywaille",
+    "place": "5.672499,50.472938"
+  },
+  {
+    "id": "8822160",
+    "name": "Baesrode-Sud",
+    "standardname": "Baasrode-Zuid",
+    "place": "4.153492,51.019437"
+  },
+  {
+    "id": "8728687",
+    "name": "Baisieux",
+    "standardname": "Baisieux",
+    "place": "3.25,50.6"
+  },
+  {
+    "id": "8895257",
+    "name": "Balegem-Dorp",
+    "standardname": "Balegem-Dorp",
+    "place": "3.791425,50.919612"
+  },
+  {
+    "id": "8895240",
+    "name": "Balegem-Zuid",
+    "standardname": "Balegem-Zuid",
+    "place": "3.80587,50.90051"
+  },
+  {
+    "id": "8832045",
+    "name": "Baelen",
+    "standardname": "Balen",
+    "place": "5.164986,51.169099"
+  },
+  {
+    "id": "8895463",
+    "name": "Bambrugge",
+    "standardname": "Bambrugge",
+    "place": "3.935711,50.913769"
+  },
+  {
+    "id": "8864451",
+    "name": "Barvaux",
+    "standardname": "Barvaux",
+    "place": "5.501542,50.349417"
+  },
+  {
+    "id": "8843430",
+    "name": "Bas-Oha",
+    "standardname": "Bas-Oha",
+    "place": "5.190937,50.52263"
+  },
+  {
+    "id": "8200718",
+    "name": "Bascharage-Sanem",
+    "standardname": "Bascharage-Sanem",
+    "place": "5.923742,49.55836"
+  },
+  {
+    "id": "8500010",
+    "name": "Basel",
+    "standardname": "Basel",
+    "place": "7.590716,47.547408"
+  },
+  {
+    "id": "8811734",
+    "name": "Basse-Wavre",
+    "standardname": "Basse-Wavre",
+    "place": "4.621651,50.72442"
+  },
+  {
+    "id": "8865128",
+    "name": "Bastogne-Nord",
+    "standardname": "Bastogne-Nord",
+    "place": "5.720744,50.006919"
+  },
+  {
+    "id": "8865110",
+    "name": "Bastogne-Sud",
+    "standardname": "Bastogne-Sud",
+    "place": "5.709858,49.999737"
+  },
+  {
+    "id": "8863867",
+    "name": "Beauraing",
+    "standardname": "Beauraing",
+    "place": "4.95684,50.11443"
+  },
+  {
+    "id": "8891124",
+    "name": "Beernem",
+    "standardname": "Beernem",
+    "place": "3.329892,51.128009"
+  },
+  {
+    "id": "8814423",
+    "name": "Beersel",
+    "standardname": "Beersel",
+    "place": "4.302605,50.766616"
+  },
+  {
+    "id": "8894151",
+    "name": "Beervelde",
+    "standardname": "Beervelde",
+    "place": "3.879384,51.08753"
+  },
+  {
+    "id": "8821865",
+    "name": "Begijnendijk",
+    "standardname": "Begijnendijk",
+    "place": "4.800338,51.021972"
+  },
+  {
+    "id": "8871183",
+    "name": "Beignée",
+    "standardname": "Beignée",
+    "place": "4.406305,50.333893"
+  },
+  {
+    "id": "8891157",
+    "name": "Bellem",
+    "standardname": "Bellem",
+    "place": "3.487374,51.083908"
+  },
+  {
+    "id": "8894433",
+    "name": "Belsele",
+    "standardname": "Belsele",
+    "place": "4.088608,51.150994"
+  },
+  {
+    "id": "8832235",
+    "name": "Beringen",
+    "standardname": "Beringen",
+    "place": "5.235892,51.050603"
+  },
+  {
+    "id": "8821816",
+    "name": "Berlaar",
+    "standardname": "Berlaar",
+    "place": "4.638811,51.113662"
+  },
+  {
+    "id": "8065969",
+    "name": "Berlin HBF",
+    "standardname": "Berlin HBF",
+    "place": "13.369548,52.525589"
+  },
+  {
+    "id": "8032318",
+    "name": "Berlin Lichtenberg",
+    "standardname": "Berlin Lichtenberg",
+    "place": "13.4965,52.5097"
+  },
+  {
+    "id": "8007817",
+    "name": "Berlin Ostbahnhof",
+    "standardname": "Berlin Ostbahnhof",
+    "place": "13.45,52.51667"
+  },
+  {
+    "id": "8200510",
+    "name": "Bertrange Strassen",
+    "standardname": "Bertrange Strassen",
+    "place": "6.060601,49.613002"
+  },
+  {
+    "id": "8865300",
+    "name": "Bertrix",
+    "standardname": "Bertrix",
+    "place": "5.267193,49.852835"
+  },
+  {
+    "id": "8873320",
+    "name": "Berzée",
+    "standardname": "Berzée",
+    "place": "4.405909,50.285603"
+  },
+  {
+    "id": "8861424",
+    "name": "Beuzet",
+    "standardname": "Beuzet",
+    "place": "4.748533,50.534208"
+  },
+  {
+    "id": "8894748",
+    "name": "Beveren",
+    "standardname": "Beveren",
+    "place": "4.25952,51.208336"
+  },
+  {
+    "id": "8832227",
+    "name": "Beverlo",
+    "standardname": "Beverlo",
+    "place": "5.234373,51.087719"
+  },
+  {
+    "id": "8778100",
+    "name": "Béziers",
+    "standardname": "Béziers",
+    "place": "3.218794,43.336177"
+  },
+  {
+    "id": "8811718",
+    "name": "Bierges-Walibi",
+    "standardname": "Bierges-Walibi",
+    "place": "4.594746,50.707772"
+  },
+  {
+    "id": "8841319",
+    "name": "Bierset-Awans",
+    "standardname": "Bierset-Awans",
+    "place": "5.460551,50.65861"
+  },
+  {
+    "id": "8831138",
+    "name": "Bilzen",
+    "standardname": "Bilzen",
+    "place": "5.50938,50.868643"
+  },
+  {
+    "id": "8882362",
+    "name": "Binche",
+    "standardname": "Binche",
+    "place": "4.172451,50.408764"
+  },
+  {
+    "id": "8896388",
+    "name": "Bissegem",
+    "standardname": "Bissegem",
+    "place": "3.224205,50.825845"
+  },
+  {
+    "id": "8889045",
+    "name": "Blandain-Frontiere",
+    "standardname": "Blandain-Frontiere",
+    "place": "3.26373,50.61749"
+  },
+  {
+    "id": "8891405",
+    "name": "Blankenberge",
+    "standardname": "Blankenberge",
+    "place": "3.133864,51.312432"
+  },
+  {
+    "id": "8861531",
+    "name": "Blanmont",
+    "standardname": "Blanmont",
+    "place": "4.636393,50.619453"
+  },
+  {
+    "id": "8884715",
+    "name": "Blaton",
+    "standardname": "Blaton",
+    "place": "3.666304,50.505461"
+  },
+  {
+    "id": "8841434",
+    "name": "Bleret",
+    "standardname": "Bleret",
+    "place": "5.286394,50.685065"
+  },
+  {
+    "id": "8812021",
+    "name": "Bockstael",
+    "standardname": "Bockstael",
+    "place": "4.348513,50.87943"
+  },
+  {
+    "id": "8821634",
+    "name": "Boechout",
+    "standardname": "Boechout",
+    "place": "4.494489,51.16348"
+  },
+  {
+    "id": "8831781",
+    "name": "Bokrijk",
+    "standardname": "Bokrijk",
+    "place": "5.408386,50.955812"
+  },
+  {
+    "id": "8864469",
+    "name": "Bomal",
+    "standardname": "Bomal",
+    "place": "5.519304,50.376798"
+  },
+  {
+    "id": "8015577",
+    "name": "Bonn-Beuel",
+    "standardname": "Bonn-Beuel",
+    "place": "7.1276,50.7385"
+  },
+  {
+    "id": "8821857",
+    "name": "Booischot",
+    "standardname": "Booischot",
+    "place": "4.773478,51.037344"
+  },
+  {
+    "id": "8822814",
+    "name": "Boom",
+    "standardname": "Boom",
+    "place": "4.360694,51.090713"
+  },
+  {
+    "id": "8814456",
+    "name": "Boondael",
+    "standardname": "Boondaal/Boondael",
+    "place": "4.393387,50.801665"
+  },
+  {
+    "id": "8822475",
+    "name": "Boortmeerbeek",
+    "standardname": "Boortmeerbeek",
+    "place": "4.5739,50.981853"
+  },
+  {
+    "id": "8758100",
+    "name": "Bordeaux Saint Jean",
+    "standardname": "Bordeaux Saint Jean",
+    "place": "-0.5557068,44.8256102"
+  },
+  {
+    "id": "8811163",
+    "name": "Bordet",
+    "standardname": "Bordet",
+    "place": "4.410026,50.877785"
+  },
+  {
+    "id": "8822772",
+    "name": "Bornem",
+    "standardname": "Bornem",
+    "place": "4.240526,51.099225"
+  },
+  {
+    "id": "8811437",
+    "name": "Boitsfort",
+    "standardname": "Bosvoorde/Boitsfort",
+    "place": "4.408112,50.794698"
+  },
+  {
+    "id": "8774179",
+    "name": "Bourg-Saint-Maurice",
+    "standardname": "Bourg-Saint-Maurice",
+    "place": "6.771664,45.618826"
+  },
+  {
+    "id": "8884319",
+    "name": "Boussu",
+    "standardname": "Boussu",
+    "place": "3.797025,50.436388"
+  },
+  {
+    "id": "8821725",
+    "name": "Bouwel",
+    "standardname": "Bouwel",
+    "place": "4.746511,51.165764"
+  },
+  {
+    "id": "8881463",
+    "name": "Bracquegnies",
+    "standardname": "Bracquegnies",
+    "place": "4.126345,50.474457"
+  },
+  {
+    "id": "8814258",
+    "name": "Braine-l'Alleud",
+    "standardname": "Braine-l'Alleud",
+    "place": "4.375526,50.684778"
+  },
+  {
+    "id": "8883006",
+    "name": "Braine-le-Comte",
+    "standardname": "Braine-le-Comte",
+    "place": "4.137662,50.605079"
+  },
+  {
+    "id": "8400131",
+    "name": "Breda",
+    "standardname": "Breda",
+    "place": "4.7764,51.594459"
+  },
+  {
+    "id": "8843901",
+    "name": "Bressoux",
+    "standardname": "Bressoux",
+    "place": "5.611057,50.643967"
+  },
+  {
+    "id": "8886066",
+    "name": "Brugelette",
+    "standardname": "Brugelette",
+    "place": "3.852551,50.594229"
+  },
+  {
+    "id": "8891009",
+    "name": "Bruges",
+    "standardname": "Brugge",
+    "place": "3.216726,51.197226"
+  },
+  {
+    "id": "8891033",
+    "name": "Bruges-Saint-Pierre",
+    "standardname": "Brugge-Sint-Pieters",
+    "place": "3.201795,51.223115"
+  },
+  {
+    "id": "8813003",
+    "name": "Bruxelles-Central",
+    "standardname": "Brussel-Centraal/Bruxelles-Central",
+    "place": "4.356801,50.845658"
+  },
+  {
+    "id": "8813045",
+    "name": "Bruxelles-Congrès",
+    "standardname": "Brussel-Congres/Bruxelles-Congrès",
+    "place": "4.362051,50.852067"
+  },
+  {
+    "id": "8813037",
+    "name": "Bruxelles-Chapelle",
+    "standardname": "Brussel-Kapellekerk/Bruxelles-Chapelle",
+    "place": "4.347866,50.841127"
+  },
+  {
+    "id": "8811304",
+    "name": "Bruxelles-Luxembourg",
+    "standardname": "Brussel-Luxemburg/Bruxelles-Luxembourg",
+    "place": "4.373674,50.838943"
+  },
+  {
+    "id": "8812005",
+    "name": "Bruxelles-Nord",
+    "standardname": "Brussel-Noord/Bruxelles-Nord",
+    "place": "4.360846,50.859663"
+  },
+  {
+    "id": "8811916",
+    "name": "Bruxelles-Schuman",
+    "standardname": "Brussel-Schuman/Bruxelles-Schuman",
+    "place": "4.380722,50.843276"
+  },
+  {
+    "id": "8815040",
+    "name": "Bruxelles-Ouest",
+    "standardname": "Brussel-West/Bruxelles-Ouest",
+    "place": "4.321042,50.848552"
+  },
+  {
+    "id": "8814001",
+    "name": "Bruxelles-Midi",
+    "standardname": "Brussel-Zuid/Bruxelles-Midi",
+    "place": "4.336531,50.835707"
+  },
+  {
+    "id": "8819406",
+    "name": "Brussels Airport - Zaventem",
+    "standardname": "Brussels Airport - Zaventem",
+    "place": "4.482076,50.896456"
+  },
+  {
+    "id": "8811148",
+    "name": "Buda",
+    "standardname": "Buda",
+    "place": "4.417074,50.907495"
+  },
+  {
+    "id": "8822145",
+    "name": "Buggenhout",
+    "standardname": "Buggenhout",
+    "place": "4.201666,51.016291"
+  },
+  {
+    "id": "8814340",
+    "name": "Buizingen",
+    "standardname": "Buizingen",
+    "place": "4.258558,50.751577"
+  },
+  {
+    "id": "8895455",
+    "name": "Burst",
+    "standardname": "Burst",
+    "place": "3.922416,50.907198"
+  },
+  {
+    "id": "8884889",
+    "name": "Callenelle",
+    "standardname": "Callenelle",
+    "place": "3.52618,50.527359"
+  },
+  {
+    "id": "8886074",
+    "name": "Cambron-Casteau",
+    "standardname": "Cambron-Casteau",
+    "place": "3.874809,50.586759"
+  },
+  {
+    "id": "8775762",
+    "name": "Cannes",
+    "standardname": "Cannes",
+    "place": "7.019895,43.553742"
+  },
+  {
+    "id": "8200518",
+    "name": "Capellen",
+    "standardname": "Capellen",
+    "place": "5.990833,49.645"
+  },
+  {
+    "id": "8865565",
+    "name": "Carlsbourg",
+    "standardname": "Carlsbourg",
+    "place": "5.092784,49.905458"
+  },
+  {
+    "id": "8882248",
+    "name": "Carnieres",
+    "standardname": "Carnieres",
+    "place": "4.263826,50.447957"
+  },
+  {
+    "id": "8811817",
+    "name": "Ceroux-Mousty",
+    "standardname": "Ceroux-Mousty",
+    "place": "4.569046,50.659941"
+  },
+  {
+    "id": "8774100",
+    "name": "Chambéry-Challes-les-Eaux",
+    "standardname": "Chambéry-Challes-les-Eaux",
+    "place": "5.919756,45.571498"
+  },
+  {
+    "id": "8861317",
+    "name": "Chapelle-Dieu",
+    "standardname": "Chapelle-Dieu",
+    "place": "4.697627,50.557374"
+  },
+  {
+    "id": "8864824",
+    "name": "Chapois",
+    "standardname": "Chapois",
+    "place": "5.124255,50.262366"
+  },
+  {
+    "id": "8872009",
+    "name": "Charleroi-Central",
+    "standardname": "Charleroi-Central",
+    "place": "4.438567,50.40471"
+  },
+  {
+    "id": "8872066",
+    "name": "Charleroi-Ouest",
+    "standardname": "Charleroi-Ouest",
+    "place": "4.436653,50.410948"
+  },
+  {
+    "id": "8861523",
+    "name": "Chastre",
+    "standardname": "Chastre",
+    "place": "4.648888,50.608819"
+  },
+  {
+    "id": "8863438",
+    "name": "Château-de-Seilles",
+    "standardname": "Château-de-Seilles",
+    "place": "5.081745,50.497209"
+  },
+  {
+    "id": "8874005",
+    "name": "Châtelet",
+    "standardname": "Châtelet",
+    "place": "4.521861,50.410103"
+  },
+  {
+    "id": "8842051",
+    "name": "Chaudfontaine",
+    "standardname": "Chaudfontaine",
+    "place": "5.643734,50.586982"
+  },
+  {
+    "id": "8842036",
+    "name": "Chênée",
+    "standardname": "Chênée",
+    "place": "5.616073,50.608019"
+  },
+  {
+    "id": "8864501",
+    "name": "Ciney",
+    "standardname": "Ciney",
+    "place": "5.091409,50.29105"
+  },
+  {
+    "id": "8200134",
+    "name": "Clervaux",
+    "standardname": "Clervaux",
+    "place": "6.031393,50.054724"
+  },
+  {
+    "id": "8718201",
+    "name": "Colmar",
+    "standardname": "Colmar",
+    "place": "7.366668,48.083335"
+  },
+  {
+    "id": "8842838",
+    "name": "Comblain-la-Tour",
+    "standardname": "Comblain-la-Tour",
+    "place": "5.566956,50.456865"
+  },
+  {
+    "id": "8896412",
+    "name": "Comines",
+    "standardname": "Comines",
+    "place": "2.999286,50.772072"
+  },
+  {
+    "id": "8845229",
+    "name": "Coo",
+    "standardname": "Coo",
+    "place": "5.880473,50.391127"
+  },
+  {
+    "id": "8874054",
+    "name": "Couillet",
+    "standardname": "Couillet",
+    "place": "4.46851,50.392718"
+  },
+  {
+    "id": "8873379",
+    "name": "Cour-sur-Heure",
+    "standardname": "Cour-sur-Heure",
+    "place": "4.391491,50.300138"
+  },
+  {
+    "id": "8871225",
+    "name": "Courcelles-Motte",
+    "standardname": "Courcelles-Motte",
+    "place": "4.400534,50.462007"
+  },
+  {
+    "id": "8864949",
+    "name": "Courrière",
+    "standardname": "Courrière",
+    "place": "4.996051,50.387442"
+  },
+  {
+    "id": "8811825",
+    "name": "Court-Saint-Étienne",
+    "standardname": "Court-Saint-Étienne",
+    "place": "4.565819,50.645567"
+  },
+  {
+    "id": "8875127",
+    "name": "Couvin",
+    "standardname": "Couvin",
+    "place": "4.491702,50.056324"
+  },
+  {
+    "id": "8701687",
+    "name": "Creil",
+    "standardname": "Creil",
+    "place": "2.469167,49.263889"
+  },
+  {
+    "id": "8728105",
+    "name": "Croix l'Allumette",
+    "standardname": "Croix l'Allumette",
+    "place": "3.13381,50.675708"
+  },
+  {
+    "id": "8728671",
+    "name": "Croix Wasquehal",
+    "standardname": "Croix Wasquehal",
+    "place": "3.15,50.666667"
+  },
+  {
+    "id": "8863362",
+    "name": "Dave-Saint-Martin",
+    "standardname": "Dave-Saint-Martin",
+    "place": "4.884414,50.429098"
+  },
+  {
+    "id": "8814175",
+    "name": "De Hoek",
+    "standardname": "De Hoek",
+    "place": "4.370717,50.738812"
+  },
+  {
+    "id": "8892338",
+    "name": "La Panne",
+    "standardname": "De Panne",
+    "place": "2.601963,51.0774"
+  },
+  {
+    "id": "8892080",
+    "name": "De Pinte",
+    "standardname": "De Pinte",
+    "place": "3.650465,50.997063"
+  },
+  {
+    "id": "8892106",
+    "name": "Deinze",
+    "standardname": "Deinze",
+    "place": "3.534432,50.978258"
+  },
+  {
+    "id": "8811205",
+    "name": "Delta",
+    "standardname": "Delta",
+    "place": "4.403869,50.818357"
+  },
+  {
+    "id": "8400280",
+    "name": "Den Haag HS",
+    "standardname": "Den Haag HS",
+    "place": "4.299999,52.083329"
+  },
+  {
+    "id": "8895802",
+    "name": "Denderleeuw",
+    "standardname": "Denderleeuw",
+    "place": "4.071825,50.891925"
+  },
+  {
+    "id": "8893401",
+    "name": "Termonde",
+    "standardname": "Dendermonde",
+    "place": "4.101427,51.022781"
+  },
+  {
+    "id": "8811213",
+    "name": "Diegem",
+    "standardname": "Diegem",
+    "place": "4.442774,50.890478"
+  },
+  {
+    "id": "8831112",
+    "name": "Diepenbeek",
+    "standardname": "Diepenbeek",
+    "place": "5.419947,50.910452"
+  },
+  {
+    "id": "8814464",
+    "name": "Vivier d'Oie",
+    "standardname": "Diesdelle/Vivier d'Oie",
+    "place": "4.374052,50.796145"
+  },
+  {
+    "id": "8831401",
+    "name": "Diest",
+    "standardname": "Diest",
+    "place": "5.050031,50.993341"
+  },
+  {
+    "id": "8892452",
+    "name": "Dixmude",
+    "standardname": "Diksmuide",
+    "place": "2.868943,51.032723"
+  },
+  {
+    "id": "8812237",
+    "name": "Dilbeek",
+    "standardname": "Dilbeek",
+    "place": "4.243393,50.866728"
+  },
+  {
+    "id": "8863503",
+    "name": "Dinant",
+    "standardname": "Dinant",
+    "place": "4.908182,50.260721"
+  },
+  {
+    "id": "8200714",
+    "name": "Dippach-Reckange",
+    "standardname": "Dippach-Reckange",
+    "place": "5.995267,49.57256"
+  },
+  {
+    "id": "8844545",
+    "name": "Dolhain-Gileppe",
+    "standardname": "Dolhain-Gileppe",
+    "place": "5.936494,50.616244"
+  },
+  {
+    "id": "8200101",
+    "name": "Dommeldange",
+    "standardname": "Dommeldange",
+    "place": "6.13668,49.633838"
+  },
+  {
+    "id": "8400180",
+    "name": "Dordrecht",
+    "standardname": "Dordrecht",
+    "place": "4.666668,51.799998"
+  },
+  {
+    "id": "8010053",
+    "name": "Dortmund Hbf",
+    "standardname": "Dortmund Hbf",
+    "place": "7.459293,51.517898"
+  },
+  {
+    "id": "8200133",
+    "name": "Drauffelt",
+    "standardname": "Drauffelt",
+    "place": "6.006106,50.017778"
+  },
+  {
+    "id": "8892031",
+    "name": "Tronchiennes",
+    "standardname": "Drongen",
+    "place": "3.655202,51.047295"
+  },
+  {
+    "id": "8015653",
+    "name": "Duesseldorf Flughafen (DE)",
+    "standardname": "Duesseldorf Flughafen (DE)",
+    "place": "6.767052,51.27656"
+  },
+  {
+    "id": "8008094",
+    "name": "Düsseldorf Hbf",
+    "standardname": "Duesseldorf Hbf",
+    "place": "6.795297,51.219178"
+  },
+  {
+    "id": "8822210",
+    "name": "Duffel",
+    "standardname": "Duffel",
+    "place": "4.493186,51.091243"
+  },
+  {
+    "id": "8891652",
+    "name": "Duinbergen",
+    "standardname": "Duinbergen",
+    "place": "3.263587,51.338195"
+  },
+  {
+    "id": "8010316",
+    "name": "Duisburg Hbf",
+    "standardname": "Duisburg Hbf",
+    "place": "6.7759037,51.42978"
+  },
+  {
+    "id": "8039904",
+    "name": "Düsseldorf Flughafen Hbf",
+    "standardname": "Düsseldorf Flughafen Hbf",
+    "place": "6.786837,51.292008"
+  },
+  {
+    "id": "7015440",
+    "name": "Ebbsfleet International",
+    "standardname": "Ebbsfleet International",
+    "place": "0.275775,51.45117"
+  },
+  {
+    "id": "8883212",
+    "name": "Écaussinnes",
+    "standardname": "Écaussinnes",
+    "place": "4.156639,50.56239"
+  },
+  {
+    "id": "8895877",
+    "name": "Ede",
+    "standardname": "Ede",
+    "place": "3.987524,50.911054"
+  },
+  {
+    "id": "8893708",
+    "name": "Eeklo",
+    "standardname": "Eeklo",
+    "place": "3.574515,51.181333"
+  },
+  {
+    "id": "8895752",
+    "name": "Eichem",
+    "standardname": "Eichem",
+    "place": "3.993745,50.823994"
+  },
+  {
+    "id": "8400219",
+    "name": "Eijsden",
+    "standardname": "Eijsden",
+    "place": "5.709786,50.772135"
+  },
+  {
+    "id": "8892627",
+    "name": "Eine",
+    "standardname": "Eine",
+    "place": "3.623776,50.870432"
+  },
+  {
+    "id": "8892650",
+    "name": "Eke-Nazareth",
+    "standardname": "Eke-Nazareth",
+    "place": "3.627839,50.960774"
+  },
+  {
+    "id": "8821071",
+    "name": "Ekeren",
+    "standardname": "Ekeren",
+    "place": "4.434154,51.281626"
+  },
+  {
+    "id": "8883311",
+    "name": "Enghien",
+    "standardname": "Enghien",
+    "place": "4.047357,50.697273"
+  },
+  {
+    "id": "8843240",
+    "name": "Engis",
+    "standardname": "Engis",
+    "place": "5.401986,50.582957"
+  },
+  {
+    "id": "8822269",
+    "name": "Eppegem",
+    "standardname": "Eppegem",
+    "place": "4.45749,50.9584"
+  },
+  {
+    "id": "8881158",
+    "name": "Erbisoeul",
+    "standardname": "Erbisœul",
+    "place": "3.887987,50.507025"
+  },
+  {
+    "id": "8895091",
+    "name": "Erembodegem",
+    "standardname": "Erembodegem",
+    "place": "4.055447,50.919621"
+  },
+  {
+    "id": "8861515",
+    "name": "Ernage",
+    "standardname": "Ernage",
+    "place": "4.668538,50.590823"
+  },
+  {
+    "id": "8895471",
+    "name": "Erpe-Mere",
+    "standardname": "Erpe-Mere",
+    "place": "3.962463,50.928601"
+  },
+  {
+    "id": "8811262",
+    "name": "Erps-Kwerps",
+    "standardname": "Erps-Kwerps",
+    "place": "4.585001,50.89651"
+  },
+  {
+    "id": "8871605",
+    "name": "Erquelinnes",
+    "standardname": "Erquelinnes",
+    "place": "4.113562,50.304192"
+  },
+  {
+    "id": "8879004",
+    "name": "Erquelinnes-Frontière",
+    "standardname": "Erquelinnes-Frontière",
+    "place": "4.107929,50.30233"
+  },
+  {
+    "id": "8871647",
+    "name": "Erquelinnes-Village",
+    "standardname": "Erquelinnes-Village",
+    "place": "4.132314,50.310179"
+  },
+  {
+    "id": "8842663",
+    "name": "Esneux",
+    "standardname": "Esneux",
+    "place": "5.572565,50.530568"
+  },
+  {
+    "id": "8821402",
+    "name": "Essen",
+    "standardname": "Essen",
+    "place": "4.451314,51.462767"
+  },
+  {
+    "id": "8010184",
+    "name": "Essen Hbf",
+    "standardname": "Essen Hbf",
+    "place": "6.776118,51.42952"
+  },
+  {
+    "id": "8829009",
+    "name": "Essen-Grens",
+    "standardname": "Essen-Grens",
+    "place": "4.44893,51.46909"
+  },
+  {
+    "id": "8812260",
+    "name": "Essene-Lombeek",
+    "standardname": "Essene-Lombeek",
+    "place": "4.115171,50.882451"
+  },
+  {
+    "id": "8200120",
+    "name": "Ettelbruck",
+    "standardname": "Ettelbréck",
+    "place": "6.104169,49.847496"
+  },
+  {
+    "id": "8811411",
+    "name": "Etterbeek",
+    "standardname": "Etterbeek",
+    "place": "4.389513,50.822187"
+  },
+  {
+    "id": "8844628",
+    "name": "Eupen",
+    "standardname": "Eupen",
+    "place": "6.03711,50.635157"
+  },
+  {
+    "id": "8811106",
+    "name": "Evere",
+    "standardname": "Evere",
+    "place": "4.400965,50.86778"
+  },
+  {
+    "id": "8893252",
+    "name": "Evergem",
+    "standardname": "Evergem",
+    "place": "3.70138,51.107585"
+  },
+  {
+    "id": "8400234",
+    "name": "Eygelshoven markt",
+    "standardname": "Eygelshoven markt",
+    "place": "6.057451,50.89607"
+  },
+  {
+    "id": "8833449",
+    "name": "Ezemaal",
+    "standardname": "Ezemaal",
+    "place": "4.994217,50.772126"
+  },
+  {
+    "id": "8883238",
+    "name": "Familleureux",
+    "standardname": "Familleureux",
+    "place": "4.211581,50.519358"
+  },
+  {
+    "id": "8874567",
+    "name": "Farciennes",
+    "standardname": "Farciennes",
+    "place": "4.55265,50.429148"
+  },
+  {
+    "id": "8872611",
+    "name": "Faux",
+    "standardname": "Faux",
+    "place": "4.54926,50.621826"
+  },
+  {
+    "id": "8841467",
+    "name": "Fexhe-le-Haut-Clocher",
+    "standardname": "Fexhe-le-Haut-Clocher",
+    "place": "5.398453,50.664049"
+  },
+  {
+    "id": "8861127",
+    "name": "Flawinne",
+    "standardname": "Flawinne",
+    "place": "4.806298,50.456236"
+  },
+  {
+    "id": "8843166",
+    "name": "Flemalle-Grande",
+    "standardname": "Flemalle-Grande",
+    "place": "5.480983,50.605349"
+  },
+  {
+    "id": "8843208",
+    "name": "Flemalle-Haute",
+    "standardname": "Flemalle-Haute",
+    "place": "5.457656,50.595308"
+  },
+  {
+    "id": "8872413",
+    "name": "Fleurus",
+    "standardname": "Fleurus",
+    "place": "4.543741,50.481927"
+  },
+  {
+    "id": "8864923",
+    "name": "Florée",
+    "standardname": "Florée",
+    "place": "5.056099,50.357786"
+  },
+  {
+    "id": "8861135",
+    "name": "Floreffe",
+    "standardname": "Floreffe",
+    "place": "4.762368,50.443328"
+  },
+  {
+    "id": "8866845",
+    "name": "Florenville",
+    "standardname": "Florenville",
+    "place": "5.331115,49.706967"
+  },
+  {
+    "id": "8811767",
+    "name": "Florival",
+    "standardname": "Florival",
+    "place": "4.653868,50.761501"
+  },
+  {
+    "id": "8871688",
+    "name": "Fontaine-Valmont",
+    "standardname": "Fontaine-Valmont",
+    "place": "4.212785,50.321164"
+  },
+  {
+    "id": "8871514",
+    "name": "Forchies",
+    "standardname": "Forchies",
+    "place": "4.325384,50.433314"
+  },
+  {
+    "id": "8864311",
+    "name": "Forrières",
+    "standardname": "Forrières",
+    "place": "5.276784,50.132759"
+  },
+  {
+    "id": "8844255",
+    "name": "Fraipont",
+    "standardname": "Fraipont",
+    "place": "5.723665,50.565059"
+  },
+  {
+    "id": "8881570",
+    "name": "Frameries",
+    "standardname": "Frameries",
+    "place": "3.906586,50.405932"
+  },
+  {
+    "id": "8844347",
+    "name": "Franchimont",
+    "standardname": "Franchimont",
+    "place": "5.822223,50.525723"
+  },
+  {
+    "id": "8861143",
+    "name": "Franière",
+    "standardname": "Franière",
+    "place": "4.733548,50.439543"
+  },
+  {
+    "id": "8061676",
+    "name": "Frankfurt am Main Flughafen Fernbf",
+    "standardname": "Frankfurt am Main Flughafen Fernbf",
+    "place": "8.663611,50.13083"
+  },
+  {
+    "id": "8011090",
+    "name": "Frankfurt am Main Flughafen Reginalbf",
+    "standardname": "Frankfurt am Main Flughafen Reginalbf",
+    "place": "8.569853,50.051696"
+  },
+  {
+    "id": "8011068",
+    "name": "Francfort-sur-le-Main Hbf",
+    "standardname": "Frankfurt am Main Hbf",
+    "place": "8.6653708,50.1071318"
+  },
+  {
+    "id": "8885068",
+    "name": "Froyennes",
+    "standardname": "Froyennes",
+    "place": "3.354837,50.62989"
+  },
+  {
+    "id": "8895620",
+    "name": "Gammerages",
+    "standardname": "Galmaarden",
+    "place": "3.965726,50.743918"
+  },
+  {
+    "id": "8811742",
+    "name": "Gastuche",
+    "standardname": "Gastuche",
+    "place": "4.649598,50.736646"
+  },
+  {
+    "id": "8892643",
+    "name": "Gavere-Asper",
+    "standardname": "Gavere-Asper",
+    "place": "3.639732,50.930021"
+  },
+  {
+    "id": "8865649",
+    "name": "Gedinne",
+    "standardname": "Gedinne",
+    "place": "4.978073,49.984123"
+  },
+  {
+    "id": "8832433",
+    "name": "Geel",
+    "standardname": "Geel",
+    "place": "4.988608,51.168955"
+  },
+  {
+    "id": "8861200",
+    "name": "Gembloux",
+    "standardname": "Gembloux",
+    "place": "4.691497,50.570489"
+  },
+  {
+    "id": "8863834",
+    "name": "Gendron-Celles",
+    "standardname": "Gendron-Celles",
+    "place": "4.964607,50.211235"
+  },
+  {
+    "id": "8831765",
+    "name": "Genk",
+    "standardname": "Genk",
+    "place": "5.497685,50.967057"
+  },
+  {
+    "id": "8881562",
+    "name": "Genly",
+    "standardname": "Genly",
+    "place": "3.911638,50.390642"
+  },
+  {
+    "id": "8893120",
+    "name": "Gand-Dampoort",
+    "standardname": "Gent-Dampoort",
+    "place": "3.740591,51.056365"
+  },
+  {
+    "id": "8892007",
+    "name": "Gand-Saint-Pierre",
+    "standardname": "Gent-Sint-Pieters",
+    "place": "3.710675,51.035896"
+  },
+  {
+    "id": "8893179",
+    "name": "Gentbrugge",
+    "standardname": "Gentbrugge",
+    "place": "3.756322,51.038647"
+  },
+  {
+    "id": "8811528",
+    "name": "Genval",
+    "standardname": "Genval",
+    "place": "4.514832,50.725697"
+  },
+  {
+    "id": "8895505",
+    "name": "Grammont",
+    "standardname": "Geraardsbergen",
+    "place": "3.872328,50.771137"
+  },
+  {
+    "id": "8881125",
+    "name": "Ghlin",
+    "standardname": "Ghlin",
+    "place": "3.906343,50.487411"
+  },
+  {
+    "id": "8841731",
+    "name": "Glons",
+    "standardname": "Glons",
+    "place": "5.535431,50.750426"
+  },
+  {
+    "id": "8871381",
+    "name": "Godarville",
+    "standardname": "Godarville",
+    "place": "4.290308,50.492795"
+  },
+  {
+    "id": "8863560",
+    "name": "Godinne",
+    "standardname": "Godinne",
+    "place": "4.86996,50.348914"
+  },
+  {
+    "id": "8200129",
+    "name": "Goebelsmühle",
+    "standardname": "Goebelsmühle",
+    "place": "6.053335,49.92104"
+  },
+  {
+    "id": "8893047",
+    "name": "Gontrode",
+    "standardname": "Gontrode",
+    "place": "3.801672,50.980199"
+  },
+  {
+    "id": "8845005",
+    "name": "Gouvy",
+    "standardname": "Gouvy",
+    "place": "5.953906,50.189409"
+  },
+  {
+    "id": "8849072",
+    "name": "Gouvy-Frontiere",
+    "standardname": "Gouvy-Frontiere",
+    "place": "5.968613,50.171653"
+  },
+  {
+    "id": "8871373",
+    "name": "Gouy-lez-Pieton",
+    "standardname": "Gouy-lez-Pieton",
+    "place": "4.325123,50.497065"
+  },
+  {
+    "id": "8865615",
+    "name": "Graide",
+    "standardname": "Graide",
+    "place": "5.043047,49.934134"
+  },
+  {
+    "id": "8811445",
+    "name": "Groenendael",
+    "standardname": "Groenendaal",
+    "place": "4.449489,50.766103"
+  },
+  {
+    "id": "8812229",
+    "name": "Grand-Bigard",
+    "standardname": "Groot-Bijgaarden",
+    "place": "4.273543,50.868337"
+  },
+  {
+    "id": "8864337",
+    "name": "Grupont",
+    "standardname": "Grupont",
+    "place": "5.280524,50.0906"
+  },
+  {
+    "id": "8822517",
+    "name": "Haacht",
+    "standardname": "Haacht",
+    "place": "4.613309,50.966428"
+  },
+  {
+    "id": "8895869",
+    "name": "Haaltert",
+    "standardname": "Haaltert",
+    "place": "4.023958,50.906838"
+  },
+  {
+    "id": "8866142",
+    "name": "Habay",
+    "standardname": "Habay",
+    "place": "5.632685,49.718249"
+  },
+  {
+    "id": "8884327",
+    "name": "Hainin",
+    "standardname": "Hainin",
+    "place": "3.766893,50.428019"
+  },
+  {
+    "id": "8866530",
+    "name": "Halanzy",
+    "standardname": "Halanzy",
+    "place": "5.741347,49.5562"
+  },
+  {
+    "id": "8814308",
+    "name": "Hal",
+    "standardname": "Halle",
+    "place": "4.240634,50.733931"
+  },
+  {
+    "id": "8873387",
+    "name": "Ham-sur-Heure",
+    "standardname": "Ham-sur-Heure",
+    "place": "4.404696,50.319555"
+  },
+  {
+    "id": "8861168",
+    "name": "Ham-sur-Sambre",
+    "standardname": "Ham-sur-Sambre",
+    "place": "4.669392,50.45255"
+  },
+  {
+    "id": "8822533",
+    "name": "Hambos",
+    "standardname": "Hambos",
+    "place": "4.66301,50.944251"
+  },
+  {
+    "id": "8842846",
+    "name": "Hamoir",
+    "standardname": "Hamoir",
+    "place": "5.533561,50.428181"
+  },
+  {
+    "id": "8832664",
+    "name": "Hamont",
+    "standardname": "Hamont",
+    "place": "5.543279,51.246424"
+  },
+  {
+    "id": "8891165",
+    "name": "Hansbeke",
+    "standardname": "Hansbeke",
+    "place": "3.536212,51.073202"
+  },
+  {
+    "id": "8884640",
+    "name": "Harchies",
+    "standardname": "Harchies",
+    "place": "3.698764,50.482565"
+  },
+  {
+    "id": "8896115",
+    "name": "Harelbeke",
+    "standardname": "Harelbeke",
+    "place": "3.314008,50.85586"
+  },
+  {
+    "id": "8811155",
+    "name": "Haren",
+    "standardname": "Haren",
+    "place": "4.419978,50.888878"
+  },
+  {
+    "id": "8811130",
+    "name": "Haren-Sud",
+    "standardname": "Haren-Sud/Haren-Zuid",
+    "place": "4.415357,50.889696"
+  },
+  {
+    "id": "8831005",
+    "name": "Hasselt",
+    "standardname": "Hasselt",
+    "place": "5.327627,50.930822"
+  },
+  {
+    "id": "8843349",
+    "name": "Haute-Flône",
+    "standardname": "Haute-Flône",
+    "place": "5.330333,50.55349"
+  },
+  {
+    "id": "8731388",
+    "name": "Haute-Picardie TGV",
+    "standardname": "Haute-Picardie TGV",
+    "place": "2.49565,49.85894"
+  },
+  {
+    "id": "8864832",
+    "name": "Haversin",
+    "standardname": "Haversin",
+    "place": "5.194371,50.249044"
+  },
+  {
+    "id": "8881430",
+    "name": "Havre",
+    "standardname": "Havre",
+    "place": "4.059987,50.470754"
+  },
+  {
+    "id": "8400307",
+    "name": "Heerlen",
+    "standardname": "Heerlen",
+    "place": "5.974577,50.89095"
+  },
+  {
+    "id": "8821519",
+    "name": "Heide",
+    "standardname": "Heide",
+    "place": "4.460483,51.364623"
+  },
+  {
+    "id": "8891645",
+    "name": "Heist",
+    "standardname": "Heist",
+    "place": "3.239181,51.333979"
+  },
+  {
+    "id": "8821832",
+    "name": "Heist-op-den-Berg",
+    "standardname": "Heist-op-den-Berg",
+    "place": "4.708235,51.074146"
+  },
+  {
+    "id": "8812153",
+    "name": "Heizijde",
+    "standardname": "Heizijde",
+    "place": "4.156171,50.989593"
+  },
+  {
+    "id": "8728606",
+    "name": "Hellemmes",
+    "standardname": "Hellemmes",
+    "place": "3.108892,50.626941"
+  },
+  {
+    "id": "8824224",
+    "name": "Hemiksem",
+    "standardname": "Hemiksem",
+    "place": "4.338293,51.136243"
+  },
+  {
+    "id": "8883022",
+    "name": "Hennuyères",
+    "standardname": "Hennuyères",
+    "place": "4.175893,50.651005"
+  },
+  {
+    "id": "8811288",
+    "name": "Herent",
+    "standardname": "Herent",
+    "place": "4.672188,50.90353"
+  },
+  {
+    "id": "8821717",
+    "name": "Herentals",
+    "standardname": "Herentals",
+    "place": "4.829535,51.181513"
+  },
+  {
+    "id": "8844644",
+    "name": "Hergenrath",
+    "standardname": "Hergenrath",
+    "place": "6.041335,50.718209"
+  },
+  {
+    "id": "8849023",
+    "name": "Hergenrath-Frontiere",
+    "standardname": "Hergenrath-Frontiere",
+    "place": "6.041269,50.718955"
+  },
+  {
+    "id": "8895646",
+    "name": "Herne",
+    "standardname": "Herne",
+    "place": "4.014573,50.723701"
+  },
+  {
+    "id": "8885753",
+    "name": "Herseaux",
+    "standardname": "Herseaux",
+    "place": "3.245959,50.713894"
+  },
+  {
+    "id": "8841608",
+    "name": "Herstal",
+    "standardname": "Herstal",
+    "place": "5.622761,50.660911"
+  },
+  {
+    "id": "8895430",
+    "name": "Herzele",
+    "standardname": "Herzele",
+    "place": "3.880616,50.89722"
+  },
+  {
+    "id": "8015190",
+    "name": "Herzogenrath",
+    "standardname": "Herzogenrath",
+    "place": "6.0944,50.8709"
+  },
+  {
+    "id": "8832243",
+    "name": "Heusden",
+    "standardname": "Heusden",
+    "place": "5.281782,51.038207"
+  },
+  {
+    "id": "8822459",
+    "name": "Hever",
+    "standardname": "Hever",
+    "place": "4.537637,50.997791"
+  },
+  {
+    "id": "8833126",
+    "name": "Heverlee",
+    "standardname": "Heverlee",
+    "place": "4.6952,50.86253"
+  },
+  {
+    "id": "8895422",
+    "name": "Hillegem",
+    "standardname": "Hillegem",
+    "place": "3.857469,50.891296"
+  },
+  {
+    "id": "8824158",
+    "name": "Hoboken-Polder",
+    "standardname": "Hoboken-Polder",
+    "place": "4.347785,51.182699"
+  },
+  {
+    "id": "8811460",
+    "name": "Hoeilaart",
+    "standardname": "Hoeilaart",
+    "place": "4.467414,50.760161"
+  },
+  {
+    "id": "8822277",
+    "name": "Hofstade",
+    "standardname": "Hofstade",
+    "place": "4.498336,50.988658"
+  },
+  {
+    "id": "8814159",
+    "name": "Holleken",
+    "standardname": "Holleken",
+    "place": "4.353952,50.767631"
+  },
+  {
+    "id": "8200710",
+    "name": "Hollerich",
+    "standardname": "Hollerich",
+    "place": "6.120938,49.59516"
+  },
+  {
+    "id": "8842655",
+    "name": "Hony",
+    "standardname": "Hony",
+    "place": "5.573563,50.539917"
+  },
+  {
+    "id": "8886553",
+    "name": "Houraing",
+    "standardname": "Houraing",
+    "place": "3.835175,50.703062"
+  },
+  {
+    "id": "8871829",
+    "name": "Hourpes",
+    "standardname": "Hourpes",
+    "place": "4.308736,50.363692"
+  },
+  {
+    "id": "8863842",
+    "name": "Houyet",
+    "standardname": "Houyet",
+    "place": "5.006074,50.189868"
+  },
+  {
+    "id": "8821337",
+    "name": "Hove",
+    "standardname": "Hove",
+    "place": "4.465157,51.154114"
+  },
+  {
+    "id": "8814415",
+    "name": "Huizingen",
+    "standardname": "Huizingen",
+    "place": "4.266487,50.7519"
+  },
+  {
+    "id": "8843307",
+    "name": "Huy",
+    "standardname": "Huy",
+    "place": "5.234211,50.527242"
+  },
+  {
+    "id": "8003040",
+    "name": "Idar-Oberstein",
+    "standardname": "Idar-Oberstein",
+    "place": "7.321228,49.699371"
+  },
+  {
+    "id": "8895844",
+    "name": "Iddergem",
+    "standardname": "Iddergem",
+    "place": "4.06849,50.876886"
+  },
+  {
+    "id": "8895729",
+    "name": "Idegem",
+    "standardname": "Idegem",
+    "place": "3.921553,50.801871"
+  },
+  {
+    "id": "8896503",
+    "name": "Ypres",
+    "standardname": "Ieper",
+    "place": "2.876593,50.847402"
+  },
+  {
+    "id": "8896925",
+    "name": "Ingelmunster",
+    "standardname": "Ingelmunster",
+    "place": "3.255416,50.914326"
+  },
+  {
+    "id": "8896909",
+    "name": "Izegem",
+    "standardname": "Izegem",
+    "place": "3.212088,50.921149"
+  },
+  {
+    "id": "8863115",
+    "name": "Jambes",
+    "standardname": "Jambes",
+    "place": "4.876144,50.454843"
+  },
+  {
+    "id": "8863354",
+    "name": "Jambes-Est",
+    "standardname": "Jambes-Est",
+    "place": "4.880261,50.454798"
+  },
+  {
+    "id": "8871175",
+    "name": "Jamioulx",
+    "standardname": "Jamioulx",
+    "place": "4.411294,50.352896"
+  },
+  {
+    "id": "8884566",
+    "name": "Jemappes",
+    "standardname": "Jemappes",
+    "place": "3.885587,50.452577"
+  },
+  {
+    "id": "8843158",
+    "name": "Jemeppe-sur-Meuse",
+    "standardname": "Jemeppe-sur-Meuse",
+    "place": "5.497874,50.618446"
+  },
+  {
+    "id": "8874724",
+    "name": "Jemeppe-sur-Sambre",
+    "standardname": "Jemeppe-sur-Sambre",
+    "place": "4.662632,50.45095"
+  },
+  {
+    "id": "8812047",
+    "name": "Jette",
+    "standardname": "Jette",
+    "place": "4.32622,50.880833"
+  },
+  {
+    "id": "8881166",
+    "name": "Jurbise",
+    "standardname": "Jurbeke",
+    "place": "3.910694,50.530496"
+  },
+  {
+    "id": "8844321",
+    "name": "Juslenville",
+    "standardname": "Juslenville",
+    "place": "5.809935,50.544717"
+  },
+  {
+    "id": "8821444",
+    "name": "Kalmthout",
+    "standardname": "Kalmthout",
+    "place": "4.46682,51.391177"
+  },
+  {
+    "id": "8822053",
+    "name": "Kapelle-op-den-Bos",
+    "standardname": "Kapelle-op-den-Bos",
+    "place": "4.359121,51.010843"
+  },
+  {
+    "id": "8821535",
+    "name": "Kapellen",
+    "standardname": "Kapellen",
+    "place": "4.432661,51.313528"
+  },
+  {
+    "id": "8200130",
+    "name": "Kautenbach",
+    "standardname": "Kautebaach",
+    "place": "6.020003,49.952777"
+  },
+  {
+    "id": "8821659",
+    "name": "Kessel",
+    "standardname": "Kessel",
+    "place": "4.618459,51.151057"
+  },
+  {
+    "id": "8832375",
+    "name": "Kiewit",
+    "standardname": "Kiewit",
+    "place": "5.350226,50.954841"
+  },
+  {
+    "id": "8821451",
+    "name": "Kijkuit",
+    "standardname": "Kijkuit",
+    "place": "4.467315,51.378664"
+  },
+  {
+    "id": "8200520",
+    "name": "Kleinbettingen",
+    "standardname": "Klengbetten",
+    "place": "5.916385,49.646389"
+  },
+  {
+    "id": "8891660",
+    "name": "Knokke",
+    "standardname": "Knokke",
+    "place": "3.285188,51.339894"
+  },
+  {
+    "id": "8019022",
+    "name": "Koblenz Hbf",
+    "standardname": "Koblenz Hbf",
+    "place": "7.588441,50.35084"
+  },
+  {
+    "id": "8892320",
+    "name": "Coxyde",
+    "standardname": "Koksijde",
+    "place": "2.65277,51.079197"
+  },
+  {
+    "id": "8015458",
+    "name": "Cologne Hbf",
+    "standardname": "Köln Hbf",
+    "place": "6.958823,50.942721"
+  },
+  {
+    "id": "8821311",
+    "name": "Kontich-Lint",
+    "standardname": "Kontich-Lint",
+    "place": "4.476358,51.134023"
+  },
+  {
+    "id": "8892403",
+    "name": "Kortemark",
+    "standardname": "Kortemark",
+    "place": "3.043459,51.025244"
+  },
+  {
+    "id": "8811254",
+    "name": "Kortenberg",
+    "standardname": "Kortenberg",
+    "place": "4.543301,50.893067"
+  },
+  {
+    "id": "8896008",
+    "name": "Courtrai",
+    "standardname": "Kortrijk",
+    "place": "3.264549,50.824506"
+  },
+  {
+    "id": "8893567",
+    "name": "Quatrecht",
+    "standardname": "Kwatrecht",
+    "place": "3.829593,50.99175"
+  },
+  {
+    "id": "8811510",
+    "name": "La Hulpe",
+    "standardname": "La Hulpe",
+    "place": "4.49706,50.737958"
+  },
+  {
+    "id": "8882107",
+    "name": "La Louvière-Centre",
+    "standardname": "La Louvière-Centre",
+    "place": "4.179858,50.478161"
+  },
+  {
+    "id": "8882206",
+    "name": "La Louvière-Sud",
+    "standardname": "La Louvière-Sud",
+    "place": "4.190609,50.464974"
+  },
+  {
+    "id": "8872587",
+    "name": "La Roche (Brabant)",
+    "standardname": "La Roche (Brabant)",
+    "place": "4.539157,50.610338"
+  },
+  {
+    "id": "8871670",
+    "name": "Labuissière",
+    "standardname": "Labuissière",
+    "place": "4.186833,50.316328"
+  },
+  {
+    "id": "8200935",
+    "name": "Lamadeleine",
+    "standardname": "Lamadeleine",
+    "place": "5.861335,49.55334"
+  },
+  {
+    "id": "8892056",
+    "name": "Landegem",
+    "standardname": "Landegem",
+    "place": "3.576852,51.064311"
+  },
+  {
+    "id": "8871837",
+    "name": "Landelies",
+    "standardname": "Landelies",
+    "place": "4.350976,50.377311"
+  },
+  {
+    "id": "8833605",
+    "name": "Landen",
+    "standardname": "Landen",
+    "place": "5.07966,50.747927"
+  },
+  {
+    "id": "8400548",
+    "name": "Landgraaf",
+    "standardname": "Landgraaf",
+    "place": "6.019776,50.89651"
+  },
+  {
+    "id": "8774177",
+    "name": "Landry",
+    "standardname": "Landry",
+    "place": "6.733522,45.574194"
+  },
+  {
+    "id": "8893054",
+    "name": "Landskouter",
+    "standardname": "Landskouter",
+    "place": "3.791146,50.970545"
+  },
+  {
+    "id": "8833258",
+    "name": "Langdorp",
+    "standardname": "Langdorp",
+    "place": "4.863541,51.002466"
+  },
+  {
+    "id": "8874559",
+    "name": "Le Campinaire",
+    "standardname": "Le Campinaire",
+    "place": "4.542787,50.42383"
+  },
+  {
+    "id": "8812161",
+    "name": "Lebbeke",
+    "standardname": "Lebbeke",
+    "place": "4.134372,51.005009"
+  },
+  {
+    "id": "8895067",
+    "name": "Lede",
+    "standardname": "Lede",
+    "place": "3.984981,50.970895"
+  },
+  {
+    "id": "8864816",
+    "name": "Leignon",
+    "standardname": "Leignon",
+    "place": "5.107778,50.267768"
+  },
+  {
+    "id": "8400394",
+    "name": "Lelystad Centrum",
+    "standardname": "Lelystad Centrum",
+    "place": "5.470484,52.511736"
+  },
+  {
+    "id": "8843224",
+    "name": "Leman",
+    "standardname": "Leman",
+    "place": "5.468309,50.600396"
+  },
+  {
+    "id": "8814332",
+    "name": "Lembeek",
+    "standardname": "Lembeek",
+    "place": "4.221577,50.715107"
+  },
+  {
+    "id": "8881190",
+    "name": "Lens",
+    "standardname": "Lens",
+    "place": "3.903224,50.559342"
+  },
+  {
+    "id": "8832003",
+    "name": "Bourg-Léopold",
+    "standardname": "Leopoldsburg",
+    "place": "5.257287,51.117312"
+  },
+  {
+    "id": "8775544",
+    "name": "Les Arcs - Draguignan",
+    "standardname": "Les Arcs - Draguignan",
+    "place": "6.4826446,43.4555673"
+  },
+  {
+    "id": "8886504",
+    "name": "Lessines",
+    "standardname": "Lessen",
+    "place": "3.836434,50.712015"
+  },
+  {
+    "id": "8200100",
+    "name": "Luxembourg",
+    "standardname": "Lëtzebuerg",
+    "place": "6.133331,49.599996"
+  },
+  {
+    "id": "8200712",
+    "name": "Leudelange",
+    "standardname": "Leudelange",
+    "place": "6.059306,49.58712"
+  },
+  {
+    "id": "8833001",
+    "name": "Louvain",
+    "standardname": "Leuven",
+    "place": "4.715866,50.88228"
+  },
+  {
+    "id": "8886348",
+    "name": "Leuze",
+    "standardname": "Leuze",
+    "place": "3.616872,50.600612"
+  },
+  {
+    "id": "8882339",
+    "name": "Leval",
+    "standardname": "Leval",
+    "place": "4.211041,50.430797"
+  },
+  {
+    "id": "8728710",
+    "name": "Lezennes",
+    "standardname": "Lezennes",
+    "place": "3.116667,50.616666"
+  },
+  {
+    "id": "8865003",
+    "name": "Libramont",
+    "standardname": "Libramont",
+    "place": "5.37927,49.920434"
+  },
+  {
+    "id": "8892205",
+    "name": "Lichtervelde",
+    "standardname": "Lichtervelde",
+    "place": "3.127212,51.025163"
+  },
+  {
+    "id": "8895836",
+    "name": "Liedekerke",
+    "standardname": "Liedekerke",
+    "place": "4.095287,50.882531"
+  },
+  {
+    "id": "8841558",
+    "name": "Liège-Carré",
+    "standardname": "Liège-Carré",
+    "place": "5.561131,50.640299"
+  },
+  {
+    "id": "8841004",
+    "name": "Liège-Guillemins",
+    "standardname": "Liège-Guillemins",
+    "place": "5.566695,50.62455"
+  },
+  {
+    "id": "8841525",
+    "name": "Liège-Saint-Lambert",
+    "standardname": "Liège-Saint-Lambert",
+    "place": "5.570453,50.646349"
+  },
+  {
+    "id": "8821600",
+    "name": "Lierre",
+    "standardname": "Lier",
+    "place": "4.560614,51.135758"
+  },
+  {
+    "id": "8895570",
+    "name": "Lierde",
+    "standardname": "Lierde",
+    "place": "3.826564,50.816236"
+  },
+  {
+    "id": "8841673",
+    "name": "Liers",
+    "standardname": "Liers",
+    "place": "5.56683,50.698181"
+  },
+  {
+    "id": "8872520",
+    "name": "Ligny",
+    "standardname": "Ligny",
+    "place": "4.566133,50.511726"
+  },
+  {
+    "id": "8722326",
+    "name": "Lille Europe",
+    "standardname": "Lille Europe",
+    "place": "3.0756612,50.6391167"
+  },
+  {
+    "id": "8728600",
+    "name": "Lille Flandres",
+    "standardname": "Lille Flandres",
+    "place": "3.066669,50.633333"
+  },
+  {
+    "id": "8814241",
+    "name": "Lillois",
+    "standardname": "Lillois",
+    "place": "4.365368,50.645423"
+  },
+  {
+    "id": "8811635",
+    "name": "Limal",
+    "standardname": "Limal",
+    "place": "4.575302,50.69214"
+  },
+  {
+    "id": "8032572",
+    "name": "Limburg Süd",
+    "standardname": "Limburg Süd",
+    "place": "8.063261,50.3842"
+  },
+  {
+    "id": "8814142",
+    "name": "Linkebeek",
+    "standardname": "Linkebeek",
+    "place": "4.339434,50.773681"
+  },
+  {
+    "id": "8891629",
+    "name": "Lissewege",
+    "standardname": "Lissewege",
+    "place": "3.194505,51.294714"
+  },
+  {
+    "id": "8871712",
+    "name": "Lobbes",
+    "standardname": "Lobbes",
+    "place": "4.260958,50.346469"
+  },
+  {
+    "id": "8872306",
+    "name": "Lodelinsart",
+    "standardname": "Lodelinsart",
+    "place": "4.462946,50.432451"
+  },
+  {
+    "id": "8894201",
+    "name": "Lokeren",
+    "standardname": "Lokeren",
+    "place": "3.987794,51.108062"
+  },
+  {
+    "id": "8832565",
+    "name": "Lommel",
+    "standardname": "Lommel",
+    "place": "5.312031,51.211564"
+  },
+  {
+    "id": "8822111",
+    "name": "Londerzeel",
+    "standardname": "Londerzeel",
+    "place": "4.299073,51.009091"
+  },
+  {
+    "id": "7015400",
+    "name": "Londres Saint Pancras",
+    "standardname": "London Saint Pancras International",
+    "place": "0.123808,51.5304"
+  },
+  {
+    "id": "7054650",
+    "name": "Londres-Waterloo",
+    "standardname": "London Waterloo",
+    "place": "-0.1132,51.5031"
+  },
+  {
+    "id": "8861416",
+    "name": "Lonzée",
+    "standardname": "Lonzée",
+    "place": "4.7201,50.551935"
+  },
+  {
+    "id": "8714210",
+    "name": "Lorraine TGV",
+    "standardname": "Lorraine TGV",
+    "place": "6.169722,48.9475"
+  },
+  {
+    "id": "8814357",
+    "name": "Lot",
+    "standardname": "Lot",
+    "place": "4.273696,50.766364"
+  },
+  {
+    "id": "8811676",
+    "name": "Louvain-la-Neuve",
+    "standardname": "Louvain-la-Neuve",
+    "place": "4.615745,50.669793"
+  },
+  {
+    "id": "8863156",
+    "name": "Lustin",
+    "standardname": "Lustin",
+    "place": "4.877071380615234,50.369000316323856"
+  },
+  {
+    "id": "8871308",
+    "name": "Luttre",
+    "standardname": "Luttre",
+    "place": "4.38412,50.505856"
+  },
+  {
+    "id": "8772319",
+    "name": "Lyon Part Dieu TGV",
+    "standardname": "Lyon Part Dieu TGV",
+    "place": "4.85,45.75"
+  },
+  {
+    "id": "8772202",
+    "name": "Lyon-Perrache TGV",
+    "standardname": "Lyon-Perrache TGV",
+    "place": "4.825301,45.74836"
+  },
+  {
+    "id": "8776290",
+    "name": "Lyon-Saint Exupéry TGV",
+    "standardname": "Lyon-Saint Exupéry TGV",
+    "place": "5.075822,45.720907"
+  },
+  {
+    "id": "8400424",
+    "name": "Maastricht",
+    "standardname": "Maastricht",
+    "place": "5.705392,50.85"
+  },
+  {
+    "id": "8400426",
+    "name": "Maastricht Randwyck",
+    "standardname": "Maastricht Randwyck",
+    "place": "5.716707,50.838502"
+  },
+  {
+    "id": "8886041",
+    "name": "Maffle",
+    "standardname": "Maffle",
+    "place": "3.800117,50.614356"
+  },
+  {
+    "id": "8019052",
+    "name": "Mainz Hbf",
+    "standardname": "Mainz Hbf",
+    "place": "8.2585,50.0013"
+  },
+  {
+    "id": "8822137",
+    "name": "Malderen",
+    "standardname": "Malderen",
+    "place": "4.22911,51.014484"
+  },
+  {
+    "id": "8200516",
+    "name": "Mamer",
+    "standardname": "Mamer",
+    "place": "6.02014,49.625663"
+  },
+  {
+    "id": "8210014",
+    "name": "Mamer-Lycée",
+    "standardname": "Mamer-Lycée",
+    "place": "6.02968,49.618415"
+  },
+  {
+    "id": "8882701",
+    "name": "Manage",
+    "standardname": "Manage",
+    "place": "4.234683,50.506108"
+  },
+  {
+    "id": "8014008",
+    "name": "Mannheim Hbf",
+    "standardname": "Mannheim Hbf",
+    "place": "8.469722,49.479722"
+  },
+  {
+    "id": "8866175",
+    "name": "Marbehan",
+    "standardname": "Marbehan",
+    "place": "5.539755,49.727337"
+  },
+  {
+    "id": "8864410",
+    "name": "Marche-en-Famenne",
+    "standardname": "Marche-en-Famenne",
+    "place": "5.346289,50.222472"
+  },
+  {
+    "id": "8863461",
+    "name": "Marche-les-Dames",
+    "standardname": "Marche-les-Dames",
+    "place": "4.96458,50.480741"
+  },
+  {
+    "id": "8883220",
+    "name": "Marche-lez-Écaussinnes",
+    "standardname": "Marche-lez-Écaussinnes",
+    "place": "4.177098,50.546173"
+  },
+  {
+    "id": "8871100",
+    "name": "Marchienne-au-Pont",
+    "standardname": "Marchienne-au-Pont",
+    "place": "4.394223,50.412171"
+  },
+  {
+    "id": "8871852",
+    "name": "Marchienne-Zone",
+    "standardname": "Marchienne-Zone",
+    "place": "4.388767,50.397465"
+  },
+  {
+    "id": "8891132",
+    "name": "Maria-Aalter",
+    "standardname": "Maria-Aalter",
+    "place": "3.38673,51.107612"
+  },
+  {
+    "id": "8875002",
+    "name": "Mariembourg",
+    "standardname": "Mariembourg",
+    "place": "4.525691,50.09549"
+  },
+  {
+    "id": "8864345",
+    "name": "Marloie",
+    "standardname": "Marloie",
+    "place": "5.313892,50.202821"
+  },
+  {
+    "id": "8711184",
+    "name": "Marne-la-Vallée - Chessy",
+    "standardname": "Marne-la-Vallée - Chessy",
+    "place": "2.782184,48.868256"
+  },
+  {
+    "id": "8775100",
+    "name": "Marseille-Saint-Charles",
+    "standardname": "Marseille-Saint-Charles",
+    "place": "5.380752,43.303178"
+  },
+  {
+    "id": "8881174",
+    "name": "Masnuy-Saint-Pierre",
+    "standardname": "Masnuy-Saint-Pierre",
+    "place": "3.962139,50.536546"
+  },
+  {
+    "id": "8739370",
+    "name": "Massy TGV",
+    "standardname": "Massy TGV",
+    "place": "2.261254,48.725758"
+  },
+  {
+    "id": "8729500",
+    "name": "Maubeuge",
+    "standardname": "Maubeuge",
+    "place": "3.966566,50.27289"
+  },
+  {
+    "id": "8885530",
+    "name": "Maubray",
+    "standardname": "Maubray",
+    "place": "3.495527,50.547557"
+  },
+  {
+    "id": "8861333",
+    "name": "Mazy",
+    "standardname": "Mazy",
+    "place": "4.675829,50.513497"
+  },
+  {
+    "id": "8822004",
+    "name": "Malines",
+    "standardname": "Mechelen",
+    "place": "4.482785,51.017648"
+  },
+  {
+    "id": "8822343",
+    "name": "Malines-Nekkerspoel",
+    "standardname": "Mechelen-Nekkerspoel",
+    "place": "4.489914,51.029883"
+  },
+  {
+    "id": "8829025",
+    "name": "Meer-Grens",
+    "standardname": "Meer-Grens",
+    "place": "4.734469757625622,51.48573529673874"
+  },
+  {
+    "id": "8400434",
+    "name": "Meerssen",
+    "standardname": "Meerssen",
+    "place": "5.750631,50.8826"
+  },
+  {
+    "id": "8811171",
+    "name": "Meiser",
+    "standardname": "Meiser",
+    "place": "4.394421,50.854072"
+  },
+  {
+    "id": "8821824",
+    "name": "Melkouwen",
+    "standardname": "Melkouwen",
+    "place": "4.671532,51.094938"
+  },
+  {
+    "id": "8893039",
+    "name": "Melle",
+    "standardname": "Melle",
+    "place": "3.797088,51.002807"
+  },
+  {
+    "id": "8890142",
+    "name": "Melle PW",
+    "standardname": "Melle PW",
+    "place": "3.77939,51.01394"
+  },
+  {
+    "id": "8864436",
+    "name": "Melreux-Hotton",
+    "standardname": "Melreux-Hotton",
+    "place": "5.440136,50.28367"
+  },
+  {
+    "id": "8894755",
+    "name": "Melsele",
+    "standardname": "Melsele",
+    "place": "4.286766,51.21071"
+  },
+  {
+    "id": "8896305",
+    "name": "Menin",
+    "standardname": "Menen",
+    "place": "3.113791,50.799489"
+  },
+  {
+    "id": "8812120",
+    "name": "Merchtem",
+    "standardname": "Merchtem",
+    "place": "4.222718,50.954958"
+  },
+  {
+    "id": "8893013",
+    "name": "Merelbeke",
+    "standardname": "Merelbeke",
+    "place": "3.768889,51.017531"
+  },
+  {
+    "id": "8811197",
+    "name": "Merode",
+    "standardname": "Merode",
+    "place": "4.398934,50.839284"
+  },
+  {
+    "id": "8200110",
+    "name": "Mersch",
+    "standardname": "Mersch",
+    "place": "6.106111,49.748893"
+  },
+  {
+    "id": "8842648",
+    "name": "Méry",
+    "standardname": "Méry",
+    "place": "5.587236,50.54762"
+  },
+  {
+    "id": "8866662",
+    "name": "Messancy",
+    "standardname": "Messancy",
+    "place": "5.818915,49.592777"
+  },
+  {
+    "id": "8719203",
+    "name": "Metz",
+    "standardname": "Metz",
+    "place": "6.166663,49.13333"
+  },
+  {
+    "id": "8886058",
+    "name": "Mevergnies-Attre",
+    "standardname": "Mevergnies-Attre",
+    "place": "3.833917,50.600108"
+  },
+  {
+    "id": "8200128",
+    "name": "Michelau",
+    "standardname": "Michelau",
+    "place": "6.09149,49.89729"
+  },
+  {
+    "id": "8841665",
+    "name": "Milmort",
+    "standardname": "Milmort",
+    "place": "5.60009,50.692455"
+  },
+  {
+    "id": "8814431",
+    "name": "Moensberg",
+    "standardname": "Moensberg",
+    "place": "4.330733,50.77832"
+  },
+  {
+    "id": "8832409",
+    "name": "Mol",
+    "standardname": "Mol",
+    "place": "5.116336,51.19105"
+  },
+  {
+    "id": "8812112",
+    "name": "Mollem",
+    "standardname": "Mollem",
+    "place": "4.216965,50.933473"
+  },
+  {
+    "id": "8841459",
+    "name": "Momalle",
+    "standardname": "Momalle",
+    "place": "5.367602,50.66991"
+  },
+  {
+    "id": "8881000",
+    "name": "Mons",
+    "standardname": "Mons",
+    "place": "3.942542,50.453854"
+  },
+  {
+    "id": "8861549",
+    "name": "Mont-Saint-Guibert",
+    "standardname": "Mont-Saint-Guibert",
+    "place": "4.613884,50.637611"
+  },
+  {
+    "id": "8777300",
+    "name": "Montpellier",
+    "standardname": "Montpellier",
+    "place": "3.880534,43.604947"
+  },
+  {
+    "id": "8777301",
+    "name": "Montpellier-Sud-de-France",
+    "standardname": "Montpellier-Sud-de-France",
+    "place": "3.92428293,43.59518401"
+  },
+  {
+    "id": "8893062",
+    "name": "Moortsele",
+    "standardname": "Moortsele",
+    "place": "3.781339,50.953519"
+  },
+  {
+    "id": "8882230",
+    "name": "Morlanwelz",
+    "standardname": "Morlanwelz",
+    "place": "4.247367,50.457998"
+  },
+  {
+    "id": "8821147",
+    "name": "Mortsel",
+    "standardname": "Mortsel",
+    "place": "4.448437,51.18296"
+  },
+  {
+    "id": "8821154",
+    "name": "Mortsel-Deurnesteenweg",
+    "standardname": "Mortsel-Deurnesteenweg",
+    "place": "4.446514,51.183023"
+  },
+  {
+    "id": "8821246",
+    "name": "Mortsel-Liersesteenweg",
+    "standardname": "Mortsel-Liersesteenweg",
+    "place": "4.468843,51.169027"
+  },
+  {
+    "id": "8821238",
+    "name": "Mortsel-Oude God",
+    "standardname": "Mortsel-Oude God",
+    "place": "4.455737,51.171256"
+  },
+  {
+    "id": "8885704",
+    "name": "Mouscron",
+    "standardname": "Mouscron",
+    "place": "3.228448,50.741005"
+  },
+  {
+    "id": "8889011",
+    "name": "Mouscron-Frontiere",
+    "standardname": "Mouscron-Frontiere",
+    "place": "3.196086,50.721716"
+  },
+  {
+    "id": "8861150",
+    "name": "Moustier",
+    "standardname": "Moustier",
+    "place": "4.693807,50.452748"
+  },
+  {
+    "id": "8811403",
+    "name": "Germoir",
+    "standardname": "Mouterij/Germoir",
+    "place": "4.37866,50.829929"
+  },
+  {
+    "id": "8774172",
+    "name": "Moûtiers-Salins-Brides-les-Bai",
+    "standardname": "Moûtiers-Salins-Brides-les-Bai",
+    "place": "6.531454,45.486693"
+  },
+  {
+    "id": "8822426",
+    "name": "Muizen",
+    "standardname": "Muizen",
+    "place": "4.513843,51.008201"
+  },
+  {
+    "id": "8718206",
+    "name": "Mulhouse",
+    "standardname": "Mulhouse",
+    "place": "7.333336,47.749998"
+  },
+  {
+    "id": "8895232",
+    "name": "Munkzwalm",
+    "standardname": "Munkzwalm",
+    "place": "3.733238,50.875673"
+  },
+  {
+    "id": "8863453",
+    "name": "Namêche",
+    "standardname": "Namêche",
+    "place": "4.997939,50.47043"
+  },
+  {
+    "id": "8863008",
+    "name": "Namur",
+    "standardname": "Namur",
+    "place": "4.86222,50.468794"
+  },
+  {
+    "id": "8864964",
+    "name": "Naninne",
+    "standardname": "Naninne",
+    "place": "4.929756,50.419695"
+  },
+  {
+    "id": "8748100",
+    "name": "Nantes",
+    "standardname": "Nantes",
+    "place": "-1.542356,47.216148"
+  },
+  {
+    "id": "8778110",
+    "name": "Narbonne",
+    "standardname": "Narbonne",
+    "place": "3.00601,43.190399"
+  },
+  {
+    "id": "8864915",
+    "name": "Natoye",
+    "standardname": "Natoye",
+    "place": "5.06116,50.343296"
+  },
+  {
+    "id": "8832615",
+    "name": "Neerpelt",
+    "standardname": "Neerpelt",
+    "place": "5.43717,51.222369"
+  },
+  {
+    "id": "8833670",
+    "name": "Neerwinden",
+    "standardname": "Neerwinden",
+    "place": "5.036323,50.763964"
+  },
+  {
+    "id": "8844230",
+    "name": "Nessonvaux",
+    "standardname": "Nessonvaux",
+    "place": "5.741581,50.572089"
+  },
+  {
+    "id": "8866258",
+    "name": "Neufchâteau",
+    "standardname": "Neufchâteau",
+    "place": "5.452559,49.854318"
+  },
+  {
+    "id": "8883121",
+    "name": "Neufvilles",
+    "standardname": "Neufvilles",
+    "place": "4.010672,50.543602"
+  },
+  {
+    "id": "8775605",
+    "name": "Nice Ville",
+    "standardname": "Nice Ville",
+    "place": "7.261928,43.704605"
+  },
+  {
+    "id": "8824240",
+    "name": "Niel",
+    "standardname": "Niel",
+    "place": "4.338589,51.111595"
+  },
+  {
+    "id": "8894714",
+    "name": "Nieuwkerken-Waas",
+    "standardname": "Nieuwkerken-Waas",
+    "place": "4.185907,51.185612"
+  },
+  {
+    "id": "8821667",
+    "name": "Nijlen",
+    "standardname": "Nijlen",
+    "place": "4.666588,51.15984"
+  },
+  {
+    "id": "8777500",
+    "name": "Nîmes",
+    "standardname": "Nîmes",
+    "place": "4.365997,43.832602"
+  },
+  {
+    "id": "8881315",
+    "name": "Nimy",
+    "standardname": "Nimy",
+    "place": "3.956089,50.471644"
+  },
+  {
+    "id": "8895760",
+    "name": "Ninove",
+    "standardname": "Ninove",
+    "place": "4.026133,50.839509"
+  },
+  {
+    "id": "8814209",
+    "name": "Nivelles",
+    "standardname": "Nivelles",
+    "place": "4.335065,50.599641"
+  },
+  {
+    "id": "8821105",
+    "name": "Noorderkempen",
+    "standardname": "Noorderkempen",
+    "place": "4.632204,51.356838"
+  },
+  {
+    "id": "8811247",
+    "name": "Nossegem",
+    "standardname": "Nossegem",
+    "place": "4.506112,50.883314"
+  },
+  {
+    "id": "8871332",
+    "name": "Obaix-Buzet",
+    "standardname": "Obaix-Buzet",
+    "place": "4.36357,50.535206"
+  },
+  {
+    "id": "8881406",
+    "name": "Obourg",
+    "standardname": "Obourg",
+    "place": "4.007804,50.469873"
+  },
+  {
+    "id": "8895778",
+    "name": "Okegem",
+    "standardname": "Okegem",
+    "place": "4.054557,50.857712"
+  },
+  {
+    "id": "8832458",
+    "name": "Olen",
+    "standardname": "Olen",
+    "place": "4.9025,51.17403"
+  },
+  {
+    "id": "8891702",
+    "name": "Ostende",
+    "standardname": "Oostende",
+    "place": "2.925809,51.228212"
+  },
+  {
+    "id": "8891116",
+    "name": "Oostkamp",
+    "standardname": "Oostkamp",
+    "place": "3.257466,51.154114"
+  },
+  {
+    "id": "8812146",
+    "name": "Opwijk",
+    "standardname": "Opwijk",
+    "place": "4.187319,50.974779"
+  },
+  {
+    "id": "8811601",
+    "name": "Ottignies",
+    "standardname": "Ottignies",
+    "place": "4.56936,50.673667"
+  },
+  {
+    "id": "8833134",
+    "name": "Oud-Heverlee",
+    "standardname": "Oud-Heverlee",
+    "place": "4.653311,50.835931"
+  },
+  {
+    "id": "8893518",
+    "name": "Oudegem",
+    "standardname": "Oudegem",
+    "place": "4.064472,51.01523"
+  },
+  {
+    "id": "8892601",
+    "name": "Audenarde",
+    "standardname": "Oudenaarde",
+    "place": "3.600386,50.850116"
+  },
+  {
+    "id": "8843174",
+    "name": "Ougrée",
+    "standardname": "Ougrée",
+    "place": "5.536972,50.605396"
+  },
+  {
+    "id": "8832573",
+    "name": "Overpelt",
+    "standardname": "Overpelt",
+    "place": "5.422751,51.215618"
+  },
+  {
+    "id": "8865540",
+    "name": "Paliseul",
+    "standardname": "Paliseul",
+    "place": "5.118349,49.895408"
+  },
+  {
+    "id": "8886561",
+    "name": "Papignies",
+    "standardname": "Papegem",
+    "place": "3.823408,50.686585"
+  },
+  {
+    "id": "8727100",
+    "name": "Paris Nord",
+    "standardname": "Paris Nord",
+    "place": "2.333333,48.866667"
+  },
+  {
+    "id": "8811775",
+    "name": "Pécrot",
+    "standardname": "Pécrot",
+    "place": "4.651486,50.778517"
+  },
+  {
+    "id": "8844206",
+    "name": "Pepinster",
+    "standardname": "Pepinster",
+    "place": "5.80615,50.568179"
+  },
+  {
+    "id": "8844313",
+    "name": "Pepinster-Cité",
+    "standardname": "Pepinster-Cité",
+    "place": "5.804397,50.563405"
+  },
+  {
+    "id": "8778400",
+    "name": "Perpignan",
+    "standardname": "Perpignan",
+    "place": "2.879397,42.695938"
+  },
+  {
+    "id": "8884855",
+    "name": "Péruwelz",
+    "standardname": "Péruwelz",
+    "place": "3.592772,50.513704"
+  },
+  {
+    "id": "8200930",
+    "name": "Petange",
+    "standardname": "Petange",
+    "place": "5.878681,49.55425"
+  },
+  {
+    "id": "8200102",
+    "name": "Pfaffenthal-Kirchberg",
+    "standardname": "Pfaffenthal-Kirchberg",
+    "place": "6.132853,49.619126"
+  },
+  {
+    "id": "8873122",
+    "name": "Philippeville",
+    "standardname": "Philippeville",
+    "place": "4.535956,50.191639"
+  },
+  {
+    "id": "8871415",
+    "name": "Piéton",
+    "standardname": "Piéton",
+    "place": "4.288438,50.434959"
+  },
+  {
+    "id": "8865227",
+    "name": "Poix-Saint-Hubert",
+    "standardname": "Poix-Saint-Hubert",
+    "place": "5.292641,50.019504"
+  },
+  {
+    "id": "8728683",
+    "name": "Pont de Bois",
+    "standardname": "Pont de Bois",
+    "place": "3.1275,50.624164"
+  },
+  {
+    "id": "8871365",
+    "name": "Pont-à-Celles",
+    "standardname": "Pont-à-Celles",
+    "place": "4.355291,50.513812"
+  },
+  {
+    "id": "8843141",
+    "name": "Pont-de-Seraing",
+    "standardname": "Pont-de-Seraing",
+    "place": "5.510162,50.619651"
+  },
+  {
+    "id": "8896735",
+    "name": "Poperinge",
+    "standardname": "Poperinge",
+    "place": "2.736343,50.854449"
+  },
+  {
+    "id": "8842689",
+    "name": "Poulseur",
+    "standardname": "Poulseur",
+    "place": "5.578858,50.509209"
+  },
+  {
+    "id": "5457076",
+    "name": "Prague Gare centrale",
+    "standardname": "Praha Hlavní Nádraží",
+    "place": "14.436037,50.083058"
+  },
+  {
+    "id": "8811544",
+    "name": "Profondsart",
+    "standardname": "Profondsart",
+    "place": "4.545435,50.699653"
+  },
+  {
+    "id": "8873312",
+    "name": "Pry",
+    "standardname": "Pry",
+    "place": "4.428805,50.269278"
+  },
+  {
+    "id": "8822715",
+    "name": "Puurs",
+    "standardname": "Puurs",
+    "place": "4.282703,51.07722"
+  },
+  {
+    "id": "8884541",
+    "name": "Quaregnon",
+    "standardname": "Quaregnon",
+    "place": "3.856543,50.449827"
+  },
+  {
+    "id": "8881505",
+    "name": "Quevy",
+    "standardname": "Quevy",
+    "place": "3.909489,50.341534"
+  },
+  {
+    "id": "8889003",
+    "name": "Quevy-frontiere",
+    "standardname": "Quevy-frontiere",
+    "place": "3.908753,50.32771"
+  },
+  {
+    "id": "8884335",
+    "name": "Quievrain",
+    "standardname": "Quievrain",
+    "place": "3.68608,50.410103"
+  },
+  {
+    "id": "8886587",
+    "name": "Rebaix",
+    "standardname": "Rebaix",
+    "place": "3.793627,50.661235"
+  },
+  {
+    "id": "8841442",
+    "name": "Remicourt",
+    "standardname": "Remicourt",
+    "place": "5.321407,50.678611"
+  },
+  {
+    "id": "8747100",
+    "name": "Rennes",
+    "standardname": "Rennes",
+    "place": "-1.672744,48.103517"
+  },
+  {
+    "id": "8861440",
+    "name": "Rhisnes",
+    "standardname": "Rhisnes",
+    "place": "4.801866,50.499348"
+  },
+  {
+    "id": "8842705",
+    "name": "Rivage",
+    "standardname": "Rivage",
+    "place": "5.587631,50.483285"
+  },
+  {
+    "id": "8811536",
+    "name": "Rixensart",
+    "standardname": "Rixensart",
+    "place": "4.532855,50.711413"
+  },
+  {
+    "id": "8864006",
+    "name": "Rochefort-Jemelle",
+    "standardname": "Rochefort-Jemelle",
+    "place": "5.266698,50.160401"
+  },
+  {
+    "id": "8200940",
+    "name": "Rodange",
+    "standardname": "Rodange",
+    "place": "5.845028,49.551283"
+  },
+  {
+    "id": "8896800",
+    "name": "Roulers",
+    "standardname": "Roeselare",
+    "place": "3.130412,50.949025"
+  },
+  {
+    "id": "8861119",
+    "name": "Ronet",
+    "standardname": "Ronet",
+    "place": "4.82842,50.457737"
+  },
+  {
+    "id": "8892908",
+    "name": "Renaix",
+    "standardname": "Ronse",
+    "place": "3.602552,50.742506"
+  },
+  {
+    "id": "8400526",
+    "name": "Roosendaal",
+    "standardname": "Roosendaal",
+    "place": "4.458692,51.540834"
+  },
+  {
+    "id": "8400530",
+    "name": "Rotterdam CS",
+    "standardname": "Rotterdam CS",
+    "place": "4.5,51.916667"
+  },
+  {
+    "id": "8728673",
+    "name": "Roubaix",
+    "standardname": "Roubaix",
+    "place": "3.166666,50.699997"
+  },
+  {
+    "id": "8871217",
+    "name": "Roux",
+    "standardname": "Roux",
+    "place": "4.393199,50.443112"
+  },
+  {
+    "id": "8814365",
+    "name": "Ruisbroek",
+    "standardname": "Ruisbroek",
+    "place": "4.295333,50.79183"
+  },
+  {
+    "id": "8822848",
+    "name": "Ruisbroek-Sauvegarde",
+    "standardname": "Ruisbroek-Sauvegarde",
+    "place": "4.324998,51.081022"
+  },
+  {
+    "id": "8861432",
+    "name": "Saint-Denis-Bovesse",
+    "standardname": "Saint-Denis-Bovesse",
+    "place": "4.767788,50.5213"
+  },
+  {
+    "id": "8884004",
+    "name": "Saint-Ghislain",
+    "standardname": "Saint-Ghislain",
+    "place": "3.820253,50.44286"
+  },
+  {
+    "id": "8718213",
+    "name": "Saint-Louis-Haut-Rhin",
+    "standardname": "Saint-Louis-Haut-Rhin",
+    "place": "7.555316,47.5907"
+  },
+  {
+    "id": "8775752",
+    "name": "Saint-Raphaël-Valescure",
+    "standardname": "Saint-Raphaël-Valescure",
+    "place": "6.768825,43.423456"
+  },
+  {
+    "id": "8864956",
+    "name": "Sart-Bernard",
+    "standardname": "Sart-Bernard",
+    "place": "4.949739,50.406373"
+  },
+  {
+    "id": "8721222",
+    "name": "Saverne",
+    "standardname": "Saverne",
+    "place": "7.362255,48.744798"
+  },
+  {
+    "id": "8811007",
+    "name": "Schaerbeek",
+    "standardname": "Schaarbeek/Schaerbeek",
+    "place": "4.378636,50.878513"
+  },
+  {
+    "id": "8893070",
+    "name": "Scheldewindeke",
+    "standardname": "Scheldewindeke",
+    "place": "3.777842,50.937069"
+  },
+  {
+    "id": "8824232",
+    "name": "Schelle",
+    "standardname": "Schelle",
+    "place": "4.340261,51.12551"
+  },
+  {
+    "id": "8893542",
+    "name": "Schellebelle",
+    "standardname": "Schellebelle",
+    "place": "3.921373,51.003149"
+  },
+  {
+    "id": "8895711",
+    "name": "Schendelbeke",
+    "standardname": "Schendelbeke",
+    "place": "3.899286,50.797844"
+  },
+  {
+    "id": "8400561",
+    "name": "Schiphol",
+    "standardname": "Schiphol",
+    "place": "4.75,52.3"
+  },
+  {
+    "id": "8893526",
+    "name": "Schoonaarde",
+    "standardname": "Schoonaarde",
+    "place": "4.011094,51.003149"
+  },
+  {
+    "id": "8200716",
+    "name": "Schouweiler",
+    "standardname": "Schouweiler",
+    "place": "5.960076,49.57364"
+  },
+  {
+    "id": "8831088",
+    "name": "Schulen",
+    "standardname": "Schulen",
+    "place": "5.187405,50.963758"
+  },
+  {
+    "id": "8863446",
+    "name": "Sclaigneaux",
+    "standardname": "Sclaigneaux",
+    "place": "5.026363,50.492247"
+  },
+  {
+    "id": "8843133",
+    "name": "Sclessin",
+    "standardname": "Sclessin",
+    "place": "5.558911,50.609844"
+  },
+  {
+    "id": "8721405",
+    "name": "Selestat",
+    "standardname": "Selestat",
+    "place": "7.449999,48.26667"
+  },
+  {
+    "id": "8843067",
+    "name": "Seraing",
+    "standardname": "Seraing",
+    "place": "5.513777,50.6089"
+  },
+  {
+    "id": "8893583",
+    "name": "Serskamp",
+    "standardname": "Serskamp",
+    "place": "3.959361,50.984397"
+  },
+  {
+    "id": "8777320",
+    "name": "Sète",
+    "standardname": "Sète",
+    "place": "3.696535,43.41281"
+  },
+  {
+    "id": "8015588",
+    "name": "Siegburg",
+    "standardname": "Siegburg",
+    "place": "7.203029,50.793916"
+  },
+  {
+    "id": "8883436",
+    "name": "Silly",
+    "standardname": "Silly",
+    "place": "3.935863,50.662386"
+  },
+  {
+    "id": "8812013",
+    "name": "Simonis",
+    "standardname": "Simonis",
+    "place": "4.32898,50.863645"
+  },
+  {
+    "id": "8894425",
+    "name": "Sinaai",
+    "standardname": "Sinaai",
+    "place": "4.06894,51.143398"
+  },
+  {
+    "id": "8812211",
+    "name": "Berchem-Sainte-Agathe",
+    "standardname": "Sint-Agatha-Berchem/Berchem-Sainte-Agathe",
+    "place": "4.289895,50.872625"
+  },
+  {
+    "id": "8892692",
+    "name": "Sint-Denijs-Boekel",
+    "standardname": "Sint-Denijs-Boekel",
+    "place": "3.698395,50.874297"
+  },
+  {
+    "id": "8814167",
+    "name": "Rhode-Saint-Genèse",
+    "standardname": "Sint-Genesius-Rode",
+    "place": "4.361997,50.74781"
+  },
+  {
+    "id": "8893443",
+    "name": "Saint-Gilles-lez-Termonde",
+    "standardname": "Sint-Gillis-Dendermonde",
+    "place": "4.117832,51.021693"
+  },
+  {
+    "id": "8814449",
+    "name": "Saint-Job",
+    "standardname": "Sint-Job",
+    "place": "4.362761,50.79441"
+  },
+  {
+    "id": "8833159",
+    "name": "Sint-Joris-Weert",
+    "standardname": "Sint-Joris-Weert",
+    "place": "4.651728,50.800631"
+  },
+  {
+    "id": "8822228",
+    "name": "Wavre-Sainte-Catherine",
+    "standardname": "Sint-Katelijne-Waver",
+    "place": "4.496116,51.069975"
+  },
+  {
+    "id": "8821543",
+    "name": "Sint-Mariaburg",
+    "standardname": "Sint-Mariaburg",
+    "place": "4.4349,51.291658"
+  },
+  {
+    "id": "8812245",
+    "name": "Bodeghem-Saint-Martin",
+    "standardname": "Sint-Martens-Bodegem",
+    "place": "4.205081,50.86716"
+  },
+  {
+    "id": "8894508",
+    "name": "Saint-Nicolas",
+    "standardname": "Sint-Niklaas",
+    "place": "4.142966,51.171472"
+  },
+  {
+    "id": "8831807",
+    "name": "Saint-Trond",
+    "standardname": "Sint-Truiden",
+    "place": "5.176654,50.81762"
+  },
+  {
+    "id": "8893260",
+    "name": "Sleidinge",
+    "standardname": "Sleidinge",
+    "place": "3.667526,51.126607"
+  },
+  {
+    "id": "8883113",
+    "name": "Soignies",
+    "standardname": "Soignies",
+    "place": "4.067519,50.572763"
+  },
+  {
+    "id": "8871662",
+    "name": "Solre-sur-Sambre",
+    "standardname": "Solre-sur-Sambre",
+    "place": "4.158427,50.312642"
+  },
+  {
+    "id": "8844404",
+    "name": "Spa",
+    "standardname": "Spa",
+    "place": "5.855096,50.490305"
+  },
+  {
+    "id": "8844420",
+    "name": "Spa-Géronstère",
+    "standardname": "Spa-Géronstère",
+    "place": "5.866207,50.489307"
+  },
+  {
+    "id": "8843406",
+    "name": "Statte",
+    "standardname": "Statte",
+    "place": "5.219676,50.528276"
+  },
+  {
+    "id": "8869054",
+    "name": "Sterpenich-Frontiere",
+    "standardname": "Sterpenich-Frontiere",
+    "place": "5.90415,49.64396"
+  },
+  {
+    "id": "8862018",
+    "name": "Stockem",
+    "standardname": "Stockem",
+    "place": "5.769115,49.690939"
+  },
+  {
+    "id": "8721202",
+    "name": "Strasbourg",
+    "standardname": "Strasbourg",
+    "place": "7.733905,48.585437"
+  },
+  {
+    "id": "8842853",
+    "name": "Sy",
+    "standardname": "Sy",
+    "place": "5.523565,50.403254"
+  },
+  {
+    "id": "8874609",
+    "name": "Tamines",
+    "standardname": "Tamines",
+    "place": "4.608823,50.432235"
+  },
+  {
+    "id": "8894672",
+    "name": "Tamise",
+    "standardname": "Temse",
+    "place": "4.221352,51.126085"
+  },
+  {
+    "id": "8895448",
+    "name": "Terhagen",
+    "standardname": "Terhagen",
+    "place": "3.896653,50.901643"
+  },
+  {
+    "id": "8812252",
+    "name": "Ternat",
+    "standardname": "Ternat",
+    "place": "4.16534,50.874522"
+  },
+  {
+    "id": "8833266",
+    "name": "Testelt",
+    "standardname": "Testelt",
+    "place": "4.945829,51.009864"
+  },
+  {
+    "id": "8844339",
+    "name": "Theux",
+    "standardname": "Theux",
+    "place": "5.815031,50.536159"
+  },
+  {
+    "id": "8881455",
+    "name": "Thieu",
+    "standardname": "Thieu",
+    "place": "4.098523,50.46954"
+  },
+  {
+    "id": "8719100",
+    "name": "Thionville",
+    "standardname": "Thionville",
+    "place": "6.166663,49.366663"
+  },
+  {
+    "id": "8871811",
+    "name": "Thuin",
+    "standardname": "Thuin",
+    "place": "4.288906,50.342738"
+  },
+  {
+    "id": "8884350",
+    "name": "Thulin",
+    "standardname": "Thulin",
+    "place": "3.744708,50.423335"
+  },
+  {
+    "id": "8815016",
+    "name": "Tour et Taxis",
+    "standardname": "Thurn en Taxis/Tour et Taxis",
+    "place": "4.341090917587279,50.87175167644673"
+  },
+  {
+    "id": "8821964",
+    "name": "Tielen",
+    "standardname": "Tielen",
+    "place": "4.893089,51.241021"
+  },
+  {
+    "id": "8892254",
+    "name": "Tielt",
+    "standardname": "Tielt",
+    "place": "3.330341,50.990842"
+  },
+  {
+    "id": "8833308",
+    "name": "Tirlemont",
+    "standardname": "Tienen",
+    "place": "4.92581,50.80802"
+  },
+  {
+    "id": "8842630",
+    "name": "Tilff",
+    "standardname": "Tilff",
+    "place": "5.583937,50.570624"
+  },
+  {
+    "id": "8872553",
+    "name": "Tilly",
+    "standardname": "Tilly",
+    "place": "4.552676,50.558084"
+  },
+  {
+    "id": "8895638",
+    "name": "Tollembeek",
+    "standardname": "Tollembeek",
+    "place": "3.992828,50.735522"
+  },
+  {
+    "id": "8831310",
+    "name": "Tongres",
+    "standardname": "Tongeren",
+    "place": "5.47328,50.784405"
+  },
+  {
+    "id": "8891314",
+    "name": "Torhout",
+    "standardname": "Torhout",
+    "place": "3.105871,51.064707"
+  },
+  {
+    "id": "8775500",
+    "name": "Toulon",
+    "standardname": "Toulon",
+    "place": "5.9326648,43.1274781"
+  },
+  {
+    "id": "8728654",
+    "name": "Tourcoing",
+    "standardname": "Tourcoing",
+    "place": "3.15,50.716667"
+  },
+  {
+    "id": "8885001",
+    "name": "Tournai",
+    "standardname": "Tournai",
+    "place": "3.396942,50.613134"
+  },
+  {
+    "id": "8845203",
+    "name": "Trois-Ponts",
+    "standardname": "Trois-Ponts",
+    "place": "5.873578,50.368214"
+  },
+  {
+    "id": "8200136",
+    "name": "Troisvierges",
+    "standardname": "Troisvierges",
+    "place": "6.000281,50.121109"
+  },
+  {
+    "id": "8844271",
+    "name": "Trooz",
+    "standardname": "Trooz",
+    "place": "5.688346,50.573213"
+  },
+  {
+    "id": "8883808",
+    "name": "Tubize",
+    "standardname": "Tubize",
+    "place": "4.205729,50.691708"
+  },
+  {
+    "id": "8821907",
+    "name": "Turnhout",
+    "standardname": "Turnhout",
+    "place": "4.937415,51.322032"
+  },
+  {
+    "id": "8814134",
+    "name": "Uccle-Calevoet",
+    "standardname": "Ukkel-Kalevoet/Uccle-Calevoet",
+    "place": "4.332207,50.791749"
+  },
+  {
+    "id": "8814126",
+    "name": "Uccle-Stalle",
+    "standardname": "Ukkel-Stalle/Uccle-Stalle",
+    "place": "4.323901,50.802411"
+  },
+  {
+    "id": "8400621",
+    "name": "Utrecht Centraal",
+    "standardname": "Utrecht Centraal",
+    "place": "5.109722,52.089167"
+  },
+  {
+    "id": "8776302",
+    "name": "Valence TGV",
+    "standardname": "Valence TGV",
+    "place": "4.9,44.93333"
+  },
+  {
+    "id": "8400632",
+    "name": "Valkenburg",
+    "standardname": "Valkenburg",
+    "place": "5.832888,50.86928"
+  },
+  {
+    "id": "8811270",
+    "name": "Veltem",
+    "standardname": "Veltem",
+    "place": "4.633516,50.900519"
+  },
+  {
+    "id": "8302593",
+    "name": "Venezia Santa Lucia",
+    "standardname": "Venezia Santa Lucia",
+    "place": "12.321039,45.440975"
+  },
+  {
+    "id": "8833050",
+    "name": "Vertrijk",
+    "standardname": "Vertrijk",
+    "place": "4.835522,50.836282"
+  },
+  {
+    "id": "8844008",
+    "name": "Verviers-Central",
+    "standardname": "Verviers-Central",
+    "place": "5.854917,50.588135"
+  },
+  {
+    "id": "8844057",
+    "name": "Verviers-Palais",
+    "standardname": "Verviers-Palais",
+    "place": "5.865335,50.590921"
+  },
+  {
+    "id": "8892304",
+    "name": "Furnes",
+    "standardname": "Veurne",
+    "place": "2.66994,51.073867"
+  },
+  {
+    "id": "8895612",
+    "name": "Viane-Moerbeke",
+    "standardname": "Viane-Moerbeke",
+    "place": "3.917337,50.751981"
+  },
+  {
+    "id": "8896230",
+    "name": "Vichte",
+    "standardname": "Vichte",
+    "place": "3.39163,50.833657"
+  },
+  {
+    "id": "8845146",
+    "name": "Vielsalm",
+    "standardname": "Vielsalm",
+    "place": "5.909211,50.278933"
+  },
+  {
+    "id": "8895489",
+    "name": "Vijfhuizen",
+    "standardname": "Vijfhuizen",
+    "place": "3.98125,50.943254"
+  },
+  {
+    "id": "8884632",
+    "name": "Ville-Pommerœul",
+    "standardname": "Ville-Pommerœul",
+    "place": "3.724248,50.464542"
+  },
+  {
+    "id": "8872579",
+    "name": "Villers-la-Ville",
+    "standardname": "Villers-la-Ville",
+    "place": "4.533349,50.578103"
+  },
+  {
+    "id": "8811189",
+    "name": "Vilvorde",
+    "standardname": "Vilvoorde",
+    "place": "4.432823,50.924583"
+  },
+  {
+    "id": "8866407",
+    "name": "Virton",
+    "standardname": "Virton",
+    "place": "5.519125,49.560821"
+  },
+  {
+    "id": "8846201",
+    "name": "Visé",
+    "standardname": "Visé",
+    "place": "5.692544,50.73776"
+  },
+  {
+    "id": "8849064",
+    "name": "Vise-Frontiere",
+    "standardname": "Vise-Frontiere",
+    "place": "5.702903,50.758413"
+  },
+  {
+    "id": "8866118",
+    "name": "Viville",
+    "standardname": "Viville",
+    "place": "5.786527,49.688243"
+  },
+  {
+    "id": "8841327",
+    "name": "Voroux",
+    "standardname": "Voroux",
+    "place": "5.429556,50.66181"
+  },
+  {
+    "id": "8814118",
+    "name": "Forest-Est",
+    "standardname": "Vorst-Oost/Forest-Est",
+    "place": "4.320943,50.810195"
+  },
+  {
+    "id": "8814373",
+    "name": "Forest-Midi",
+    "standardname": "Vorst-Zuid/Forest-Midi",
+    "place": "4.309167,50.809215"
+  },
+  {
+    "id": "8893815",
+    "name": "Waarschoot",
+    "standardname": "Waarschoot",
+    "place": "3.615353,51.154608"
+  },
+  {
+    "id": "8873007",
+    "name": "Walcourt",
+    "standardname": "Walcourt",
+    "place": "4.435879,50.259219"
+  },
+  {
+    "id": "8896149",
+    "name": "Waregem",
+    "standardname": "Waregem",
+    "place": "3.42551,50.892456"
+  },
+  {
+    "id": "8841400",
+    "name": "Waremme",
+    "standardname": "Waremme",
+    "place": "5.249475,50.694549"
+  },
+  {
+    "id": "8814266",
+    "name": "Waterloo",
+    "standardname": "Waterloo",
+    "place": "4.383481,50.715422"
+  },
+  {
+    "id": "8811429",
+    "name": "Watermael",
+    "standardname": "Watermaal/Watermael",
+    "place": "4.399887,50.80917"
+  },
+  {
+    "id": "8811726",
+    "name": "Wavre",
+    "standardname": "Wavre",
+    "place": "4.604778,50.716267"
+  },
+  {
+    "id": "8822251",
+    "name": "Weerde",
+    "standardname": "Weerde",
+    "place": "4.470937,50.977449"
+  },
+  {
+    "id": "8844503",
+    "name": "Welkenraedt",
+    "standardname": "Welkenraedt",
+    "place": "5.975381,50.659707"
+  },
+  {
+    "id": "8895851",
+    "name": "Welle",
+    "standardname": "Welle",
+    "place": "4.05062,50.903279"
+  },
+  {
+    "id": "8896396",
+    "name": "Wervik",
+    "standardname": "Wervik",
+    "place": "3.046983,50.781861"
+  },
+  {
+    "id": "8822525",
+    "name": "Wespelaar-Tildonk",
+    "standardname": "Wespelaar-Tildonk",
+    "place": "4.638011,50.958544"
+  },
+  {
+    "id": "8893559",
+    "name": "Wetteren",
+    "standardname": "Wetteren",
+    "place": "3.881883,51.001603"
+  },
+  {
+    "id": "8896370",
+    "name": "Wevelgem",
+    "standardname": "Wevelgem",
+    "place": "3.18352,50.811526"
+  },
+  {
+    "id": "8833233",
+    "name": "Wezemaal",
+    "standardname": "Wezemaal",
+    "place": "4.747679,50.956261"
+  },
+  {
+    "id": "8893534",
+    "name": "Wichelen",
+    "standardname": "Wichelen",
+    "place": "3.969195,51.001962"
+  },
+  {
+    "id": "8101003",
+    "name": "Wien Hbf",
+    "standardname": "Wien Hbf",
+    "place": "16.375864,48.184923"
+  },
+  {
+    "id": "8833175",
+    "name": "Wijgmaal",
+    "standardname": "Wijgmaal",
+    "place": "4.701475,50.92274"
+  },
+  {
+    "id": "8821436",
+    "name": "Wildert",
+    "standardname": "Wildert",
+    "place": "4.46335,51.428087"
+  },
+  {
+    "id": "8822608",
+    "name": "Willebroek",
+    "standardname": "Willebroek",
+    "place": "4.356019,51.066343"
+  },
+  {
+    "id": "8200132",
+    "name": "Wilwerwiltz",
+    "standardname": "Wilwerwiltz",
+    "place": "5.999166,49.988887"
+  },
+  {
+    "id": "8821709",
+    "name": "Wolfstee",
+    "standardname": "Wolfstee",
+    "place": "4.786144,51.168361"
+  },
+  {
+    "id": "8893211",
+    "name": "Wondelgem",
+    "standardname": "Wondelgem",
+    "place": "3.719071,51.088357"
+  },
+  {
+    "id": "8847258",
+    "name": "Y.renory",
+    "standardname": "Y.renory",
+    "place": "5.55788,50.604856"
+  },
+  {
+    "id": "8873239",
+    "name": "Yves-Gomezée",
+    "standardname": "Yves-Gomezée",
+    "place": "4.500404,50.23698"
+  },
+  {
+    "id": "8863545",
+    "name": "Yvoir",
+    "standardname": "Yvoir",
+    "place": "4.878643,50.32084"
+  },
+  {
+    "id": "8895737",
+    "name": "Zandbergen",
+    "standardname": "Zandbergen",
+    "place": "3.957653,50.806986"
+  },
+  {
+    "id": "8811221",
+    "name": "Zaventem",
+    "standardname": "Zaventem",
+    "place": "4.469886,50.885723"
+  },
+  {
+    "id": "8891264",
+    "name": "Zedelgem",
+    "standardname": "Zedelgem",
+    "place": "3.16414,51.127047"
+  },
+  {
+    "id": "8891553",
+    "name": "Zeebrugge-Dorp",
+    "standardname": "Zeebrugge-Dorp",
+    "place": "3.19517,51.326383"
+  },
+  {
+    "id": "8891173",
+    "name": "Zeebrugge-Strand",
+    "standardname": "Zeebrugge-Strand",
+    "place": "3.184028,51.330503"
+  },
+  {
+    "id": "8894235",
+    "name": "Zele",
+    "standardname": "Zele",
+    "place": "4.041999,51.073256"
+  },
+  {
+    "id": "8812062",
+    "name": "Zellik",
+    "standardname": "Zellik",
+    "place": "4.274541,50.890028"
+  },
+  {
+    "id": "8833274",
+    "name": "Zichem",
+    "standardname": "Zichem",
+    "place": "4.987359,51.00669"
+  },
+  {
+    "id": "8892635",
+    "name": "Zingem",
+    "standardname": "Zingem",
+    "place": "3.646384,50.908025"
+  },
+  {
+    "id": "8832250",
+    "name": "Zolder",
+    "standardname": "Zolder",
+    "place": "5.3299,51.033548"
+  },
+  {
+    "id": "8832334",
+    "name": "Zonhoven",
+    "standardname": "Zonhoven",
+    "place": "5.348815,50.989557"
+  },
+  {
+    "id": "8895208",
+    "name": "Zottegem",
+    "standardname": "Zottegem",
+    "place": "3.81441,50.869102"
+  },
+  {
+    "id": "8891611",
+    "name": "Zwankendamme",
+    "standardname": "Zwankendamme",
+    "place": "3.191557,51.306409"
+  },
+  {
+    "id": "8894821",
+    "name": "Zwijndrecht",
+    "standardname": "Zwijndrecht",
+    "place": "4.32978,51.214108"
+  },
+  {
+    "id": "252",
+    "name": "Zwijndrecht-Dorp",
+    "standardname": "Zwijndrecht-Dorp",
+    "place": "4.3256707,51.2191653"
+  }
+]

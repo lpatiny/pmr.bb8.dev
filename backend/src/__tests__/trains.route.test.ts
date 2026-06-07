@@ -13,7 +13,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-test('GET /api/v1/trains/:direction returns the accessible trains', async () => {
+test('GET /api/v1/trains returns the accessible trains for a station pair', async () => {
   const fetchMock = vi.fn<(url: string | URL | Request) => Promise<Response>>(
     () => Promise.resolve(new Response(fixture, { status: 200 })),
   );
@@ -22,27 +22,54 @@ test('GET /api/v1/trains/:direction returns the accessible trains', async () => 
   const app = await buildApp();
   const response = await app.inject({
     method: 'GET',
-    url: '/api/v1/trains/oostende-bruges',
+    url: '/api/v1/trains?from=8891702&to=8891009',
   });
 
   expect(response.statusCode).toBe(200);
   const body = response.json();
-  expect(body.direction).toBe('oostende-bruges');
+  expect(body.from).toBe('8891702');
+  expect(body.to).toBe('8891009');
   expect(
     body.trains.map((train: { trainNumber: string }) => train.trainNumber),
   ).toStrictEqual(['1808', '508', '1809']);
 
-  // The reverse direction must query the swapped from/to station ids.
-  fetchMock.mockClear();
-  await app.inject({ method: 'GET', url: '/api/v1/trains/bruges-oostende' });
-  const reverseUrl = fetchMock.mock.calls[0]?.[0] as string;
-  expect(reverseUrl).toContain('fromId=8891009');
-  expect(reverseUrl).toContain('toId=8891702');
+  // The first upstream call must use the requested station ids.
+  const url = fetchMock.mock.calls[0]?.[0] as string;
+  expect(url).toContain('fromId=8891702');
+  expect(url).toContain('toId=8891009');
 
   await app.close();
 });
 
-test('GET /api/v1/trains/:direction returns 502 when the SNCB service fails', async () => {
+test('GET /api/v1/trains rejects an unknown station', async () => {
+  const app = await buildApp();
+  const response = await app.inject({
+    method: 'GET',
+    url: '/api/v1/trains?from=8891702&to=0000000',
+  });
+
+  expect(response.statusCode).toBe(400);
+  expect(response.json()).toStrictEqual({ error: 'Gare inconnue.' });
+
+  await app.close();
+});
+
+test('GET /api/v1/trains rejects identical from and to', async () => {
+  const app = await buildApp();
+  const response = await app.inject({
+    method: 'GET',
+    url: '/api/v1/trains?from=8891702&to=8891702',
+  });
+
+  expect(response.statusCode).toBe(400);
+  expect(response.json()).toStrictEqual({
+    error: 'Choisissez deux gares différentes.',
+  });
+
+  await app.close();
+});
+
+test('GET /api/v1/trains returns 502 when the SNCB service fails', async () => {
   vi.stubGlobal(
     'fetch',
     vi.fn(async () => new Response('boom', { status: 500 })),
@@ -51,7 +78,7 @@ test('GET /api/v1/trains/:direction returns 502 when the SNCB service fails', as
   const app = await buildApp();
   const response = await app.inject({
     method: 'GET',
-    url: '/api/v1/trains/oostende-bruges',
+    url: '/api/v1/trains?from=8891702&to=8891009',
   });
 
   expect(response.statusCode).toBe(502);

@@ -1,8 +1,10 @@
 # pmr.bb8.dev
 
 Application web très simple, en français, qui affiche **uniquement les trains
-accessibles aux personnes à mobilité réduite (PMR) et aux vélos** entre
-**Ostende** et **Bruges**, dans les deux sens.
+directs accessibles aux personnes à mobilité réduite (PMR) et aux vélos** entre
+deux gares belges. Par défaut **Ostende → Bruges**, mais on peut choisir
+n'importe quelle gare de départ et d'arrivée (parmi les ~700 gares SNCB) ainsi
+qu'une date de voyage.
 
 Ces trains correspondent aux trajets « verts » du planificateur officiel SNCB
 [BikeOnTrain](https://bikeontrain.belgiantrain.be/) — c.-à-d. ceux dont le score
@@ -18,8 +20,10 @@ Déployée sur **https://pmr.bb8.dev**.
   simplifiée. Un backend est nécessaire car le point d'accès SNCB n'autorise le
   CORS que pour des origines `localhost` : un navigateur sur un domaine déployé
   serait refusé.
-- **frontend/** — interface React + Vite : deux grands onglets de direction et
-  une liste de trains à gros caractères, conçue pour une personne âgée.
+- **frontend/** — interface React + Vite : sélection des gares de départ et
+  d'arrivée, de la date (Aujourd'hui / Demain / date personnalisée) et de
+  l'heure, puis une liste de trains à gros caractères, conçue pour une personne
+  âgée. Des boutons « Plus tôt » / « Plus tard » étendent la liste.
 
 Le backend sert également le frontend compilé via `@fastify/static` — un seul
 processus Node, pas de nginx.
